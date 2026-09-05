@@ -165,17 +165,19 @@ export default function QuoteForm() {
             </label>
           </div>
 
-          <TurnstileWidget
-            action={TURNSTILE_ACTIONS.projectIntake}
-            onToken={setTurnstileToken}
-            resetSignal={turnstileReset}
-            theme="light"
-          />
+          <div className="formVerificationRow">
+            <TurnstileWidget
+              action={TURNSTILE_ACTIONS.projectIntake}
+              onToken={setTurnstileToken}
+              resetSignal={turnstileReset}
+              theme="light"
+            />
 
-          <div className="formActions formContinueActions">
-            <div className="formContinueGroup">
-              <ArrowFillButton className="formSubmit" label={isSubmitting ? "Saving…" : "Continue"} type="submit" disabled={isSubmitting || !turnstileToken} />
-              <small>Takes less than a minute.</small>
+            <div className="formActions formContinueActions">
+              <div className="formContinueGroup">
+                <ArrowFillButton className="formSubmit" label={isSubmitting ? "Saving…" : "Continue"} type="submit" disabled={isSubmitting || !turnstileToken} />
+                <small>Step 1 of 2 · final submit next.</small>
+              </div>
             </div>
           </div>
         </>
