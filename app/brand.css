@@ -52,6 +52,28 @@
 .footerBottom { flex-wrap: wrap; gap: 16px; }
 .formBadge .trueprintMark, .contactFormBadge .trueprintMark, .productSearchResults .trueprintMark { width: 23px; height: 25px; margin: 0; }
 .depthWord, .footerWord > span { font-family: "TruePrint Garet", "Century Gothic", Arial, sans-serif; }
+
+/* Dark surfaces shared by the home, contact and every category page.
+   Keep these overrides outside .siteHeader so navigation stays blue. */
+.siteFooter .navWordmark,
+.siteFooter .navWordmarkDot,
+.siteFooter .navWord,
+.siteFooter .navWord::before,
+.siteFooter .navWord::after {
+  color: #fff;
+}
+.siteFooter .navWordmarkBrand {
+  background: none;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  animation: none;
+}
+.siteFooter .trueprintMark,
+.quoteForm .formBadge .trueprintMark {
+  filter: brightness(0) invert(1);
+}
+.siteFooter .navWordmark:focus-visible { outline-color: #fff; }
+
 @keyframes trueprintBrandSheen { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @media (max-width: 380px) { .siteHeader .navWordmark { font-size: 1rem; min-width: 0; } }
 @media (prefers-reduced-motion: reduce) { .navWordmarkBrand { animation: none; } }
