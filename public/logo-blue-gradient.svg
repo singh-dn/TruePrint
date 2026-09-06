@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="317.4" height="334.8" viewBox="33.4 40.3 317.4 334.8">
+  <title>TruePrint blue gradient logo</title>
+  <defs>
+    <linearGradient id="blue-gradient" gradientUnits="userSpaceOnUse" x1="192" y1="40.3" x2="192" y2="375.1">
+      <stop offset="0" stop-color="#7DD6EA"/>
+      <stop offset="0.25" stop-color="#61ADD0"/>
+      <stop offset="0.5" stop-color="#3256A5"/>
+      <stop offset="0.75" stop-color="#152261"/>
+      <stop offset="1" stop-color="#090E3B"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#blue-gradient)" d="M 109.8,40.3 L 239.2,40.3 C 310.8,40.3 350.8,74.3 350.8,135.3 C 350.8,218.7 294.6,279.1 212.6,279.1 L 171.7,279.1 L 159.2,375.1 L 33.4,375.1 L 240.5,167.2 L 264.3,190.4 L 264.3,106.0 L 179.8,106.0 L 202.8,129.2 L 80.7,252.4 Z"/>
+</svg>

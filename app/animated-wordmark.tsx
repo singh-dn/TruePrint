@@ -1,5 +1,7 @@
 "use client";
 
+import BrandMark from "./brand-mark";
+
 import {
   useCallback,
   useEffect,
@@ -79,7 +81,7 @@ function AnimatedWord({ effect, text }: Pick<WordState, "effect" | "text">) {
   );
 }
 
-export default function AnimatedWordmark() {
+export default function AnimatedWordmark({ className = "", href = "#top" }: { className?: string; href?: string }) {
   const [current, setCurrent] = useState<WordState>({ effect: "slide", key: 0, text: words[0] });
   const [leaving, setLeaving] = useState<WordState | null>(null);
   const [rotatorWidth, setRotatorWidth] = useState(0);
@@ -89,9 +91,11 @@ export default function AnimatedWordmark() {
   const effectIndexRef = useRef(1);
   const keyRef = useRef(1);
   const pausedRef = useRef(false);
+  const reducedMotionRef = useRef(false);
   const leavingTimerRef = useRef<number | null>(null);
 
   const swap = useCallback(() => {
+    if (reducedMotionRef.current) return;
     const next: WordState = {
       effect: effects[effectIndexRef.current % effects.length],
       key: keyRef.current,
@@ -121,12 +125,23 @@ export default function AnimatedWordmark() {
   }, [measureCurrent]);
 
   useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => {
+      reducedMotionRef.current = preference.matches;
+      if (preference.matches) setLeaving(null);
+    };
+    updatePreference();
+    preference.addEventListener("change", updatePreference);
+    let mounted = true;
+    void document.fonts.ready.then(() => { if (mounted) measureCurrent(); });
     const timer = window.setInterval(() => {
       if (!pausedRef.current && !document.hidden) swap();
     }, 1500);
 
     window.addEventListener("resize", measureCurrent);
     return () => {
+      mounted = false;
+      preference.removeEventListener("change", updatePreference);
       window.clearInterval(timer);
       if (leavingTimerRef.current) window.clearTimeout(leavingTimerRef.current);
       window.removeEventListener("resize", measureCurrent);
@@ -135,23 +150,29 @@ export default function AnimatedWordmark() {
 
   return (
     <a
-      className="navWordmark"
-      href="#top"
-      aria-label={`TruePrint. ${current.text}. Return to the top.`}
+      className={`navWordmark ${className}`.trim()}
+      href={href}
+      aria-label="TruePrint"
       title="Click to skip · hover to pause"
       onClick={swap}
       onMouseEnter={() => { pausedRef.current = true; }}
       onMouseLeave={() => { pausedRef.current = false; }}
+      onFocus={() => { pausedRef.current = true; }}
+      onBlur={() => { pausedRef.current = false; }}
     >
+      <BrandMark />
       <span className="navWordmarkBrand">True<span>Print</span></span>
       <span className="navWordmarkDot">.</span>
       <span className="navWordmarkRotator" style={{ width: rotatorWidth || undefined }}>
+        <span aria-hidden="true">&#8203;</span>
+        <span className="navWordmarkMask" aria-hidden="true">
         {leaving ? (
           <span className="navWord navWordLeaving" aria-hidden="true" key={`leaving-${leaving.key}`}>
             {leaving.text}
           </span>
         ) : null}
         <AnimatedWord effect={current.effect} text={current.text} key={current.key} />
+        </span>
       </span>
       <span className="navWordmarkMeasure" ref={measureRef} aria-hidden="true" />
     </a>

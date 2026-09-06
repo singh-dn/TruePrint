@@ -144,10 +144,7 @@ export default function ContactPage() {
           <div className="footerBody">
             <div className="footerTop">
               <div className="footerIntro">
-                <a className="footerBrand" href="/" aria-label="TruePrint home">
-                  <span className="brandMark" aria-hidden="true"><span /><span /><span /></span>
-                  <span>TruePrint</span>
-                </a>
+                <AnimatedWordmark className="footerBrand" href="/" />
                 <p>Premium print, precise colour and thoughtful finishing, made to be remembered.</p>
               </div>
 
@@ -186,7 +183,7 @@ export default function ContactPage() {
 
             <div className="footerWord" aria-hidden="true"><span>TRUEPRINT</span></div>
             <FooterProductIndex />
-            <div className="footerBottom"><span>TruePrint</span><p>Ideas, made tangible.</p></div>
+            <div className="footerBottom"><AnimatedWordmark href="/" /><p>Ideas, made tangible.</p></div>
           </div>
         </footer>
       </section>

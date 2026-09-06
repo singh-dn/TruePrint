@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./brand.css";
 import { SITE_URL } from "./seo";
 
 export const metadata: Metadata = {
@@ -45,8 +46,8 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og.png`],
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/logo-blue-gradient.svg",
+    shortcut: "/logo-blue-gradient.svg",
   },
 };
 
@@ -69,7 +70,7 @@ export default function RootLayout({
                   "@id": `${SITE_URL}/#organization`,
                   name: "TruePrint",
                   url: SITE_URL,
-                  logo: `${SITE_URL}/favicon.svg`,
+                  logo: `${SITE_URL}/logo-blue-gradient.svg`,
                   description: "Premium custom printing, branded merchandise and corporate gifting for teams, events and brands.",
                 },
                 {

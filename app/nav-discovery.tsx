@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState, type FocusEvent, type FormEvent } from "react";
+import BrandMark from "./brand-mark";
 
 const SearchIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -134,7 +135,7 @@ function SearchResults({ query, results }: { query: string; results: readonly (t
         </a>
       )) : (
         <a href="/contact" role="option" aria-selected="false">
-          <span>TP</span>
+          <span><BrandMark /></span>
           <div><strong>Ask TruePrint</strong><small>Tell us what you are looking for</small></div>
           <i aria-hidden="true">↗</i>
         </a>

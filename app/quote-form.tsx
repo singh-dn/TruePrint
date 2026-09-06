@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BrandMark from "./brand-mark";
 import type { ChangeEvent, FormEvent } from "react";
 import { ArrowFillButton } from "./arrow-fill-button";
 import TurnstileWidget from "./turnstile-widget";
@@ -129,7 +130,7 @@ export default function QuoteForm() {
   return (
     <form className="quoteForm" onSubmit={step === 1 ? handleContinue : handleSubmit}>
       <div className="formHeading">
-        <div className="formBadge"><span aria-hidden="true">TP</span> Project intake</div>
+        <div className="formBadge"><span aria-hidden="true"><BrandMark /></span> Project intake</div>
         <p className="formKicker">Begin a project</p>
         {step === 1 ? (
           <>

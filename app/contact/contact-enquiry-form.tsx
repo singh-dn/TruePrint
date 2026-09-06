@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import BrandMark from "../brand-mark";
 import { ArrowFillButton } from "../arrow-fill-button";
 import TurnstileWidget from "../turnstile-widget";
 import { TURNSTILE_ACTIONS } from "@/lib/turnstile-actions";
@@ -65,7 +66,7 @@ export default function ContactEnquiryForm() {
     <form className="contactEnquiryForm" onSubmit={handleSubmit}>
       <div className="contactFormHeading">
         <p><span /> Project enquiry</p>
-        <div className="contactFormBadge"><span aria-hidden="true">TP</span> Direct to our team</div>
+        <div className="contactFormBadge"><span aria-hidden="true"><BrandMark /></span> Direct to our team</div>
         <h2>Want us to<br />contact you?</h2>
         <p>Tell us a little about what you need and our team will get in touch shortly to understand your requirement and help with the next steps.</p>
       </div>

@@ -1,0 +1,57 @@
+/* Garet Book and Heavy mapped to the supplied lockup's 400 / 900 weights. */
+@font-face {
+  font-family: "TruePrint Garet";
+  src: local("Garet Book"), local("Garet-Book"), url("https://fonts.cdnfonts.com/s/57477/Garet-Book.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TruePrint Garet";
+  src: local("Garet Heavy"), local("Garet-Heavy"), url("https://fonts.cdnfonts.com/s/57477/Garet-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+.navWordmark {
+  align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-shrink: 0;
+  gap: 0;
+  font-family: "TruePrint Garet", "Century Gothic", Arial, sans-serif;
+  letter-spacing: -.03em;
+}
+.trueprintMark { display: inline-block; width: auto; height: 1.02em; flex: none; margin-right: .24em; margin-bottom: -.02em; object-fit: contain; }
+.navWordmarkBrand {
+  font-weight: 400;
+  letter-spacing: -.012em;
+  background: linear-gradient(112deg, #5b8fd9 0%, #274c9b 38%, #0b1730 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: trueprintBrandSheen 9s ease-in-out infinite;
+}
+.navWordmarkBrand > span { font-weight: 900; }
+.navWordmarkDot { color: #0b1730; margin-left: .01em; }
+.navWordmarkRotator {
+  display: inline-block;
+  height: auto;
+  overflow: visible;
+  margin-top: 0;
+  margin-left: .2em;
+  font-weight: 900;
+  min-width: 2em;
+}
+.navWordmarkMeasure { font-weight: 900; }
+.navWordmarkMask { position: absolute; inset: 0 auto auto 0; width: 100%; height: 1.4em; overflow: hidden; perspective: 600px; }
+.footerBrand.navWordmark { font-size: clamp(1.2rem, 1.8vw, 1.65rem); }
+.footerBottom .navWordmark { font-size: .9rem; min-width: 0; text-transform: none; letter-spacing: -.03em; }
+.footerBottom { flex-wrap: wrap; gap: 16px; }
+.formBadge .trueprintMark, .contactFormBadge .trueprintMark, .productSearchResults .trueprintMark { width: 23px; height: 25px; margin: 0; }
+.depthWord, .footerWord > span { font-family: "TruePrint Garet", "Century Gothic", Arial, sans-serif; }
+@keyframes trueprintBrandSheen { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@media (max-width: 380px) { .siteHeader .navWordmark { font-size: 1rem; min-width: 0; } }
+@media (prefers-reduced-motion: reduce) { .navWordmarkBrand { animation: none; } }
