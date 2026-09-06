@@ -15,10 +15,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const contactJourney = [
-  { number: "01", icon: "●", title: "Share the brief", copy: "Tell us what it is for, the quantity, deadline and any idea already taking shape." },
-  { number: "02", icon: "✎", title: "Shape the route", copy: "We connect format, material, construction and budget into one clear production plan." },
-  { number: "03", icon: "✓", title: "Proof and make", copy: "Review the details, approve the route and let our team control production and finishing." },
-  { number: "04", icon: "◆", title: "Check and deliver", copy: "Every piece is inspected, organised and packed to arrive ready for its moment." },
+  { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us what you need, the quantity, timeline and any idea or reference you already have." },
+  { number: "02", icon: "✎", title: "Explore the options", copy: "We shortlist suitable products, materials and pricing around your requirement and budget." },
+  { number: "03", icon: "✓", title: "Approve the mockup", copy: "Review the product, branding and final mockup before we move ahead with production." },
+  { number: "04", icon: "📦", title: "Produce and deliver", copy: "We coordinate production, quality checks, packing and delivery to your required location." },
 ] as const;
 
 export default function ContactPage() {

@@ -156,10 +156,10 @@ export default function PrintExperiments() {
 
       <header className="labHeader">
         <p><span>05</span> Print possibilities</p>
-        <h2 id="lab-title">Be the first to imagine it.<br /><em>We&apos;ll make it holdable.</em></h2>
+        <h2 id="lab-title">Start with the idea.<br /><em>We&apos;ll shape the rest.</em></h2>
         <div className="labHeaderNote">
           <span aria-hidden="true" />
-          Drag, swipe or use the controls to explore.
+          Browse, shortlist and explore what fits your brand.
         </div>
       </header>
 

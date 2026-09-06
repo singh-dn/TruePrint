@@ -151,9 +151,9 @@ export default function ClientStories() {
       <header className="clientStoriesHeader">
         <div>
           <p><span /> Client notes</p>
-          <h2 id="client-stories-title">Made together.<br /><em>Remembered after.</em></h2>
+          <h2 id="client-stories-title">Made together.<br /><em>Remembered by clients.</em></h2>
         </div>
-        <p>Six perspectives on how an unfinished brief becomes a finished object worth keeping.</p>
+        <p>Stories from organizations  that worked with TruePrint from the first brief to the final delivery.</p>
       </header>
 
       <div className="clientStoriesDeck" style={activeStyle}>
@@ -197,7 +197,7 @@ export default function ClientStories() {
             <small>Client note</small>
             <blockquote>“{active.quote}”</blockquote>
             <p>{active.role}</p>
-            <a href="/#contact">Start a similar project <span>↗</span></a>
+            <a href="#">Start a similar project <span>↗</span></a>
           </div>
 
           <figure>

@@ -91,8 +91,7 @@ export default function ProductVideoShowcase() {
         <p><span /> TruePrint in motion <span /></p>
         <h2 id="product-video-title">See the details.<br /><em>Watch them come alive.</em></h2>
         <p>
-          Choose a film and take a closer look at the materials, finishing and
-          thoughtful details behind the products we make.
+          Explore our products in motion and take a closer look at the materials, finishes and details that make each one stand out.
         </p>
       </header>
 

@@ -26,10 +26,10 @@ const diaryMaterials = [
 ] as const;
 
 const diaryJourney = [
-  { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us who it is for, the quantity, deadline and any idea already taking shape." },
-  { number: "02", icon: "✎", title: "Shape the diary", copy: "We organise format, pages, materials and branding into one clear production route." },
-  { number: "03", icon: "✓", title: "Proof and approve", copy: "Review the details, refine what matters and approve the diary before production begins." },
-  { number: "04", icon: "📦", title: "Make and deliver", copy: "We print, finish, bind, check and prepare every diary for its final destination." },
+  { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us what you need, the quantity, timeline and any idea or reference you already have." },
+  { number: "02", icon: "✎", title: "Explore the options", copy: "We shortlist suitable products, materials and pricing around your requirement and budget." },
+  { number: "03", icon: "✓", title: "Approve the mockup", copy: "Review the product, branding and final mockup before we move ahead with production." },
+  { number: "04", icon: "📦", title: "Produce and deliver", copy: "We coordinate production, quality checks, packing and delivery to your required location." },
 ] as const;
 
 const categoryNames: Record<string, string> = {

@@ -58,10 +58,10 @@ const serviceRows = [
 ] as const;
 
 const makingJourney = [
-  { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us what it is for, the quantity, deadline and any idea already taking shape." },
-  { number: "02", icon: "✎", title: "Shape the route", copy: "We connect format, material, construction and budget into one clear production plan." },
-  { number: "03", icon: "✓", title: "Proof and make", copy: "Review the details, approve the route and let our team control production and finishing." },
-  { number: "04", icon: "📦", title: "Check and deliver", copy: "Every piece is inspected, organised and packed to arrive ready for its moment." },
+  { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us what you need, the quantity, timeline and any idea or reference you already have." },
+  { number: "02", icon: "✎", title: "Explore the options", copy: "We shortlist suitable products, materials and pricing around your requirement and budget." },
+  { number: "03", icon: "✓", title: "Approve the mockup", copy: "Review the product, branding and final mockup before we move ahead with production." },
+  { number: "04", icon: "📦", title: "Produce and deliver", copy: "We coordinate production, quality checks, packing and delivery to your required location." },
 ] as const;
 
 export default function Home() {
@@ -114,13 +114,12 @@ export default function Home() {
 
           <div className="heroGrid">
             <section className="heroCopy">
-              <p className="eyebrow"><span /> Made to be remembered</p>
-              <h1>Ideas, made<br />tangible.</h1>
+              <p className="eyebrow"><span /> FROM IDEA TO DELIVERY</p>
+              <h1>Everything branded,<br />made simpler.</h1>
               <p className="heroIntro">
-                Premium print, precise colour and thoughtful finishing for brands
-                that care about every last detail.
+                One sourcing partner for corporate merchandise, gifting, printing and custom products — tailored around your exact requirement.
               </p>
-              <ArrowFillLink className="primaryButton" href="#services" label="Explore our print" />
+              <ArrowFillLink className="primaryButton" href="#services" label="Explore TruePrint" />
 
               <article className="featuredProduct">
                 <img
@@ -179,10 +178,9 @@ export default function Home() {
           <header className="projectsHeader">
             <span className="projectsGhost" aria-hidden="true">PROJECTS</span>
             <p className="projectsKicker"><span>03</span> Selected print work</p>
-            <h2 id="projects-title">Selected work.<br /><em>Made tangible.</em></h2>
+            <h2 id="projects-title">Curated well.<br /><em>Branded better.</em></h2>
             <p>
-              Thoughtful print systems shaped around the way each brand needs to
-              look, feel and be remembered.
+              From practical essentials to premium merchandise, every option is chosen with quality and purpose in mind.
             </p>
           </header>
 
@@ -351,7 +349,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="materialsSection" id="materials" aria-labelledby="materials-title">
+        {/* <section className="materialsSection" id="materials" aria-labelledby="materials-title">
           <span className="materialsOrb materialsOrbOne" aria-hidden="true" />
           <span className="materialsOrb materialsOrbTwo" aria-hidden="true" />
 
@@ -451,6 +449,31 @@ export default function Home() {
               <p>Deep tones · bold contrast</p>
             </article>
           </div>
+        </section> */}
+        
+        <section className="diaryJourney homeJourney" aria-labelledby="making-flow-title">
+          <span className="diaryJourneyGhost" aria-hidden="true">MAKE</span>
+          <header className="diaryJourneyHeader">
+            <p><span /> HOW TRUEPRINT WORKS</p>
+            <h2 id="making-flow-title">Four simple steps.<br /><em>One smooth journey.</em></h2>
+            <p>
+              From first conversation to final delivery, we keep every step clear, coordinated and easy to follow.
+            </p>
+          </header>
+
+          <div className="diaryJourneyPanel" aria-label="TruePrint four-step production process">
+            <div className="diaryJourneyTrack" aria-hidden="true" />
+            {makingJourney.map((step, index) => (
+              <article className="diaryJourneyStep" key={step.number} style={{ "--step-index": index } as CSSProperties}>
+                <span className="diaryJourneyNode"><i>{step.icon}</i></span>
+                <div>
+                  <small>Step {step.number}</small>
+                  <h3>{step.title}</h3>
+                  <p>{step.copy}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <PrintReveal />
@@ -478,8 +501,8 @@ export default function Home() {
               </div>
 
               <div className="sourceGlassHeading">
-                <p>Start with anything</p>
-                <h3>Give us the clue.<br />We&apos;ll find the object.</h3>
+                <p>BEYOND THE CATALOGUE</p>
+                <h3>Can&apos;t find it here?<br />We&apos;ll source it.</h3>
               </div>
 
               <div className="sourceInputs" aria-label="Ways to share an idea">
@@ -494,21 +517,20 @@ export default function Home() {
                 <b aria-hidden="true" />
                 <span><i>02</i> Source</span>
                 <b aria-hidden="true" />
-                <span><i>03</i> Make</span>
+                <span><i>03</i> Deliver</span>
               </div>
 
               <p className="sourceGlassCopy">
-                It does not need a product name or a finished specification. Show
-                us what caught your eye and tell us what it needs to do.
+               If the right product is not on our website, show us a reference and our team will help find, customize and source it.
               </p>
 
               <ArrowFillLink
                 className="sourceButton"
                 href="https://trueprint-brand-studio.harshwardensingh.chatgpt.site/#quote"
-                label="Show us the idea"
+                label="LET US SOURCE IT"
               />
 
-              <small>One unusual brief. One considered route to making it real.</small>
+              <small>Not listed does not mean unavailable.</small>
             </article>
 
             <article className="sourceFormPanel">
@@ -528,35 +550,13 @@ export default function Home() {
           </div>
         </section>
 
-        <PrintProcess />
-
-        <section className="diaryJourney homeJourney" aria-labelledby="making-flow-title">
-          <span className="diaryJourneyGhost" aria-hidden="true">MAKE</span>
-          <header className="diaryJourneyHeader">
-            <p><span /> How a project moves</p>
-            <h2 id="making-flow-title">Four clear moves.<br /><em>One thing worth holding.</em></h2>
-            <p>
-              A connected route keeps the idea, material and final result moving
-              in the same direction from the first conversation to delivery.
-            </p>
-          </header>
-
-          <div className="diaryJourneyPanel" aria-label="TruePrint four-step production process">
-            <div className="diaryJourneyTrack" aria-hidden="true" />
-            {makingJourney.map((step, index) => (
-              <article className="diaryJourneyStep" key={step.number} style={{ "--step-index": index } as CSSProperties}>
-                <span className="diaryJourneyNode"><i>{step.icon}</i></span>
-                <div>
-                  <small>Step {step.number}</small>
-                  <h3>{step.title}</h3>
-                  <p>{step.copy}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        {/* <PrintProcess /> */}
 
         <ProductVideoShowcase />
+        
+
+
+        
 
         <section className="possibilitySection" aria-labelledby="possibility-title">
           <header className="possibilityHeader">
