@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://trueprint.internsatthe420.chatgpt.site";
+export const SITE_URL = "https://trueprint-brand-studio.harshwardensingh.chatgpt.site";
+
+export const homeSeo = {
+  title: "TruePrint | Corporate Printing, Gifting & Branded Merchandise",
+  description: "TruePrint helps businesses source, customize and deliver corporate printing, branded merchandise, gifting, joining kits, apparel and more.",
+  path: "",
+};
 
 const socialImage = {
   url: `${SITE_URL}/og.png`,
+  type: "image/png",
   width: 1200,
   height: 630,
   alt: "TruePrint premium printing, corporate gifting and branded merchandise",
@@ -54,50 +61,50 @@ export function buildPageMetadata({ title, description, path }: PageMetadataInpu
 export const categorySeo = {
   diaries: {
     name: "Custom Diaries & Branded Planners",
-    title: "Custom Diaries & Branded Planners | TruePrint",
-    description: "Create custom diaries and branded planners with tailored covers, paper, layouts, foil, embossing and packaging for teams, clients and events.",
+    title: "Custom Corporate Diaries & Notebooks | TruePrint",
+    description: "Explore custom corporate diaries and notebooks for employees, clients, events and gifting, with premium finishes and branding options.",
     path: "/categories",
   },
   "visiting-cards": {
     name: "Premium Visiting Cards & Business Cards",
-    title: "Premium Visiting Cards & Business Cards | TruePrint",
-    description: "Print premium visiting cards and business cards with custom paper, thickness, foil, embossing, spot UV, edge finishes and precise colour.",
+    title: "Custom Visiting Cards for Businesses | TruePrint",
+    description: "Order premium custom visiting cards for businesses with multiple paper, finish and branding options. Ideal for bulk corporate requirements.",
     path: "/categories/visiting-cards",
   },
   pens: {
     name: "Custom Branded Pens & Corporate Pens",
-    title: "Custom Branded Pens & Corporate Pens | TruePrint",
-    description: "Source and customise branded pens for offices, events and corporate gifting, including metal, ballpoint, rollerball, stylus and engraved options.",
+    title: "Custom Branded Pens for Businesses | TruePrint",
+    description: "Source custom branded pens for employees, events, gifting and promotions, with everyday, executive and premium options for businesses.",
     path: "/categories/pens",
   },
   "joining-kits": {
     name: "Custom Employee Joining Kits & Welcome Kits",
     title: "Custom Employee Joining Kits & Welcome Kits | TruePrint",
-    description: "Build custom employee joining kits with coordinated merchandise, personalised details, branded packaging and presentation-ready delivery.",
+    description: "Create custom employee joining kits with branded merchandise, stationery, drinkware, tech products, packaging and more for new hires.",
     path: "/categories/joining-kits",
   },
   "tech-products": {
     name: "Custom Branded Tech Products & Corporate Gifts",
-    title: "Custom Branded Tech Products & Corporate Gifts | TruePrint",
-    description: "Explore branded tech products including power banks, chargers, speakers, earbuds, stands and desk accessories for gifting and onboarding.",
+    title: "Custom Corporate Tech Products & Gadgets | TruePrint",
+    description: "Explore branded tech products and corporate gadgets for employee gifting, onboarding, events and client gifts, customized for your brand.",
     path: "/categories/tech-products",
   },
   bags: {
     name: "Custom Branded Bags, Backpacks & Totes",
-    title: "Custom Branded Bags, Backpacks & Totes | TruePrint",
-    description: "Customise branded backpacks, laptop bags, totes, duffels and travel bags with considered materials, embroidery, printing and practical details.",
+    title: "Custom Corporate Bags & Backpacks | TruePrint",
+    description: "Source custom corporate bags, backpacks, laptop bags and travel bags for employees, events, gifting and promotional requirements.",
     path: "/categories/bags",
   },
   drinkware: {
     name: "Custom Branded Drinkware, Bottles & Mugs",
-    title: "Custom Branded Drinkware, Bottles & Mugs | TruePrint",
-    description: "Create branded bottles, mugs, tumblers, flasks and sippers with custom printing, engraving and packaging for teams, events and corporate gifts.",
+    title: "Custom Corporate Drinkware & Bottles | TruePrint",
+    description: "Explore custom bottles, mugs, tumblers and flasks for corporate gifting, employee onboarding, events and branded merchandise.",
     path: "/categories/drinkware",
   },
   "t-shirts": {
     name: "Custom Branded T-Shirts & Corporate Apparel",
-    title: "Custom Branded T-Shirts & Corporate Apparel | TruePrint",
-    description: "Order custom branded T-shirts with selected fabrics, fits, colours, screen printing, DTF or embroidery for teams, events and merchandise.",
+    title: "Custom Corporate T-Shirts & Branded Apparel | TruePrint",
+    description: "Get custom corporate T-shirts for employees, events and promotions with multiple fabrics, colours, fits and branding options.",
     path: "/categories/t-shirts",
   },
 } as const;

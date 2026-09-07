@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import { getCatalogueViewerUrl, type CatalogueSlot } from "./catalogue-viewer-links";
 import TurnstileWidget from "../turnstile-widget";
+import { ArrowFillButton, ArrowFillLink } from "../arrow-fill-button";
 import { TURNSTILE_ACTIONS } from "@/lib/turnstile-actions";
 
 const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Hello TruePrint, I would like to know more about your custom diary and catalogue options.")}`;
@@ -218,7 +219,8 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
         <h3 id={`${catalogueId}-title`}>{catalogue.title}</h3>
         <p id={`${catalogueId}-description`}>{catalogue.description}</p>
         <div className="trueprintCatalogueCtaShell">
-          <button type="button" onClick={() => setIsFormOpen(true)}><span><i><CatalogueIcon name="download" /></i>Download Catalogue</span><b>PDF · 18.4 MB</b></button>
+          <ArrowFillButton type="button" onClick={() => setIsFormOpen(true)} label="Download Catalogue" />
+          <small className="categoryCatalogueMeta">PDF · 18.4 MB</small>
         </div>
       </div>
 
@@ -247,15 +249,16 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
             )}
             <div className="trueprintCatalogueSubmitShell">
               {downloadStatus === "completed" ? (
-                <a href={catalogue.url} target="_blank" rel="noreferrer"><span><i><CatalogueIcon name="check" /></i>Open Catalogue</span><b>PDF ready</b></a>
+                <ArrowFillLink href={catalogue.url} target="_blank" rel="noreferrer" label="Open Catalogue" />
               ) : (
-                <button type="submit" disabled={isBusy || !turnstileToken}>
-                  {downloadStatus === "downloading" && <i className="trueprintCatalogueProgress" style={{ width: `${downloadProgress}%` }} />}
-                  <span><i><CatalogueIcon name={downloadStatus === "idle" ? "file" : downloadStatus === "preparing" ? "sparkles" : "download"} /></i>{downloadStatus === "idle" && "Submit & Download"}{downloadStatus === "preparing" && "Preparing PDF…"}{downloadStatus === "downloading" && `Downloading (${downloadProgress}%)`}</span>
-                  <b>{downloadStatus === "downloading" ? `${downloadProgress}%` : "PDF · 18.4 MB"}</b>
-                </button>
+                <ArrowFillButton
+                  type="submit"
+                  disabled={isBusy || !turnstileToken}
+                  label={downloadStatus === "idle" ? "Submit & Download" : downloadStatus === "preparing" ? "Preparing PDF…" : `Downloading (${downloadProgress}%)`}
+                />
               )}
             </div>
+            <small className="categoryCatalogueMeta" aria-live="polite">{downloadStatus === "completed" ? "PDF ready" : downloadStatus === "downloading" ? `${downloadProgress}%` : "PDF · 18.4 MB"}</small>
           </form>
           <p className="trueprintCataloguePrivacy"><CatalogueIcon name="shield" />Confidential &amp; secure direct PDF delivery</p>
         </div>

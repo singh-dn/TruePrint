@@ -9,8 +9,8 @@ import { buildPageMetadata, SITE_URL } from "../seo";
 import ContactEnquiryForm from "./contact-enquiry-form";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact TruePrint | Start Your Custom Print Project",
-  description: "Contact TruePrint for custom printing, branded merchandise, corporate gifting and product sourcing. Share your requirement with our team.",
+  title: "Contact TruePrint | Corporate Printing, Gifting & Merchandise",
+  description: "Contact TruePrint for corporate printing, branded merchandise, gifting and custom sourcing. Share your requirement and our team will get in touch.",
   path: "/contact",
 });
 

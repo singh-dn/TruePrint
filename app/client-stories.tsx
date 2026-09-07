@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import ProjectFaq from "./project-faq";
 
 const stories = [
   {
@@ -71,121 +72,84 @@ const stories = [
   },
 ] as const;
 
-function ClientLogo() {
-  return (
-    <span className="clientStoryLogo clientStoryClientLogo" aria-label="Temporary client logo">
-      <img src="/favicon.svg" alt="" />
-    </span>
-  );
-}
-
-function StoryLogo({ index, secondary = false }: { index: number; secondary?: boolean }) {
-  const logoClass = `clientStoryLogo${secondary ? " clientStoryLogoSecondary" : ""}`;
-
-  if (index === 0) {
-    return (
-      <span className={logoClass} aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          {secondary ? (
-            <><path d="M16 5v22M5 16h22" /><path d="m8.5 8.5 15 15m0-15-15 15" /></>
-          ) : (
-            <><path d="M6 13h20v14H6zM4.5 9h23v5h-23zM16 9v18" /><path d="M16 9c-4.7 0-7-1.4-7-3.4 0-1.5 1.2-2.6 2.8-2.6C14.5 3 16 6.2 16 9Zm0 0c4.7 0 7-1.4 7-3.4 0-1.5-1.2-2.6-2.8-2.6C17.5 3 16 6.2 16 9Z" /></>
-          )}
-        </svg>
-      </span>
-    );
-  }
-
-  if (index === 1) {
-    return (
-      <span className={logoClass} aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          {secondary ? (
-            <><path d="m9 23 3.5-1 11-11a2.1 2.1 0 0 0-3-3l-11 11L9 23Z" /><path d="m18.5 10 3 3M8 26h16" /></>
-          ) : (
-            <><rect x="7" y="4" width="19" height="24" rx="3" /><path d="M11 4v24M15 10h7M15 15h7M15 20h5" /></>
-          )}
-        </svg>
-      </span>
-    );
-  }
-
-  if (index === 2) {
-    return (
-      <span className={logoClass} aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          {secondary ? (
-            <><rect x="6" y="6" width="8" height="8" rx="1" /><rect x="18" y="6" width="8" height="8" rx="1" /><rect x="6" y="18" width="8" height="8" rx="1" /><rect x="18" y="18" width="8" height="8" rx="1" /></>
-          ) : (
-            <><path d="m5 11 11-6 11 6-11 6-11-6Z" /><path d="m7 16 9 5 9-5M7 21l9 5 9-5" /></>
-          )}
-        </svg>
-      </span>
-    );
-  }
-
-  return (
-    <span className={logoClass} aria-hidden="true">
-      <svg viewBox="0 0 32 32" fill="none">
-        {secondary ? (
-          <path d="m16 4 3.1 7.6 8.1.6-6.2 5.2 1.9 7.9-6.9-4.2-6.9 4.2 1.9-7.9-6.2-5.2 8.1-.6L16 4Z" />
-        ) : (
-          <><path d="M5 9a3 3 0 0 0 3-3h16a3 3 0 0 0 3 3v4a3 3 0 0 0 0 6v4a3 3 0 0 0-3 3H8a3 3 0 0 0-3-3v-4a3 3 0 0 0 0-6V9Z" /><path d="M16 8v16" /></>
-        )}
-      </svg>
-    </span>
-  );
-}
+// Temporary assets for design review, not client endorsements.
+const brands = [
+  { name: "Google", image: "/placeholder-google.png", colour: "#e5edff" },
+  { name: "Microsoft", image: "/placeholder-microsoft.png", colour: "#e9e5fa" },
+  { name: "Adobe", image: "/placeholder-adobe.svg", colour: "#f5ddd8" },
+  { name: "Spotify", image: "/placeholder-spotify.svg", colour: "#dceee2" },
+  { name: "Slack", image: "/placeholder-slack.svg", colour: "#faedcb" },
+  { name: "IBM", image: "/placeholder-ibm.svg", colour: "#dcedf2" },
+];
 
 export default function ClientStories() {
-  const [activeStory, setActiveStory] = useState(1);
+  const [activeStory, setActiveStory] = useState(0);
+  const [manualSelection, setManualSelection] = useState(false);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const active = stories[activeStory];
-  const activeStyle = {
-    "--story-colour": active.colour,
-    "--story-ink": active.ink,
-  } as CSSProperties;
+
+  useEffect(() => {
+    if (manualSelection) return;
+    timer.current = setInterval(() => {
+      setActiveStory((index) => (index + 1) % brands.length);
+    }, 4000);
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+      timer.current = null;
+    };
+  }, [manualSelection]);
+
+  const selectBrand = (index: number) => {
+    if (timer.current) clearInterval(timer.current);
+    timer.current = null;
+    setManualSelection(true);
+    setActiveStory(index);
+  };
 
   return (
-    <section className="clientStories" aria-labelledby="client-stories-title">
-      <span className="clientStoriesGhost" aria-hidden="true">VOICES</span>
-      <header className="clientStoriesHeader">
-        <div>
-          <p><span /> Client notes</p>
-          <h2 id="client-stories-title">Made together.<br /><em>Remembered by clients.</em></h2>
-        </div>
-        <p>Stories from organizations  that worked with TruePrint from the first brief to the final delivery.</p>
-      </header>
-
-      <div className="clientStoriesDeck" style={activeStyle}>
-        <div className="clientStoryTabs" role="tablist" aria-label="Client stories">
-          {stories.map((story, index) => {
-            const isActive = activeStory === index;
-            const tabStyle = {
-              "--tab-colour": story.colour,
-              "--tab-ink": story.ink,
-            } as CSSProperties;
-
-            return (
+    <>
+      <section className="clientStories" aria-labelledby="client-stories-title">
+        <span className="clientStoriesGhost" aria-hidden="true">VOICES</span>
+        <header className="clientStoriesHeader">
+          <div>
+            <p><span /> Client notes</p>
+            <h2 id="client-stories-title">Made together.<br /><em>Remembered by clients.</em></h2>
+          </div>
+          <p>Temporary logos for design preview. These brands are not presented as TruePrint clients.</p>
+        </header>
+        <div className="clientStoriesDeck clientLogoDeck" style={{ "--story-colour": active.colour } as CSSProperties}>
+          <div className="clientStoryTabs" role="tablist" aria-label="Brand logo preview">
+            {brands.map((brand, index) => (
               <button
-                className={`clientStoryTab${isActive ? " isActive" : ""}`}
-                style={tabStyle}
+                ref={(node) => { tabs.current[index] = node; }}
+                className={`clientStoryTab${activeStory === index ? " isActive" : ""}`}
+                style={{ "--tab-colour": brand.colour } as CSSProperties}
                 type="button"
                 role="tab"
                 id={`client-story-tab-${index}`}
-                aria-label={story.short}
-                aria-selected={isActive}
+                aria-label={brand.name}
+                aria-selected={activeStory === index}
                 aria-controls="client-story-panel"
-                onClick={() => setActiveStory(index)}
-                key={story.short}
+                tabIndex={activeStory === index ? 0 : -1}
+                onClick={() => selectBrand(index)}
+                onKeyDown={(event) => {
+                  let next = index;
+                  if (event.key === "ArrowRight") next = (index + 1) % brands.length;
+                  else if (event.key === "ArrowLeft") next = (index + brands.length - 1) % brands.length;
+                  else if (event.key === "Home") next = 0;
+                  else if (event.key === "End") next = brands.length - 1;
+                  else return;
+                  event.preventDefault();
+                  selectBrand(next);
+                  tabs.current[next]?.focus();
+                }}
+                key={brand.name}
               >
-                <span>0{index + 1}</span>
-                {isActive ? <ClientLogo /> : <strong>{story.short}</strong>}
-                {isActive ? <StoryLogo index={index} secondary /> : <small>{story.route}</small>}
+                <img src={brand.image} alt="" draggable={false} />
               </button>
-            );
-          })}
-        </div>
-
+            ))}
+          </div>
         <article
           className="clientStoryPanel"
           id="client-story-panel"
@@ -215,7 +179,9 @@ export default function ClientStories() {
             </figcaption>
           </figure>
         </article>
-      </div>
-    </section>
+        </div>
+      </section>
+      <ProjectFaq />
+    </>
   );
 }

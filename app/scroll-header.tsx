@@ -49,10 +49,17 @@ export default function ScrollHeader() {
 
     measureSections();
     updateHeader();
+    const closeMobileNavigation = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element) || !target.closest("a[href]")) return;
+      target.closest<HTMLDetailsElement>("details.mobileMenu")?.removeAttribute("open");
+    };
+    header.addEventListener("click", closeMobileNavigation);
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
+      header.removeEventListener("click", closeMobileNavigation);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
       if (frame) window.cancelAnimationFrame(frame);

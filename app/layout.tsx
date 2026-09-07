@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./brand.css";
-import { SITE_URL } from "./seo";
+import { SITE_URL, homeSeo } from "./seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "TruePrint",
-  title: "TruePrint | Premium Custom Printing & Corporate Gifting",
-  description:
-    "TruePrint creates premium custom printing, branded merchandise, corporate gifts and thoughtful finishing for teams, events and growing brands.",
+  title: homeSeo.title,
+  description: homeSeo.description,
   creator: "TruePrint",
   publisher: "TruePrint",
   category: "Printing and corporate gifting",
@@ -24,8 +23,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "TruePrint | Premium Custom Printing & Corporate Gifting",
-    description: "Premium custom print, branded merchandise and corporate gifting, shaped around your brand.",
+    title: homeSeo.title,
+    description: homeSeo.description,
     type: "website",
     url: SITE_URL,
     siteName: "TruePrint",
@@ -41,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TruePrint | Premium Custom Printing & Corporate Gifting",
-    description: "Premium custom print, branded merchandise and corporate gifting, shaped around your brand.",
+    title: homeSeo.title,
+    description: homeSeo.description,
     images: [`${SITE_URL}/og.png`],
   },
   icons: {

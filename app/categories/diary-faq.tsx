@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowFillLink } from "../arrow-fill-button";
 
 const faqGroups = [
   {
@@ -48,7 +49,7 @@ export default function DiaryFaq() {
         <p><span /> Questions, answered</p>
         <h2 id="diary-faq-title">Before your diary<br /><em>takes shape.</em></h2>
         <p>Useful answers about formats, custom pages, finishing and how a project begins.</p>
-        <a href="/#contact">Still have a question? <span>↗</span></a>
+        <ArrowFillLink href="/#contact" label="Still have a question?" />
       </header>
 
       <div className="diaryFaqWorkspace">

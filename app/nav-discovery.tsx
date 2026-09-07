@@ -149,13 +149,14 @@ export function CategoryMegaMenu() {
     <div className="navCategoryItem">
       <a className="navCategoryTrigger" href="/categories" aria-haspopup="true">Categories <span className="navCategoryChevron" aria-hidden="true" /></a>
       <div className="categoryMega" aria-label="Product categories">
+        <header className="categoryMegaHeading"><div><strong>Find your next branded product</strong><p>Explore the range. Make it yours.</p></div><span>8 product categories</span></header>
         <div className="categoryMegaList">
-          <p>Print essentials</p>
-          {productCategories.slice(0, 4).map((product) => <a href={product.href} key={product.name}>{product.name}<span>↗</span></a>)}
+          <p>Stationery & welcome kits</p>
+          {productCategories.slice(0, 4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
         <div className="categoryMegaList">
           <p>Brand merchandise</p>
-          {productCategories.slice(4).map((product) => <a href={product.href} key={product.name}>{product.name}<span>↗</span></a>)}
+          {productCategories.slice(4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
         <a className="categoryMegaFeature" href="/categories">
           <img src="/diary-hero.webp" alt="TruePrint diary collection" />

@@ -13,13 +13,10 @@ import HomeWhatsApp from "./home-whatsapp";
 import SourceRequestForm from "./source-request-form";
 import { ArrowFillLink } from "./arrow-fill-button";
 import { CategoryMegaMenu, MobileCategoryMenu, ProductSearch } from "./nav-discovery";
-import { buildPageMetadata } from "./seo";
+import { buildPageMetadata, homeSeo } from "./seo";
+import ProductCategoryIcon from "./product-category-icon";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "TruePrint | Premium Custom Printing & Corporate Gifting",
-  description: "Discover premium custom printing, branded merchandise, corporate gifts, precise colour and thoughtful finishing for teams, events and brands.",
-  path: "",
-});
+export const metadata: Metadata = buildPageMetadata(homeSeo);
 
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -31,28 +28,34 @@ const serviceRows = [
   {
     direction: "left",
     items: [
-      { mark: "BC", name: "Business cards", tone: "midnight" },
-      { mark: "PK", name: "Luxury packaging", tone: "copper" },
-      { mark: "ED", name: "Editorial print", tone: "ink" },
-      { mark: "IN", name: "Invitations", tone: "paper" },
+      { mark: "card", name: "Visiting Cards", tone: "midnight" },
+      { mark: "diary", name: "Diaries", tone: "copper" },
+      { mark: "pen", name: "Pens", tone: "ink" },
+      { mark: "gift", name: "Joining Kits", tone: "paper" },
+      { mark: "tech", name: "Tech Products", tone: "midnight" },
+      { mark: "bag", name: "Bags", tone: "copper" },
     ],
   },
   {
     direction: "right",
     items: [
-      { mark: "FS", name: "Foil stamping", tone: "copper" },
-      { mark: "LP", name: "Letterpress", tone: "midnight" },
-      { mark: "EM", name: "Embossing", tone: "paper" },
-      { mark: "EP", name: "Edge painting", tone: "ink" },
+      { mark: "bottle", name: "Drinkware", tone: "copper" },
+      { mark: "shirt", name: "T-Shirts", tone: "midnight" },
+      { mark: "hoodie", name: "Hoodies", tone: "paper" },
+      { mark: "cap", name: "Caps", tone: "ink" },
+      { mark: "keychain", name: "Keychains", tone: "copper" },
+      { mark: "lanyard", name: "Lanyards", tone: "midnight" },
     ],
   },
   {
     direction: "leftFast",
     items: [
-      { mark: "LS", name: "Labels & stickers", tone: "paper" },
-      { mark: "LF", name: "Large format", tone: "ink" },
-      { mark: "CM", name: "Colour matching", tone: "midnight" },
-      { mark: "SS", name: "Sustainable stocks", tone: "copper" },
+      { mark: "trophy", name: "Awards & Trophies", tone: "paper" },
+      { mark: "phone", name: "Phone Stands", tone: "ink" },
+      { mark: "notebook", name: "Notebooks", tone: "midnight" },
+      { mark: "box", name: "Gift Boxes", tone: "copper" },
+      { mark: "sticker", name: "Labels & Stickers", tone: "paper" },
+      { mark: "umbrella", name: "Umbrellas", tone: "ink" },
     ],
   },
 ] as const;
@@ -157,7 +160,31 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="marqueeSection" aria-label="TruePrint creative process">
+        <section className="marqueeSection" aria-label="TruePrint client showcase and creative process">
+          <div className="clientShowcase" aria-labelledby="client-showcase-title">
+            <h2 id="client-showcase-title"><span>Your brand, at the centre.</span><br />Made tangible by TruePrint.</h2>
+            <div className="clientShowcaseRail">
+              <div className="clientShowcaseTrack">
+                {[0, 1].map((copy) => (
+                  <div className="clientShowcaseGroup" aria-hidden={copy === 1 ? true : undefined} key={copy}>
+                    {[
+                      { name: "Google", image: "/placeholder-google.png" },
+                      { name: "Microsoft", image: "/placeholder-microsoft.png" },
+                      { name: "Adobe", image: "/showcase-adobe.svg" },
+                      { name: "Spotify", image: "/showcase-spotify.svg" },
+                      { name: "Slack", image: "/showcase-slack.svg" },
+                      { name: "IBM", image: "/showcase-ibm.svg" },
+                    ].map((brand) => (
+                      <span className="clientShowcaseLogo" key={brand.name}>
+                        <img src={brand.image} alt={`${brand.name} placeholder logo`} loading="lazy" decoding="async" />
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="clientShowcaseNote">Sample logos for design preview · Client logos to follow</p>
+          </div>
           <div className="marqueeTrack">
             <p className="marqueeSet">
               <span>Create.</span>
@@ -574,7 +601,7 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="serviceRows" aria-label="TruePrint products and finishing services">
+          <div className="serviceRows" aria-label="TruePrint product categories and branded merchandise">
             {serviceRows.map((row, rowIndex) => (
               <div className={`serviceMarquee serviceMarquee${row.direction}`} key={row.direction}>
                 <div className="serviceTrack">
@@ -582,7 +609,7 @@ export default function Home() {
                     <div className="serviceGroup" aria-hidden={copy === 1 ? true : undefined} key={copy}>
                       {row.items.map((item) => (
                         <span className="serviceToken" key={`${rowIndex}-${copy}-${item.mark}`}>
-                          <i className={`serviceMark serviceMark${item.tone}`} aria-hidden="true">{item.mark}</i>
+                          <i className={`serviceMark serviceMark${item.tone}`} aria-hidden="true"><ProductCategoryIcon name={item.mark} /></i>
                           <strong>{item.name}</strong>
                         </span>
                       ))}

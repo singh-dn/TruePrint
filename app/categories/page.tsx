@@ -7,7 +7,6 @@ import ScrollHeader from "../scroll-header";
 import DiaryCatalogue from "./diary-catalogue";
 import DiaryFaq from "./diary-faq";
 import DiaryHeroShowcase from "./diary-hero-showcase";
-import ElectricCatalogueButton from "./electric-catalogue-button";
 import CategoryGallery from "./category-gallery";
 import { ArrowFillLink } from "../arrow-fill-button";
 import { categoryProductCopy } from "./category-product-copy";
@@ -61,7 +60,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
               <a href="/">Home page</a>
               <CategoryMegaMenu />
               <a href="/contact">Contact us</a>
-              <ElectricCatalogueButton />
+              <ArrowFillLink className="categoryHeaderCta" href="#diary-catalogue" label="Download catalogue" />
             </nav>
 
             <details className="mobileMenu">
@@ -72,9 +71,8 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
                   <a href="/">Home page</a>
                   <MobileCategoryMenu />
                   <a href="/contact">Contact us</a>
-                  <a href="#diary-catalogue">Download catalogue</a>
                 </div>
-                <ArrowFillLink className="mobileTalkButton" href="/contact" label="Talk to expert" />
+                <ArrowFillLink className="mobileTalkButton" href="#diary-catalogue" label="Download catalogue" />
               </nav>
             </details>
           </header>
