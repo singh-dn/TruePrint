@@ -178,7 +178,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
 
               <figure className="closingImage">
                 <img
-                  src="/trueprint-packaging.webp"
+                  src="/all-2.webp"
                   alt="Premium printed packaging arranged in a tactile brand collection"
                   loading="lazy"
                   decoding="async"

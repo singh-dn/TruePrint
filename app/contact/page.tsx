@@ -135,7 +135,7 @@ export default function ContactPage() {
               </article>
 
               <figure className="closingImage">
-                <img src="/trueprint-packaging.webp" alt="Premium printed packaging arranged in a tactile brand collection" loading="lazy" decoding="async" />
+                <img src="/all-2.webp" alt="Premium printed packaging arranged in a tactile brand collection" loading="lazy" decoding="async" />
                 <figcaption><span>Made tangible</span><small>Packaging · stationery · editorial</small></figcaption>
               </figure>
             </div>

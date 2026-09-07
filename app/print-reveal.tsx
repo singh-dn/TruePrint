@@ -10,7 +10,7 @@ const smoothstep = (start: number, end: number, value: number) => {
 };
 
 const REVEAL_VIDEO_SRC =
-  "https://res.cloudinary.com/dsuwzuaxp/video/upload/q_auto:eco,w_1440/856381-hd_1920_1080_30fps_gsq11b.mp4";
+  "https://thetrueprint.com/Catalogue's/V-929.MP4";
 
 const PlayIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">

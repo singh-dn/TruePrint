@@ -78,8 +78,6 @@ export default function Home() {
             <nav className="desktopNav" aria-label="Primary navigation">
               <a className="active" href="#top">Home</a>
               <CategoryMegaMenu />
-              <a href="#services">Services</a>
-              <a href="#materials">Materials</a>
               <a href="#about">About</a>
               <a href="/contact">Contact</a>
             </nav>
@@ -215,7 +213,7 @@ export default function Home() {
             <a className="projectCard projectApparel" href="/categories/t-shirts">
               <span className="projectImage">
                 <img
-                  src="/trueprint-apparel.jpeg"
+                  src="/t-shirt.webp"
                   alt="Custom T-shirts and polo shirts from the TruePrint apparel collection"
                   loading="lazy"
                   decoding="async"
@@ -269,7 +267,7 @@ export default function Home() {
             <a className="projectCard projectJoiningKits" href="/categories/joining-kits">
               <span className="projectImage">
                 <img
-                  src="/trueprint-joining-kits.jpeg"
+                  src="/joining-kit.webp"
                   alt="Premium TruePrint employee joining kit with coordinated branded products"
                   loading="lazy"
                   decoding="async"
@@ -296,7 +294,7 @@ export default function Home() {
             <a className="projectCard projectDiaries" href="/categories">
               <span className="projectImage">
                 <img
-                  src="/trueprint-diaries.jpeg"
+                  src="/diary.webp"
                   alt="Premium TruePrint custom diary with pen and detailed cover finishes"
                   loading="lazy"
                   decoding="async"
@@ -323,7 +321,7 @@ export default function Home() {
             <a className="projectCard projectBags" href="/categories/bags">
               <span className="projectImage">
                 <img
-                  src="/trueprint-bags.jpeg"
+                  src="/bags.webp"
                   alt="Custom backpacks, office bags and travel luggage from TruePrint"
                   loading="lazy"
                   decoding="async"
@@ -350,7 +348,7 @@ export default function Home() {
             <a className="projectCard projectTech" href="/categories/tech-products">
               <span className="projectImage">
                 <img
-                  src="/trueprint-tech-products.jpeg"
+                  src="/tech.webp"
                   alt="Useful branded technology products and desk accessories from TruePrint"
                   loading="lazy"
                   decoding="async"
@@ -639,7 +637,7 @@ export default function Home() {
 
               <figure className="closingImage">
                 <img
-                  src="/trueprint-packaging.webp"
+                  src="/all.webp"
                   alt="Premium printed packaging arranged in a tactile brand collection"
                   loading="lazy"
                   decoding="async"
