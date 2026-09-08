@@ -28,6 +28,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "CUSTOM BUILT",
     caption: "From reference to reality.",
+    image: "/diary-01.webp",
+    imageAlt: "Open premium diary showing a considered lay-flat page design",
   },
   "visiting-cards": {
     headline: "Not just a card.",
@@ -58,6 +60,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "MADE TO INTRODUCE",
     caption: "From first handshake to follow-up.",
+    image: "/trueprint-detail.png",
+    imageAlt: "Premium printed details representing custom business cards",
   },
   pens: {
     headline: "More than a writing tool.",
@@ -88,6 +92,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "MADE TO BE USED",
     caption: "Your brand, one signature at a time.",
+    image: "/pen-01.webp",
+    imageAlt: "Branded corporate pens arranged for everyday business use",
   },
   "joining-kits": {
     headline: "Not just merchandise.",
@@ -118,6 +124,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "DAY ONE, DESIGNED",
     caption: "Everything together. Everything on brand.",
+    image: "/joining-01.webp",
+    imageAlt: "Coordinated branded products arranged as an employee joining kit",
   },
   "tech-products": {
     headline: "Not just gadgets.",
@@ -148,6 +156,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "USEFUL BY DESIGN",
     caption: "Tech that earns its place.",
+    image: "/tech-01.webp",
+    imageAlt: "Custom corporate technology products and branded accessories",
   },
   bags: {
     headline: "Built to carry more",
@@ -178,6 +188,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "MADE TO MOVE",
     caption: "Your brand, carried daily.",
+    image: "/bag-01.webp",
+    imageAlt: "Custom corporate bag designed for everyday work and travel",
   },
   drinkware: {
     headline: "Made to be used.",
@@ -208,6 +220,8 @@ export const categoryProductCopy = {
     ],
     captionLabel: "DAILY BRAND VISIBILITY",
     caption: "Designed for the desk, commute and beyond.",
+    image: "/drinkware-01.webp",
+    imageAlt: "Custom branded bottles and corporate drinkware",
   },
   "t-shirts": {
     headline: "More than",
@@ -238,6 +252,9 @@ export const categoryProductCopy = {
     ],
     captionLabel: "MADE TO BE WORN",
     caption: "Comfort first. Branding built in.",
+    image: "/tshirt-01.webp",
+    imageAlt: "Custom corporate T-shirt representing branded apparel",
   },
+
 } as const;
 

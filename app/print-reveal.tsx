@@ -10,7 +10,7 @@ const smoothstep = (start: number, end: number, value: number) => {
 };
 
 const REVEAL_VIDEO_SRC =
-  "https://fcrf.in/assets/video/V-929.mp4";
+  "https://fcrf.in/assets/video/V-932.mp4";
 
 const PlayIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">

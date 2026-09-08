@@ -19,7 +19,7 @@ const productVideos = [
     title: "Diaries",
     detail: "Covers, pages and details",
     poster: "/trueprint-diaries.jpeg",
-    src: "https://fcrf.in/assets/video/V-929.mp4",
+    src: "https://fcrf.in/assets/video/V-930.mp4",
   },
   {
     id: "joining-kits",
@@ -27,7 +27,7 @@ const productVideos = [
     title: "Joining kits",
     detail: "Useful products, made cohesive",
     poster: "/trueprint-joining-kits.jpeg",
-    src: "https://fcrf.in/assets/video/V-929.mp4",
+    src: "https://fcrf.in/assets/video/V-2.mp4",
   },
   {
     id: "packaging",
@@ -35,7 +35,7 @@ const productVideos = [
     title: "Packaging",
     detail: "Presentation from every angle",
     poster: "/trueprint-packaging.webp",
-    src: "https://fcrf.in/assets/video/V-929.mp4",
+    src: "https://fcrf.in/assets/video/V-924.mp4",
   },
 ] as const;
 

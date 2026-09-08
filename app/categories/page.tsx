@@ -110,7 +110,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             </div>
 
             <figure className="diaryFoundationVisual">
-              <img src="/diary-planner.webp" alt="Open diary showing a considered lay-flat page design" loading="lazy" decoding="async" />
+  <img src={productCopy.image} alt={productCopy.imageAlt} loading="lazy" decoding="async"/>
               <figcaption>
                 <span>{productCopy.captionLabel}</span>
                 <strong>{productCopy.caption}</strong>
