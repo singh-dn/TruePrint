@@ -7,8 +7,8 @@
     "image": "/diary-hero.webp",
     "alt": "Premium hardcover diary from the TruePrint gifts catalogue",
     "badge": "Latest edition",
-    "url": "",
-    "fileName": "complete-collection.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/ECO%20Diaries.pdf",
+    "fileName": "ECO Diaries 2026-27.pdf"
   },
   {
     "slot": "diaries-and-planners",
@@ -18,8 +18,8 @@
     "image": "/diary-planner.webp",
     "alt": "Open diary planner representing the diary collection",
     "badge": "Diary focus",
-    "url": "",
-    "fileName": "diaries-and-planners.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/FOAM%20%26%20PU.pdf",
+    "fileName": "Foam and PU Diaries 2026-27.pdf"
   },
   {
     "slot": "corporate-gifting",
@@ -29,8 +29,8 @@
     "image": "/trueprint-packaging.webp",
     "alt": "Premium packaging representing the corporate gifting collection",
     "badge": "Gift focus",
-    "url": "",
-    "fileName": "corporate-gifting.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/Notebook%2026-27.pdf",
+    "fileName": "Notebook Collection 2026-27.pdf"
   },
   {
     "slot": "softcover-diaries",
@@ -40,8 +40,8 @@
     "image": "/diary-softcover.webp",
     "alt": "Softcover diary from the TruePrint catalogue",
     "badge": "Flexible edit",
-    "url": "",
-    "fileName": "softcover-diaries.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/Organiser.pdf",
+    "fileName": "Organiser Collection 2026-27.pdf"
   },
   {
     "slot": "executive-editions",
@@ -51,8 +51,8 @@
     "image": "/trueprint-editorial.webp",
     "alt": "Executive diary detail from the TruePrint catalogue",
     "badge": "Premium edit",
-    "url": "",
-    "fileName": "executive-editions.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/Paper%20Pasting%20Diaries%20%281%29.pdf",
+    "fileName": "Paper Pasting Diaries 2026-27.pdf"
   },
   {
     "slot": "presentation-and-packaging",
@@ -62,8 +62,8 @@
     "image": "/trueprint-packaging.webp",
     "alt": "Presentation packaging from the TruePrint catalogue",
     "badge": "Presentation",
-    "url": "",
-    "fileName": "presentation-and-packaging.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/POWER%20BANK%20%282%29.pdf",
+    "fileName": "Power Bank Collection 2026-27.pdf"
   },
   {
     "slot": "branded-details",
@@ -73,7 +73,18 @@
     "image": "/trueprint-detail.png",
     "alt": "Branded finishing detail from the TruePrint catalogue",
     "badge": "Detail focus",
-    "url": "",
-    "fileName": "branded-details.pdf"
+    "url": "https://fcrf.in/assets/pdf/diary/Special%20Leatherite%20Diaries%20%281%29.pdf",
+    "fileName": "Special Leatherite Diaries 2026-27.pdf"
+  },
+  {
+    "slot": "theme-diaries",
+    "eyebrow": "Featured inside",
+    "title": "Theme diaries",
+    "description": "Explore themed diary formats and design directions for distinctive corporate and promotional gifting.",
+    "image": "/diary-hero.webp",
+    "alt": "Theme diary from the TruePrint catalogue",
+    "badge": "Theme edit",
+    "url": "https://fcrf.in/assets/pdf/diary/Theme%20Diaries%2026-27pdf.pdf",
+    "fileName": "Theme Diaries 2026-27.pdf"
   }
 ]

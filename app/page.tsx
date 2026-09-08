@@ -166,12 +166,12 @@ export default function Home() {
                 {[0, 1].map((copy) => (
                   <div className="clientShowcaseGroup" aria-hidden={copy === 1 ? true : undefined} key={copy}>
                     {[
-                      { name: "Delhi Police", image: "/delhi-logo.webp" },
-                      { name: "Haryana Police", image: "/haryana-logo.png" },
+                      { name: "Delhi Police", image: "/Delhi-Police-Logo-optimized.webp" },
+                      { name: "Haryana Police", image: "/haryana-police-logo-optimized.webp" },
                       { name: "FCRF Summit", image: "/FCRF 2026 logo.png" },
                       { name: "Binary Global", image: "/binary.svg" },
-                      { name: "4n6 Care", image: "/4n6-logo.png" },
-                      { name: "IBM", image: "/showcase-ibm.svg" },
+                      { name: "4n6 Care", image: "/4n6-logo (1)-optimized.webp" },
+                      { name: "IBM", image: "/Netapp_logo-optimized.webp" },
                     ].map((brand) => (
                       <span className="clientShowcaseLogo" key={brand.name}>
                         <img src={brand.image} alt={`${brand.name} placeholder logo`} loading="lazy" decoding="async" />

@@ -74,12 +74,12 @@ const stories = [
 
 // Temporary assets for design review, not client endorsements.
 const brands = [
-  { name: "Delhi Police", image: "/delhi-logo.webp", colour: "#e5edff" },
-  { name: "Haryana Police", image: "/haryana-logo.png", colour: "#e9e5fa" },
+  { name: "Delhi Police", image: "/Delhi-Police-Logo-optimized.webp", colour: "#e5edff" },
+  { name: "Haryana Police", image: "/haryana-police-logo-optimized.webp", colour: "#e9e5fa" },
   { name: "FCRF Summit", image: "/FCRF 2026 logo.png", colour: "#f5ddd8" },
   { name: "Binary Global", image: "/binary.svg", colour: "#dceee2" },
-  { name: "4n6", image: "/4n6-logo.png", colour: "#faedcb" },
-  { name: "IBM", image: "/placeholder-ibm.svg", colour: "#dcedf2" },
+  { name: "4n6", image: "/4n6-logo (1)-optimized.webp", colour: "#faedcb" },
+  { name: "IBM", image: "/Netapp_logo-optimized.webp", colour: "#dcedf2" },
 ];
 
 export default function ClientStories({ showFaq = true }: { showFaq?: boolean }) {

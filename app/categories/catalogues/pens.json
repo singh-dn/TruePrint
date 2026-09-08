@@ -7,8 +7,8 @@
     "image": "/diary-hero.webp",
     "alt": "Premium hardcover diary from the TruePrint gifts catalogue",
     "badge": "Latest edition",
-    "url": "",
-    "fileName": "complete-collection.pdf"
+    "url": "https://fcrf.in/assets/pdf/pens/2026-27%20Metal%20-%20Corporate%20Pen%20Catalog.pdf",
+    "fileName": "Corporate Metal Pen Catalogue 2026-27.pdf"
   },
   {
     "slot": "diaries-and-planners",
@@ -18,8 +18,8 @@
     "image": "/diary-planner.webp",
     "alt": "Open diary planner representing the diary collection",
     "badge": "Diary focus",
-    "url": "",
-    "fileName": "diaries-and-planners.pdf"
+    "url": "https://fcrf.in/assets/pdf/pens/2026-27%20METAL%20-%20LUXURY%20PEN%20COLLECTION%20CATALOG.pdf",
+    "fileName": "Luxury Metal Pen Collection 2026-27.pdf"
   },
   {
     "slot": "corporate-gifting",
@@ -29,8 +29,8 @@
     "image": "/trueprint-packaging.webp",
     "alt": "Premium packaging representing the corporate gifting collection",
     "badge": "Gift focus",
-    "url": "",
-    "fileName": "corporate-gifting.pdf"
+    "url": "https://fcrf.in/assets/pdf/pens/2026-27%20Plastic%20Pen%20Catalog.pdf",
+    "fileName": "Plastic Pen Catalogue 2026-27.pdf"
   },
   {
     "slot": "softcover-diaries",
@@ -40,40 +40,7 @@
     "image": "/diary-softcover.webp",
     "alt": "Softcover diary from the TruePrint catalogue",
     "badge": "Flexible edit",
-    "url": "",
-    "fileName": "softcover-diaries.pdf"
-  },
-  {
-    "slot": "executive-editions",
-    "eyebrow": "Featured inside",
-    "title": "Executive editions",
-    "description": "Review elevated cover materials, structured layouts and finishing details for premium business gifting.",
-    "image": "/trueprint-editorial.webp",
-    "alt": "Executive diary detail from the TruePrint catalogue",
-    "badge": "Premium edit",
-    "url": "",
-    "fileName": "executive-editions.pdf"
-  },
-  {
-    "slot": "presentation-and-packaging",
-    "eyebrow": "Featured inside",
-    "title": "Presentation & packaging",
-    "description": "Explore boxes, sleeves and presentation routes that turn a diary into a complete gifting experience.",
-    "image": "/trueprint-packaging.webp",
-    "alt": "Presentation packaging from the TruePrint catalogue",
-    "badge": "Presentation",
-    "url": "",
-    "fileName": "presentation-and-packaging.pdf"
-  },
-  {
-    "slot": "branded-details",
-    "eyebrow": "Featured inside",
-    "title": "Branded details",
-    "description": "See how print, foil, debossing and considered brand applications can make each diary unmistakably yours.",
-    "image": "/trueprint-detail.png",
-    "alt": "Branded finishing detail from the TruePrint catalogue",
-    "badge": "Detail focus",
-    "url": "",
-    "fileName": "branded-details.pdf"
+    "url": "https://fcrf.in/assets/pdf/pens/May%202026%20Branded%20Gift%20Items.pdf%20%281%29.pdf",
+    "fileName": "Branded Gift Items Catalogue May 2026.pdf"
   }
 ]
