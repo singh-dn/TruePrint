@@ -90,7 +90,7 @@ test("renders every lead form with its Turnstile action", async () => {
   assert.match(html, /data-turnstile-action="source_request"/i);
 
   const contactResponse = await worker.fetch(
-    new Request("http://localhost/contact", { headers: { accept: "text/html" } }),
+    new Request("http://localhost/contact-trueprint", { headers: { accept: "text/html" } }),
     runtimeEnv(),
     executionContext,
   );
@@ -148,7 +148,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
         email: "test@example.com",
         phone: "+91 9876543210",
         requirement: "Five hundred custom welcome kits",
-        source_page: "/contact",
+        source_page: "/contact-trueprint",
       }),
     }),
     new Request("http://localhost/api/forms/catalogue-download", {
@@ -162,7 +162,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
         catalogue_slot: "complete-collection",
         catalogue_title: "Gifts Catalogue 2026–27",
         catalogue_url: "https://example.com/catalogue.pdf",
-        source_page: "/categories",
+        source_page: "/custom-corporate-diaries",
       }),
     }),
   ];

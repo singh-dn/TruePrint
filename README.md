@@ -1,5 +1,43 @@
 # TruePrint Website
 
+## Production URLs and indexing
+
+The canonical domain is `https://thetrueprint.com`. The homepage stays at `/`.
+Category routes use the eight `/custom-...` addresses in `app/seo.ts`; Contact is
+`/contact-trueprint`. Shared category UI remains in `app/categories/category-page.tsx`.
+The old Contact and category URLs permanently redirect through `next.config.ts`.
+Keep these redirects in place for at least one year, preferably indefinitely.
+
+`app/sitemap.ts` generates `/sitemap.xml` containing only the ten canonical pages.
+`app/robots.ts` generates `/robots.txt`, allowing public pages and rendering assets
+for all cooperative crawlers, including search engines and AI crawlers. Only
+`/api/` is excluded; robots rules are not authentication or spam protection.
+Do not add a second robots.txt or sitemap.xml under public/.
+
+After an approved push and successful Hostinger deployment:
+
+1. Verify all ten pages return HTTP 200, the old URLs redirect permanently, and
+   the sitemap and robots.txt are publicly accessible without a login or challenge.
+2. Use Hostinger/domain settings to redirect HTTP and www to the HTTPS non-www
+   domain, preserving paths and query strings. Do not change email DNS records.
+3. Verify a Domain property for thetrueprint.com in Google Search Console using
+   its supplied DNS TXT record. Submit https://thetrueprint.com/sitemap.xml.
+4. Use URL Inspection on the homepage and priority category pages, then request
+   indexing. Monitor Page Indexing and Search Performance instead of submitting
+   the same requests repeatedly. Bing Webmaster Tools can use the same sitemap.
+5. Confirm Turnstile allows the production hostname and test all lead forms.
+   SEO crawling permissions do not replace Turnstile or database configuration.
+
+Existing page titles, descriptions and visible copy are preserved. Category
+names, titles, descriptions, URLs and structured data already describe the
+relevant products. Google ignores meta-keywords, and sitemap submission does
+not guarantee indexing speed, rankings or leads. No hidden keyword text,
+invented reviews, prices, locations or product offers have been added.
+
+References: [Google sitemap guide](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap),
+[URL migration guide](https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes),
+[supported meta tags](https://developers.google.com/search/docs/crawling-indexing/special-tags).
+
 The homepage includes a functional white sourcing-request form in the “Beyond the catalogue” section. It accepts visitor contact details, organization, request description and an optional reference photo.
 
 This repository contains the complete TruePrint marketing website, category catalogue pages, contact experience, and Supabase/PostgreSQL form backend.

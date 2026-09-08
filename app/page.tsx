@@ -79,12 +79,12 @@ export default function Home() {
               <a className="active" href="#top">Home</a>
               <CategoryMegaMenu />
               <a href="#about">About</a>
-              <a href="/contact">Contact</a>
+              <a href="/contact-trueprint">Contact</a>
             </nav>
 
             <div className="headerTools">
               <ProductSearch />
-              <ArrowFillLink className="talkExpertButton" href="/contact" label="Talk to expert" />
+              <ArrowFillLink className="talkExpertButton" href="/contact-trueprint" label="Talk to expert" />
             </div>
 
             <details className="mobileMenu">
@@ -97,9 +97,9 @@ export default function Home() {
                   <a href="#services">Services</a>
                   <a href="#materials">Materials</a>
                   <a href="#about">About</a>
-                  <a href="/contact">Contact</a>
+                  <a href="/contact-trueprint">Contact</a>
                 </div>
-                <ArrowFillLink className="mobileTalkButton" href="/contact" label="Talk to expert" />
+                <ArrowFillLink className="mobileTalkButton" href="/contact-trueprint" label="Talk to expert" />
               </nav>
             </details>
           </header>
@@ -210,7 +210,7 @@ export default function Home() {
           </header>
 
           <div className="projectsGrid">
-            <a className="projectCard projectApparel" href="/categories/t-shirts">
+            <a className="projectCard projectApparel" href="/custom-corporate-t-shirts">
               <span className="projectImage">
                 <img
                   src="/t-shirt.webp"
@@ -237,7 +237,7 @@ export default function Home() {
               <span className="projectLink" aria-hidden="true"><ArrowIcon /></span>
             </a>
 
-            <a className="projectCard projectDrinkware" href="/categories/drinkware">
+            <a className="projectCard projectDrinkware" href="/custom-corporate-drinkware">
               <span className="projectImage">
                 <img
                   src="/trueprint-drinkware.jpeg"
@@ -264,7 +264,7 @@ export default function Home() {
               <span className="projectLink" aria-hidden="true"><ArrowIcon /></span>
             </a>
 
-            <a className="projectCard projectJoiningKits" href="/categories/joining-kits">
+            <a className="projectCard projectJoiningKits" href="/custom-employee-joining-kits">
               <span className="projectImage">
                 <img
                   src="/joining-kit.webp"
@@ -291,7 +291,7 @@ export default function Home() {
               <span className="projectLink" aria-hidden="true"><ArrowIcon /></span>
             </a>
 
-            <a className="projectCard projectDiaries" href="/categories">
+            <a className="projectCard projectDiaries" href="/custom-corporate-diaries">
               <span className="projectImage">
                 <img
                   src="/diary.webp"
@@ -318,7 +318,7 @@ export default function Home() {
               <span className="projectLink" aria-hidden="true"><ArrowIcon /></span>
             </a>
 
-            <a className="projectCard projectBags" href="/categories/bags">
+            <a className="projectCard projectBags" href="/custom-corporate-bags">
               <span className="projectImage">
                 <img
                   src="/bags.webp"
@@ -345,7 +345,7 @@ export default function Home() {
               <span className="projectLink" aria-hidden="true"><ArrowIcon /></span>
             </a>
 
-            <a className="projectCard projectTech" href="/categories/tech-products">
+            <a className="projectCard projectTech" href="/custom-corporate-tech-products">
               <span className="projectImage">
                 <img
                   src="/tech.webp"
@@ -551,7 +551,7 @@ export default function Home() {
 
               <ArrowFillLink
                 className="sourceButton"
-                href="https://trueprint-brand-studio.harshwardensingh.chatgpt.site/#quote"
+                href="https://thetrueprint.com/#quote"
                 label="LET US SOURCE IT"
               />
 
@@ -659,8 +659,8 @@ export default function Home() {
 
             <nav className="footerColumn" aria-label="Print services">
               <p>Print</p>
-              <a href="/categories">Diaries &amp; planners</a>
-              <a href="/categories/visiting-cards">Business cards</a>
+              <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
+              <a href="/custom-visiting-cards">Business cards</a>
               <a href="#contact">Premium packaging</a>
               <a href="#contact">Books &amp; brochures</a>
               <a href="#contact">Invitations &amp; stationery</a>

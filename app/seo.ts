@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://trueprint-brand-studio.harshwardensingh.chatgpt.site";
+export const SITE_URL = "https://thetrueprint.com";
 
 export const homeSeo = {
   title: "TruePrint | Corporate Printing, Gifting & Branded Merchandise",
@@ -23,7 +23,7 @@ type PageMetadataInput = {
 };
 
 export function buildPageMetadata({ title, description, path }: PageMetadataInput): Metadata {
-  const canonical = `${SITE_URL}${path}`;
+  const canonical = new URL(path || "/", SITE_URL).href;
 
   return {
     title,
@@ -63,49 +63,49 @@ export const categorySeo = {
     name: "Custom Diaries & Branded Planners",
     title: "Custom Corporate Diaries & Notebooks | TruePrint",
     description: "Explore custom corporate diaries and notebooks for employees, clients, events and gifting, with premium finishes and branding options.",
-    path: "/categories",
+    path: "/custom-corporate-diaries",
   },
   "visiting-cards": {
     name: "Premium Visiting Cards & Business Cards",
     title: "Custom Visiting Cards for Businesses | TruePrint",
     description: "Order premium custom visiting cards for businesses with multiple paper, finish and branding options. Ideal for bulk corporate requirements.",
-    path: "/categories/visiting-cards",
+    path: "/custom-visiting-cards",
   },
   pens: {
     name: "Custom Branded Pens & Corporate Pens",
     title: "Custom Branded Pens for Businesses | TruePrint",
     description: "Source custom branded pens for employees, events, gifting and promotions, with everyday, executive and premium options for businesses.",
-    path: "/categories/pens",
+    path: "/custom-branded-pens",
   },
   "joining-kits": {
     name: "Custom Employee Joining Kits & Welcome Kits",
     title: "Custom Employee Joining Kits & Welcome Kits | TruePrint",
     description: "Create custom employee joining kits with branded merchandise, stationery, drinkware, tech products, packaging and more for new hires.",
-    path: "/categories/joining-kits",
+    path: "/custom-employee-joining-kits",
   },
   "tech-products": {
     name: "Custom Branded Tech Products & Corporate Gifts",
     title: "Custom Corporate Tech Products & Gadgets | TruePrint",
     description: "Explore branded tech products and corporate gadgets for employee gifting, onboarding, events and client gifts, customized for your brand.",
-    path: "/categories/tech-products",
+    path: "/custom-corporate-tech-products",
   },
   bags: {
     name: "Custom Branded Bags, Backpacks & Totes",
     title: "Custom Corporate Bags & Backpacks | TruePrint",
     description: "Source custom corporate bags, backpacks, laptop bags and travel bags for employees, events, gifting and promotional requirements.",
-    path: "/categories/bags",
+    path: "/custom-corporate-bags",
   },
   drinkware: {
     name: "Custom Branded Drinkware, Bottles & Mugs",
     title: "Custom Corporate Drinkware & Bottles | TruePrint",
     description: "Explore custom bottles, mugs, tumblers and flasks for corporate gifting, employee onboarding, events and branded merchandise.",
-    path: "/categories/drinkware",
+    path: "/custom-corporate-drinkware",
   },
   "t-shirts": {
     name: "Custom Branded T-Shirts & Corporate Apparel",
     title: "Custom Corporate T-Shirts & Branded Apparel | TruePrint",
     description: "Get custom corporate T-shirts for employees, events and promotions with multiple fabrics, colours, fits and branding options.",
-    path: "/categories/t-shirts",
+    path: "/custom-corporate-t-shirts",
   },
 } as const;
 

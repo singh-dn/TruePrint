@@ -6,12 +6,12 @@ import { CategoryMegaMenu, MobileCategoryMenu, ProductSearch } from "../nav-disc
 import ScrollHeader from "../scroll-header";
 import { ArrowFillLink } from "../arrow-fill-button";
 import { buildPageMetadata, SITE_URL } from "../seo";
-import ContactEnquiryForm from "./contact-enquiry-form";
+import ContactEnquiryForm from "../contact/contact-enquiry-form";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact TruePrint | Corporate Printing, Gifting & Merchandise",
   description: "Contact TruePrint for corporate printing, branded merchandise, gifting and custom sourcing. Share your requirement and our team will get in touch.",
-  path: "/contact",
+  path: "/contact-trueprint",
 });
 
 const contactJourney = [
@@ -31,8 +31,8 @@ export default function ContactPage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ContactPage",
-              "@id": `${SITE_URL}/contact#contact-page`,
-              url: `${SITE_URL}/contact`,
+              "@id": `${SITE_URL}/contact-trueprint#contact-page`,
+              url: `${SITE_URL}/contact-trueprint`,
               name: "Contact TruePrint",
               description: "Start a custom printing, branded merchandise or corporate gifting project with TruePrint.",
               mainEntity: { "@id": `${SITE_URL}/#organization` },
@@ -150,8 +150,8 @@ export default function ContactPage() {
 
               <nav className="footerColumn" aria-label="Print services">
                 <p>Print</p>
-                <a href="/categories">Diaries &amp; planners</a>
-                <a href="/categories/visiting-cards">Business cards</a>
+                <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
+                <a href="/custom-visiting-cards">Business cards</a>
                 <a href="#contact-form">Premium packaging</a>
                 <a href="#contact-form">Books &amp; brochures</a>
                 <a href="#contact-form">Invitations &amp; stationery</a>

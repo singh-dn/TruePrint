@@ -13,49 +13,49 @@ const productCategories = [
   {
     name: "Visiting Cards",
     description: "Cards · introductions · identity",
-    href: "/categories/visiting-cards",
+    href: "/custom-visiting-cards",
     aliases: ["visiting card", "visiting cards", "business card", "business cards", "name card", "calling card", "contact card", "corporate card", "professional card", "card printing"],
   },
   {
     name: "Diaries",
     description: "Diaries · notebooks · planners",
-    href: "/categories",
+    href: "/custom-corporate-diaries",
     aliases: ["diary", "diaries", "book", "books", "notebook", "notebooks", "note book", "journal", "journals", "planner", "planners", "organizer", "organiser", "agenda", "daily planner", "executive diary", "hardcover book", "hardbound book", "notepad"],
   },
   {
     name: "Pens",
     description: "Pens · writing tools · stationery",
-    href: "/categories/pens",
+    href: "/custom-branded-pens",
     aliases: ["pen", "pens", "writing pen", "ball pen", "ballpoint", "rollerball", "fountain pen", "stylus", "writing tool", "stationery"],
   },
   {
     name: "Joining Kits",
     description: "Welcome · onboarding · employee kits",
-    href: "/categories/joining-kits",
+    href: "/custom-employee-joining-kits",
     aliases: ["joining kit", "joining kits", "onboarding kit", "employee kit", "employee welcome kit", "welcome kit", "starter kit", "induction kit", "new hire kit", "hr kit", "office kit"],
   },
   {
     name: "Tech Products",
     description: "Gadgets · electronics · accessories",
-    href: "/categories/tech-products",
+    href: "/custom-corporate-tech-products",
     aliases: ["tech", "tech product", "technology product", "technology gifts", "gadget", "gadgets", "electronic", "electronics", "power bank", "charger", "charging cable", "usb", "pendrive", "pen drive", "speaker", "earbuds", "mouse", "keyboard"],
   },
   {
     name: "Bags",
     description: "Bags · backpacks · carry goods",
-    href: "/categories/bags",
+    href: "/custom-corporate-bags",
     aliases: ["bag", "bags", "backpack", "backpacks", "tote", "tote bag", "laptop bag", "travel bag", "duffle", "duffel", "pouch", "carry bag", "office bag"],
   },
   {
     name: "Drinkware",
     description: "Bottles · mugs · tumblers",
-    href: "/categories/drinkware",
+    href: "/custom-corporate-drinkware",
     aliases: ["drinkware", "bottle", "bottles", "water bottle", "flask", "thermos", "tumbler", "mug", "mugs", "cup", "cups", "sipper", "coffee mug", "travel mug"],
   },
   {
     name: "T-Shirts",
     description: "T-shirts · apparel · branded wear",
-    href: "/categories/t-shirts",
+    href: "/custom-corporate-t-shirts",
     aliases: ["t shirt", "t-shirt", "tshirt", "tee", "tees", "shirt", "shirts", "polo", "polo shirt", "apparel", "clothing", "branded wear", "hoodie", "hoodies", "merchandise"],
   },
 ] as const;
@@ -91,7 +91,7 @@ export function ProductSearch({ variant = "home" }: { variant?: "home" | "catego
 
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.location.assign(results[0]?.href ?? "/contact");
+    window.location.assign(results[0]?.href ?? "/contact-trueprint");
   };
 
   const leaveSearch = (event: FocusEvent<HTMLFormElement>) => {
@@ -134,7 +134,7 @@ function SearchResults({ query, results }: { query: string; results: readonly (t
           <i aria-hidden="true">↗</i>
         </a>
       )) : (
-        <a href="/contact" role="option" aria-selected="false">
+        <a href="/contact-trueprint" role="option" aria-selected="false">
           <span><BrandMark /></span>
           <div><strong>Ask TruePrint</strong><small>Tell us what you are looking for</small></div>
           <i aria-hidden="true">↗</i>
@@ -147,7 +147,7 @@ function SearchResults({ query, results }: { query: string; results: readonly (t
 export function CategoryMegaMenu() {
   return (
     <div className="navCategoryItem">
-      <a className="navCategoryTrigger" href="/categories" aria-haspopup="true">Categories <span className="navCategoryChevron" aria-hidden="true" /></a>
+      <a className="navCategoryTrigger" href="/custom-corporate-diaries" aria-haspopup="true">Categories <span className="navCategoryChevron" aria-hidden="true" /></a>
       <div className="categoryMega" aria-label="Product categories">
         <header className="categoryMegaHeading"><div><strong>Find your next branded product</strong><p>Explore the range. Make it yours.</p></div><span>8 product categories</span></header>
         <div className="categoryMegaList">
@@ -158,11 +158,11 @@ export function CategoryMegaMenu() {
           <p>Brand merchandise</p>
           {productCategories.slice(4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
-        <a className="categoryMegaFeature" href="/categories">
+        <a className="categoryMegaFeature" href="/custom-corporate-diaries">
           <img src="/diary-hero.webp" alt="TruePrint diary collection" />
           <span>Explore diaries <b>↗</b></span>
         </a>
-        <a className="categoryMegaFeature" href="/contact">
+        <a className="categoryMegaFeature" href="/contact-trueprint">
           <img src="/trueprint-packaging.webp" alt="TruePrint custom gifting and packaging" />
           <span>Custom projects <b>↗</b></span>
         </a>

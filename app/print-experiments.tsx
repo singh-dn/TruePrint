@@ -21,7 +21,7 @@ const possibilities = [
     copy: "Premium stocks, precise printing and considered finishes for a confident first introduction.",
     image: "/trueprint-detail.png",
     action: "Explore visiting cards",
-    href: "/categories/visiting-cards",
+    href: "/custom-visiting-cards",
   },
   {
     eyebrow: "Category 02",
@@ -29,7 +29,7 @@ const possibilities = [
     copy: "Thoughtful covers, useful formats and custom details made for work, gifting and everyday ideas.",
     image: "/diaries-possibilities.webp",
     action: "Explore diaries",
-    href: "/categories/diaries",
+    href: "/custom-corporate-diaries",
   },
   {
     eyebrow: "Category 03",
@@ -37,7 +37,7 @@ const possibilities = [
     copy: "Reliable writing instruments personalized with your brand for teams, events and corporate gifting.",
     image: "/pens.webp",
     action: "Explore pens",
-    href: "/categories/pens",
+    href: "/custom-branded-pens",
   },
   {
     eyebrow: "Category 04",
@@ -45,7 +45,7 @@ const possibilities = [
     copy: "Useful products, considered packaging and consistent branding assembled into one memorable welcome.",
     image: "/joining-possibilities.webp",
     action: "Explore joining kits",
-    href: "/categories/joining-kits",
+    href: "/custom-employee-joining-kits",
   },
   {
     eyebrow: "Category 05",
@@ -53,7 +53,7 @@ const possibilities = [
     copy: "Practical technology selected for everyday use and customized to keep your brand close at hand.",
     image: "/tech-product-possibilities.webp",
     action: "Explore tech products",
-    href: "/categories/tech-products",
+    href: "/custom-corporate-tech-products",
   },
   {
     eyebrow: "Category 06",
@@ -61,7 +61,7 @@ const possibilities = [
     copy: "Work, travel and everyday carry options chosen for utility, durability and clear brand presence.",
     image: "/bag-possibilities.webp",
     action: "Explore bags",
-    href: "/categories/bags",
+    href: "/custom-corporate-bags",
   },
   {
     eyebrow: "Category 07",
@@ -69,7 +69,7 @@ const possibilities = [
     copy: "Bottles, tumblers and mugs designed for repeated use and finished with lasting customization.",
     image: "/bottles-possibilities.webp",
     action: "Explore drinkware",
-    href: "/categories/drinkware",
+    href: "/custom-corporate-drinkware",
   },
   {
     eyebrow: "Category 08",
@@ -77,7 +77,7 @@ const possibilities = [
     copy: "Comfortable branded apparel for teams, events, campaigns and coordinated merchandise programs.",
     image: "/tshirt-possibilities.webp",
     action: "Explore T-shirts",
-    href: "/categories/t-shirts",
+    href: "/custom-corporate-t-shirts",
   },
 ] as const;
 

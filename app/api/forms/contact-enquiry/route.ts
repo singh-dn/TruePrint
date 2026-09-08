@@ -40,7 +40,7 @@ export async function POST(request: Request): Promise<Response> {
       phone,
       organization,
       requirement,
-      source_page: safePagePath(body.source_page, "/contact"),
+      source_page: safePagePath(body.source_page, "/contact-trueprint"),
     });
 
     return formSuccess(result.id);

@@ -49,7 +49,7 @@ export async function POST(request: Request): Promise<Response> {
       catalogue_slot: catalogueSlot,
       catalogue_title: catalogueTitle,
       catalogue_url: catalogueUrl,
-      source_page: safePagePath(body.source_page, "/categories"),
+      source_page: safePagePath(body.source_page, "/custom-corporate-diaries"),
     });
 
     return formSuccess(result.id);

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import CategoriesPage from "../page";
-import { buildCategoryMetadata } from "../../seo";
+import CategoriesPage from "../categories/category-page";
+import { buildCategoryMetadata } from "../seo";
 
 export const metadata: Metadata = buildCategoryMetadata("pens");
 

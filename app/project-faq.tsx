@@ -36,7 +36,7 @@ export default function ProjectFaq() {
           <p className="projectFaqKicker">A little clarity</p>
           <h2 id="project-faq-title">Good questions.<br /><em>Clear answers.</em></h2>
           <p>From the first idea to the final delivery, here are a few things worth knowing.</p>
-          <ArrowFillLink href="/contact" label="Talk to expert" />
+          <ArrowFillLink href="/contact-trueprint" label="Talk to expert" />
         </header>
         <div className="projectFaqList">
           {questions.map((item, index) => (
