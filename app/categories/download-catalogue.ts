@@ -1,10 +1,10 @@
-// Fetch a real PDF before asking the browser to save it. Cross-origin hosts must
-// permit CORS; do not silently navigate to a viewer or bypass the saved-lead flow.
+// The same-origin endpoint streams configured fcrf.in PDFs without requiring CORS.
+// Called only after the existing lead form succeeds (or for its download retry).
 export async function downloadCataloguePdf(url: string, fileName: string, signal?: AbortSignal) {
   if (!url.startsWith("https://")) throw new Error("This PDF link is not available yet.");
   let blob: Blob;
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`/api/catalogue-pdf?url=${encodeURIComponent(url)}`, {
       credentials: "omit",
       signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(120_000)]) : AbortSignal.timeout(120_000),
     });

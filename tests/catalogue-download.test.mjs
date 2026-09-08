@@ -8,7 +8,7 @@ test("saves the selected PDF with its filename without opening a viewer", async 
   let removed = false;
   const anchor = { click() { clicked = true; }, remove() { removed = true; } };
   t.mock.method(globalThis, "fetch", async (url) => {
-    assert.equal(url, "https://files.example/diaries.pdf");
+    assert.equal(url, "/api/catalogue-pdf?url=https%3A%2F%2Ffcrf.in%2Fdiaries.pdf");
     return new Response("%PDF-1.7\nexample");
   });
   t.mock.method(URL, "createObjectURL", (blob) => {
@@ -21,7 +21,7 @@ test("saves the selected PDF with its filename without opening a viewer", async 
     body: { appendChild(node) { assert.equal(node, anchor); } },
   } });
   t.after(() => { delete globalThis.document; });
-  await downloadCataloguePdf("https://files.example/diaries.pdf", "diaries.pdf");
+  await downloadCataloguePdf("https://fcrf.in/diaries.pdf", "diaries.pdf");
   assert.equal(anchor.href, "blob:download");
   assert.equal(anchor.download, "diaries.pdf");
   assert.equal(clicked, true);

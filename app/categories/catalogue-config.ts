@@ -1,5 +1,5 @@
 // Each category owns its full card list. Add/remove/reorder entries in its JSON file.
-// Set url to an absolute HTTPS PDF link with CORS enabled for the site origin.
+// Set url to an absolute HTTPS PDF link on fcrf.in; the download endpoint allows only that host.
 // Keep slot unique within a category. fileName controls the saved filename.
 // Optional sizeLabel (e.g. "18.4 MB") is displayed only when supplied.
 import diaries from "./catalogues/diaries.json";
