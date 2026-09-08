@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og.png`],
   },
   icons: {
-    icon: "/logo-blue-gradient.svg",
-    shortcut: "/logo-blue-gradient.svg",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
   },
 };
 
