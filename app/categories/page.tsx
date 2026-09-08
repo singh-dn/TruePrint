@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import ClientStories from "../client-stories";
 import FooterProductIndex from "../footer-product-index";
@@ -10,8 +11,9 @@ import CategoryGallery from "./category-gallery";
 import { ArrowFillLink } from "../arrow-fill-button";
 import { categoryProductCopy } from "./category-product-copy";
 import { CategoryMegaMenu, MobileCategoryMenu, ProductSearch } from "../nav-discovery";
-import { buildCategoryJsonLd, type CategorySeoKey } from "../seo";
+import { buildCategoryJsonLd, buildCategoryMetadata, type CategorySeoKey } from "../seo";
 
+export const metadata: Metadata = buildCategoryMetadata("diaries");
 
 const diaryMaterials = [
   { number: "01", name: "Buckram cloth", note: "Woven · tactile · durable" },
@@ -57,7 +59,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             <nav className="categoryDesktopNav" aria-label={`${categoryName} page navigation`}>
               <a href="/">Home page</a>
               <CategoryMegaMenu />
-              <a href="/contact-trueprint">Contact us</a>
+              <a href="/contact">Contact us</a>
               <ArrowFillLink className="categoryHeaderCta" href="#diary-catalogue" label="Download catalogue" />
             </nav>
 
@@ -68,7 +70,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
                 <div className="mobileMenuLinks">
                   <a href="/">Home page</a>
                   <MobileCategoryMenu />
-                  <a href="/contact-trueprint">Contact us</a>
+                  <a href="/contact">Contact us</a>
                 </div>
                 <ArrowFillLink className="mobileTalkButton" href="#diary-catalogue" label="Download catalogue" />
               </nav>
@@ -198,8 +200,8 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
 
               <nav className="footerColumn" aria-label="Print services">
                 <p>Print</p>
-                <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
-                <a href="/custom-visiting-cards">Business cards</a>
+                <a href="/categories">Diaries &amp; planners</a>
+                <a href="/categories/visiting-cards">Business cards</a>
                 <a href="/#contact">Premium packaging</a>
                 <a href="/#contact">Books &amp; brochures</a>
               </nav>

@@ -65,7 +65,7 @@ const stories = [
     ink: "#ffffff",
     quote: "The merchandise felt considered instead of promotional. TruePrint helped us choose useful products, refine every placement and deliver a collection people genuinely wanted to use.",
     role: "Marketing lead · Business services",
-    image: "/trueprint-bags.jpeg",
+    image: "/netapp.webp",
     alt: "Branded TruePrint merchandise prepared as a coordinated collection",
     route: "Brand merchandise",
     finish: "Curated range · consistent identity",
