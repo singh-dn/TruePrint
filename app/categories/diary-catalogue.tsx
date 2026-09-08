@@ -1,24 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { getCatalogueViewerUrl, type CatalogueSlot } from "./catalogue-viewer-links";
+import { categoryCatalogues, type Catalogue } from "./catalogue-config";
+import { downloadCataloguePdf } from "./download-catalogue";
 import TurnstileWidget from "../turnstile-widget";
-import { ArrowFillButton, ArrowFillLink } from "../arrow-fill-button";
+import { ArrowFillButton } from "../arrow-fill-button";
 import { TURNSTILE_ACTIONS } from "@/lib/turnstile-actions";
 
 const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Hello TruePrint, I would like to know more about your custom diary and catalogue options.")}`;
 
-const catalogues = [
-  { slot: "complete-collection", eyebrow: "Complete collection", title: "Gifts Catalogue 2026–27", description: "The complete TruePrint route through diaries, branded merchandise and considered corporate gifting.", image: "/diary-hero.webp", alt: "Premium hardcover diary from the TruePrint gifts catalogue", badge: "Latest edition" },
-  { slot: "diaries-and-planners", eyebrow: "Featured inside", title: "Diaries & planners", description: "Explore formats, page systems, cover materials and finishing directions for everyday and executive diaries.", image: "/diary-planner.webp", alt: "Open diary planner representing the diary collection", badge: "Diary focus" },
-  { slot: "corporate-gifting", eyebrow: "Featured inside", title: "Corporate gifting edit", description: "Browse presentation ideas, branded objects and gifting routes designed for teams, clients and events.", image: "/trueprint-packaging.webp", alt: "Premium packaging representing the corporate gifting collection", badge: "Gift focus" },
-  { slot: "softcover-diaries", eyebrow: "Featured inside", title: "Softcover diaries", description: "Discover lighter, flexible diary formats suited to events, campaigns and everyday brand programmes.", image: "/diary-softcover.webp", alt: "Softcover diary from the TruePrint catalogue", badge: "Flexible edit" },
-  { slot: "executive-editions", eyebrow: "Featured inside", title: "Executive editions", description: "Review elevated cover materials, structured layouts and finishing details for premium business gifting.", image: "/trueprint-editorial.webp", alt: "Executive diary detail from the TruePrint catalogue", badge: "Premium edit" },
-  { slot: "presentation-and-packaging", eyebrow: "Featured inside", title: "Presentation & packaging", description: "Explore boxes, sleeves and presentation routes that turn a diary into a complete gifting experience.", image: "/trueprint-packaging.webp", alt: "Presentation packaging from the TruePrint catalogue", badge: "Presentation" },
-  { slot: "branded-details", eyebrow: "Featured inside", title: "Branded details", description: "See how print, foil, debossing and considered brand applications can make each diary unmistakably yours.", image: "/trueprint-detail.png", alt: "Branded finishing detail from the TruePrint catalogue", badge: "Detail focus" },
-] as const;
-
-type Catalogue = (typeof catalogues)[number] & { url: string };
 type DownloadStatus = "idle" | "preparing" | "downloading" | "completed";
 type IconName = "check" | "share" | "download" | "file" | "sparkles" | "user" | "mail" | "phone" | "close" | "shield";
 
@@ -45,7 +35,8 @@ function CatalogueIcon({ name }: { name: IconName }) {
 function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Catalogue; categoryKey: string }) {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [downloadStatus, setDownloadStatus] = useState<DownloadStatus>("idle");
-  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [downloadError, setDownloadError] = useState("");
+  const [detailsSaved, setDetailsSaved] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
@@ -53,9 +44,14 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileReset, setTurnstileReset] = useState(0);
   const toastTimeoutRef = useRef<number | null>(null);
-  const progressIntervalRef = useRef<number | null>(null);
-  const completionTimeoutRef = useRef<number | null>(null);
-  const viewerWindowRef = useRef<Window | null>(null);
+  const requestInFlight = useRef(false);
+  const downloadAbort = useRef<AbortController | null>(null);
+  const isBusy = downloadStatus === "preparing" || downloadStatus === "downloading";
+  const hasPdf = /^https:\/\//.test(catalogue.url);
+  const pdfMeta = catalogue.sizeLabel ? `PDF · ${catalogue.sizeLabel}` : "PDF";
+  const statusMessage = downloadStatus === "completed"
+    ? "Your PDF download has started. Check your device’s downloads."
+    : downloadError || (!hasPdf ? "PDF link coming soon" : pdfMeta);
 
   const triggerToast = (message: string) => {
     if (toastTimeoutRef.current) window.clearTimeout(toastTimeoutRef.current);
@@ -65,19 +61,32 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
 
   useEffect(() => () => {
     if (toastTimeoutRef.current) window.clearTimeout(toastTimeoutRef.current);
-    if (progressIntervalRef.current) window.clearInterval(progressIntervalRef.current);
-    if (completionTimeoutRef.current) window.clearTimeout(completionTimeoutRef.current);
-    if (viewerWindowRef.current && !viewerWindowRef.current.closed) viewerWindowRef.current.close();
+    downloadAbort.current?.abort();
   }, []);
 
-  const openCatalogueViewer = () => {
-    const pendingViewer = viewerWindowRef.current;
-    if (pendingViewer && !pendingViewer.closed) {
-      pendingViewer.location.replace(catalogue.url);
-      viewerWindowRef.current = null;
-      return;
+  const startDownload = async () => {
+    setDownloadError("");
+    setDownloadStatus("downloading");
+    const controller = new AbortController();
+    downloadAbort.current = controller;
+    try {
+      await downloadCataloguePdf(catalogue.url, catalogue.fileName, controller.signal);
+      setDownloadStatus("completed");
+      setIsFormOpen(false);
+      setFormData({ name: "", email: "", phone: "" });
+    } catch (error) {
+      if (controller.signal.aborted) return;
+      setDownloadStatus("idle");
+      setDownloadError(error instanceof Error ? error.message : "Download failed. Please try again.");
+    } finally {
+      requestInFlight.current = false;
     }
-    window.open(catalogue.url, "_blank", "noopener,noreferrer");
+  };
+
+  const retryDownload = () => {
+    if (requestInFlight.current || !hasPdf) return;
+    requestInFlight.current = true;
+    void startDownload();
   };
 
   const handleShare = async () => {
@@ -112,6 +121,8 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (requestInFlight.current || !hasPdf) return;
+    if (detailsSaved) return retryDownload();
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = "Please enter your name";
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) errors.email = "Valid email is required";
@@ -120,11 +131,9 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
       setFormErrors(errors);
       return;
     }
-    const pendingViewer = window.open("about:blank", "_blank");
-    if (pendingViewer) pendingViewer.opener = null;
-    viewerWindowRef.current = pendingViewer;
+    requestInFlight.current = true;
+    setDownloadError("");
     setDownloadStatus("preparing");
-    setDownloadProgress(15);
 
     try {
       const response = await fetch("/api/forms/catalogue-download", {
@@ -149,49 +158,28 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
         throw new Error(body?.message || "We could not save your details. Please try again.");
       }
     } catch (error) {
-      if (viewerWindowRef.current && !viewerWindowRef.current.closed) viewerWindowRef.current.close();
-      viewerWindowRef.current = null;
+      requestInFlight.current = false;
       setDownloadStatus("idle");
-      setDownloadProgress(0);
       setTurnstileToken("");
       setTurnstileReset((current) => current + 1);
-      triggerToast(error instanceof Error ? error.message : "We could not save your details. Please try again.");
+      setDownloadError(error instanceof Error ? error.message : "We could not save your details. Please try again.");
       return;
     }
 
     setTurnstileToken("");
 
-    completionTimeoutRef.current = window.setTimeout(() => {
-      setDownloadStatus("downloading");
-      let progress = 20;
-      progressIntervalRef.current = window.setInterval(() => {
-        progress = Math.min(100, progress + Math.floor(Math.random() * 20) + 12);
-        setDownloadProgress(progress);
-        if (progress === 100) {
-          if (progressIntervalRef.current) window.clearInterval(progressIntervalRef.current);
-          setDownloadStatus("completed");
-          triggerToast(`${catalogue.title} is ready`);
-          openCatalogueViewer();
-        }
-      }, 160);
-    }, 500);
+    setDetailsSaved(true);
+    await startDownload();
   };
 
   const closeForm = () => {
-    if (viewerWindowRef.current && !viewerWindowRef.current.closed) viewerWindowRef.current.close();
-    viewerWindowRef.current = null;
+    if (requestInFlight.current) return;
     setIsFormOpen(false);
     setFormErrors({});
     setTurnstileToken("");
     setTurnstileReset((current) => current + 1);
-    if (downloadStatus === "completed") {
-      setDownloadStatus("idle");
-      setDownloadProgress(0);
-      setFormData({ name: "", email: "", phone: "" });
-    }
   };
 
-  const isBusy = downloadStatus === "preparing" || downloadStatus === "downloading";
   const catalogueId = toCatalogueId(catalogue.title);
 
   return (
@@ -219,26 +207,26 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
         <h3 id={`${catalogueId}-title`}>{catalogue.title}</h3>
         <p id={`${catalogueId}-description`}>{catalogue.description}</p>
         <div className="trueprintCatalogueCtaShell">
-          <ArrowFillButton type="button" onClick={() => setIsFormOpen(true)} label="Download Catalogue" />
-          <small className="categoryCatalogueMeta">PDF · 18.4 MB</small>
+          <ArrowFillButton type="button" disabled={isBusy || !hasPdf} onClick={() => detailsSaved ? retryDownload() : setIsFormOpen(true)} label={isBusy ? "Downloading…" : detailsSaved ? "Download Again" : "Download Catalogue"} />
+          <small className="categoryCatalogueMeta" role="status">{statusMessage}</small>
         </div>
       </div>
 
       <div className={`trueprintCatalogueDrawer${isFormOpen ? " is-open" : ""}`} aria-hidden={!isFormOpen} inert={!isFormOpen ? true : undefined}>
-        <button className="trueprintCatalogueDrawerBackdrop" type="button" onClick={closeForm} aria-label="Close catalogue form" />
+        <button className="trueprintCatalogueDrawerBackdrop" type="button" onClick={closeForm} disabled={isBusy} aria-label="Close catalogue form" />
         <div className="trueprintCatalogueFormSheet">
-          <button className="trueprintCatalogueFormClose" type="button" onClick={closeForm} aria-label="Close catalogue form"><CatalogueIcon name="close" /></button>
+          <button className="trueprintCatalogueFormClose" type="button" onClick={closeForm} disabled={isBusy} aria-label="Close catalogue form"><CatalogueIcon name="close" /></button>
           <i className="trueprintCatalogueDrag" aria-hidden="true" />
           <header><h4>Download the TruePrint Catalogue</h4><p>Fill in your details to access the PDF. Like a product? Share its screenshot with us on WhatsApp for customization, availability and the best pricing.</p></header>
           <form onSubmit={handleFormSubmit} noValidate>
             {([ ["name", "text", "Full Name", "user"], ["email", "email", "Work or Personal Email", "mail"], ["phone", "tel", "Mobile Number", "phone"] ] as const).map(([name, type, placeholder, icon]) => (
               <label className={formErrors[name] ? "has-error" : ""} key={name}>
                 <span><CatalogueIcon name={icon} /></span>
-                <input type={type} name={name} value={formData[name]} onChange={handleInputChange} placeholder={placeholder} disabled={isBusy} autoComplete={name === "email" ? "email" : name === "phone" ? "tel" : "name"} />
+                <input type={type} name={name} value={formData[name]} onChange={handleInputChange} placeholder={placeholder} disabled={isBusy || detailsSaved} autoComplete={name === "email" ? "email" : name === "phone" ? "tel" : "name"} />
                 {formErrors[name] && <em>{formErrors[name]}</em>}
               </label>
             ))}
-            {isFormOpen && (
+            {isFormOpen && !detailsSaved && (
               <TurnstileWidget
                 action={TURNSTILE_ACTIONS.catalogueDownload}
                 onToken={setTurnstileToken}
@@ -248,17 +236,13 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
               />
             )}
             <div className="trueprintCatalogueSubmitShell">
-              {downloadStatus === "completed" ? (
-                <ArrowFillLink href={catalogue.url} target="_blank" rel="noreferrer" label="Open Catalogue" />
-              ) : (
-                <ArrowFillButton
-                  type="submit"
-                  disabled={isBusy || !turnstileToken}
-                  label={downloadStatus === "idle" ? "Submit & Download" : downloadStatus === "preparing" ? "Preparing PDF…" : `Downloading (${downloadProgress}%)`}
-                />
-              )}
+              <ArrowFillButton
+                type="submit"
+                disabled={isBusy || !hasPdf || (!detailsSaved && !turnstileToken)}
+                label={downloadStatus === "preparing" ? "Preparing PDF…" : downloadStatus === "downloading" ? "Downloading…" : detailsSaved ? "Retry Download" : "Submit & Download"}
+              />
             </div>
-            <small className="categoryCatalogueMeta" aria-live="polite">{downloadStatus === "completed" ? "PDF ready" : downloadStatus === "downloading" ? `${downloadProgress}%` : "PDF · 18.4 MB"}</small>
+            <small className="categoryCatalogueMeta" role="status">{statusMessage}</small>
           </form>
           <p className="trueprintCataloguePrivacy"><CatalogueIcon name="shield" />Confidential &amp; secure direct PDF delivery</p>
         </div>
@@ -269,6 +253,7 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
 }
 
 export default function DiaryCatalogue({ categoryKey = "diaries" }: { categoryKey?: string }) {
+  const catalogues = categoryCatalogues[categoryKey] ?? [];
   const [activeSlide, setActiveSlide] = useState(0);
   const [showExpertHint, setShowExpertHint] = useState(true);
   const railRef = useRef<HTMLDivElement>(null);
@@ -279,6 +264,7 @@ export default function DiaryCatalogue({ categoryKey = "diaries" }: { categoryKe
   }, []);
 
   const scrollToCard = (index: number) => {
+    if (!catalogues.length) return;
     const normalizedIndex = (index + catalogues.length) % catalogues.length;
     const rail = railRef.current;
     const card = rail?.children[normalizedIndex] as HTMLElement | undefined;
@@ -323,11 +309,11 @@ export default function DiaryCatalogue({ categoryKey = "diaries" }: { categoryKe
           <p>Pick the collection you want to explore. We&apos;ll ask for a few details first, then unlock the PDF catalogue for you.</p>
         </header>
         <div className="diaryDownloadSlider">
-          <div className="diaryDownloadSliderControls" aria-label="Catalogue slider controls"><span><b>{String(activeSlide + 1).padStart(2, "0")}</b> / {String(catalogues.length).padStart(2, "0")}</span><small>Swipe or use the edge controls</small></div>
+          <div className="diaryDownloadSliderControls" aria-label="Catalogue slider controls"><span><b>{String(catalogues.length ? Math.min(activeSlide + 1, catalogues.length) : 0).padStart(2, "0")}</b> / {String(catalogues.length).padStart(2, "0")}</span><small>Swipe or use the edge controls</small></div>
           <div className="diaryDownloadRailFrame">
-            <button className="diaryDownloadEdgeButton diaryDownloadEdgeButtonPrev" type="button" onClick={() => moveSlider(-1)} aria-label="Previous catalogue">←</button>
-            <div className="diaryDownloadRail" ref={railRef} onScroll={updateActiveSlide}>{catalogues.map((catalogue) => <CataloguePresentationCard catalogue={{ ...catalogue, url: getCatalogueViewerUrl(categoryKey, catalogue.slot as CatalogueSlot) }} categoryKey={categoryKey} key={catalogue.title} />)}</div>
-            <button className="diaryDownloadEdgeButton diaryDownloadEdgeButtonNext" type="button" onClick={() => moveSlider(1)} aria-label="Next catalogue">→</button>
+            <button className="diaryDownloadEdgeButton diaryDownloadEdgeButtonPrev" type="button" disabled={catalogues.length < 2} onClick={() => moveSlider(-1)} aria-label="Previous catalogue">←</button>
+            <div className="diaryDownloadRail" ref={railRef} onScroll={updateActiveSlide}>{catalogues.map((catalogue) => <CataloguePresentationCard catalogue={catalogue} categoryKey={categoryKey} key={`${categoryKey}-${catalogue.slot}`} />)}</div>
+            <button className="diaryDownloadEdgeButton diaryDownloadEdgeButtonNext" type="button" disabled={catalogues.length < 2} onClick={() => moveSlider(1)} aria-label="Next catalogue">→</button>
           </div>
         </div>
       </section>

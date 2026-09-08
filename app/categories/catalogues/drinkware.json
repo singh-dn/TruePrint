@@ -1,0 +1,79 @@
+[
+  {
+    "slot": "complete-collection",
+    "eyebrow": "Complete collection",
+    "title": "Gifts Catalogue 2026–27",
+    "description": "The complete TruePrint route through diaries, branded merchandise and considered corporate gifting.",
+    "image": "/diary-hero.webp",
+    "alt": "Premium hardcover diary from the TruePrint gifts catalogue",
+    "badge": "Latest edition",
+    "url": "",
+    "fileName": "complete-collection.pdf"
+  },
+  {
+    "slot": "diaries-and-planners",
+    "eyebrow": "Featured inside",
+    "title": "Diaries & planners",
+    "description": "Explore formats, page systems, cover materials and finishing directions for everyday and executive diaries.",
+    "image": "/diary-planner.webp",
+    "alt": "Open diary planner representing the diary collection",
+    "badge": "Diary focus",
+    "url": "",
+    "fileName": "diaries-and-planners.pdf"
+  },
+  {
+    "slot": "corporate-gifting",
+    "eyebrow": "Featured inside",
+    "title": "Corporate gifting edit",
+    "description": "Browse presentation ideas, branded objects and gifting routes designed for teams, clients and events.",
+    "image": "/trueprint-packaging.webp",
+    "alt": "Premium packaging representing the corporate gifting collection",
+    "badge": "Gift focus",
+    "url": "",
+    "fileName": "corporate-gifting.pdf"
+  },
+  {
+    "slot": "softcover-diaries",
+    "eyebrow": "Featured inside",
+    "title": "Softcover diaries",
+    "description": "Discover lighter, flexible diary formats suited to events, campaigns and everyday brand programmes.",
+    "image": "/diary-softcover.webp",
+    "alt": "Softcover diary from the TruePrint catalogue",
+    "badge": "Flexible edit",
+    "url": "",
+    "fileName": "softcover-diaries.pdf"
+  },
+  {
+    "slot": "executive-editions",
+    "eyebrow": "Featured inside",
+    "title": "Executive editions",
+    "description": "Review elevated cover materials, structured layouts and finishing details for premium business gifting.",
+    "image": "/trueprint-editorial.webp",
+    "alt": "Executive diary detail from the TruePrint catalogue",
+    "badge": "Premium edit",
+    "url": "",
+    "fileName": "executive-editions.pdf"
+  },
+  {
+    "slot": "presentation-and-packaging",
+    "eyebrow": "Featured inside",
+    "title": "Presentation & packaging",
+    "description": "Explore boxes, sleeves and presentation routes that turn a diary into a complete gifting experience.",
+    "image": "/trueprint-packaging.webp",
+    "alt": "Presentation packaging from the TruePrint catalogue",
+    "badge": "Presentation",
+    "url": "",
+    "fileName": "presentation-and-packaging.pdf"
+  },
+  {
+    "slot": "branded-details",
+    "eyebrow": "Featured inside",
+    "title": "Branded details",
+    "description": "See how print, foil, debossing and considered brand applications can make each diary unmistakably yours.",
+    "image": "/trueprint-detail.png",
+    "alt": "Branded finishing detail from the TruePrint catalogue",
+    "badge": "Detail focus",
+    "url": "",
+    "fileName": "branded-details.pdf"
+  }
+]

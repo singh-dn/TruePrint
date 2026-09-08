@@ -82,7 +82,7 @@ const brands = [
   { name: "IBM", image: "/placeholder-ibm.svg", colour: "#dcedf2" },
 ];
 
-export default function ClientStories() {
+export default function ClientStories({ showFaq = true }: { showFaq?: boolean }) {
   const [activeStory, setActiveStory] = useState(0);
   const [manualSelection, setManualSelection] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -181,7 +181,7 @@ export default function ClientStories() {
         </article>
         </div>
       </section>
-      <ProjectFaq />
+      {showFaq && <ProjectFaq />}
     </>
   );
 }

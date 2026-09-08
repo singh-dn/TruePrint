@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 
-const placeholderVideo =
-  "https://fcrf.in/assets/video/V-929.mp4";
+// Replace each entry’s src independently with its final product video URL.
 
 const productVideos = [
   {
@@ -12,8 +11,7 @@ const productVideos = [
     title: "Print craft",
     detail: "Texture, colour and finishing",
     poster: "/trueprint-editorial.webp",
-    src: placeholderVideo,
-    startAt: 0,
+    src: "https://fcrf.in/assets/video/V-929.mp4",
   },
   {
     id: "diaries",
@@ -21,8 +19,7 @@ const productVideos = [
     title: "Diaries",
     detail: "Covers, pages and details",
     poster: "/trueprint-diaries.jpeg",
-    src: placeholderVideo,
-    startAt: 5,
+    src: "https://fcrf.in/assets/video/V-929.mp4",
   },
   {
     id: "joining-kits",
@@ -30,8 +27,7 @@ const productVideos = [
     title: "Joining kits",
     detail: "Useful products, made cohesive",
     poster: "/trueprint-joining-kits.jpeg",
-    src: placeholderVideo,
-    startAt: 10,
+    src: "https://fcrf.in/assets/video/V-929.mp4",
   },
   {
     id: "packaging",
@@ -39,49 +35,13 @@ const productVideos = [
     title: "Packaging",
     detail: "Presentation from every angle",
     poster: "/trueprint-packaging.webp",
-    src: placeholderVideo,
-    startAt: 15,
+    src: "https://fcrf.in/assets/video/V-929.mp4",
   },
 ] as const;
 
 export default function ProductVideoShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [shouldPlay, setShouldPlay] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const activeVideo = productVideos[activeIndex];
-
-  const selectVideo = (index: number) => {
-    setActiveIndex(index);
-    setShouldPlay(true);
-    setIsPlaying(false);
-  };
-
-  const handleLoadedMetadata = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (Number.isFinite(video.duration)) {
-      video.currentTime = Math.min(activeVideo.startAt, Math.max(0, video.duration - 0.1));
-    }
-
-    if (shouldPlay) {
-      void video.play().catch(() => setShouldPlay(false));
-    }
-  };
-
-  const togglePlayback = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      if (video.ended) video.currentTime = activeVideo.startAt;
-      setShouldPlay(true);
-      void video.play().catch(() => setShouldPlay(false));
-    } else {
-      video.pause();
-    }
-  };
 
   return (
     <section className="productVideoSection" aria-labelledby="product-video-title">
@@ -99,46 +59,24 @@ export default function ProductVideoShowcase() {
         <div className="productVideoLayout">
           <div className="productVideoPlayer">
             <div className="productVideoScreen">
-              <div className="productVideoToolbar" aria-hidden="true">
-                <span className="productVideoLights"><i /><i /><i /></span>
-                <span>TruePrint studio</span>
-                <span className="productVideoToolbarStatus">Now viewing&nbsp; {activeVideo.number}</span>
-              </div>
-
               <div className="productVideoViewport">
                 <video
                   key={activeVideo.id}
-                  ref={videoRef}
                   src={activeVideo.src}
                   poster={activeVideo.poster}
                   preload="metadata"
                   muted
                   playsInline
                   controls
-                  autoPlay={shouldPlay}
-                  onLoadedMetadata={handleLoadedMetadata}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  onEnded={() => setIsPlaying(false)}
+                  autoPlay
+                  loop
                   aria-label={`${activeVideo.title} product film`}
                 />
 
-                {!isPlaying && (
-                  <button
-                    className="productVideoPlay"
-                    type="button"
-                    onClick={togglePlayback}
-                    aria-label={`Play ${activeVideo.title} product film`}
-                  >
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M8.6 6.4 18 12l-9.4 5.6V6.4Z" />
-                    </svg>
-                  </button>
-                )}
               </div>
             </div>
 
-            <div className="productVideoLaptopBase" aria-hidden="true"><span /></div>
+
           </div>
 
           <div className="productVideoChoices" aria-label="Choose a product film">
@@ -148,7 +86,7 @@ export default function ProductVideoShowcase() {
                 data-active={index === activeIndex ? "true" : "false"}
                 type="button"
                 key={video.id}
-                onClick={() => selectVideo(index)}
+                onClick={() => setActiveIndex(index)}
                 aria-pressed={index === activeIndex}
                 aria-label={`Watch ${video.title}`}
               >

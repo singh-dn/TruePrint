@@ -160,7 +160,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
           <CategoryGallery category={categoryKey} />
         )}
 
-        <ClientStories />
+        <ClientStories showFaq={false} />
 
         <footer className="siteFooter diaryFooter" id="about">
           <section className="closingCta" aria-labelledby="diary-closing-title">
