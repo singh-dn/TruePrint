@@ -18,15 +18,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "/diary-hero.webp",
+        image: "/diary-1.webp",
         alt: "Premium product presentation",
       },
       {
-        image: "/diary-planner.webp",
+        image: "/diary-2.webp",
         alt: "Detailed custom product presentation",
       },
       {
-        image: "/diary-softcover.webp",
+        image: "/diary-3.webp",
         alt: "Custom product collection",
       },
     ],
@@ -134,15 +134,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/pens-1/900/900",
+        image: "/pens-1.webp",
         alt: "Premium pen presentation",
       },
       {
-        image: "https://picsum.photos/seed/pens-2/900/900",
+        image: "/pens-2.webp",
         alt: "Detailed pen presentation",
       },
       {
-        image: "https://picsum.photos/seed/pens-3/900/900",
+        image: "/pens-3.webp",
         alt: "Custom pen presentation",
       },
     ],
@@ -192,15 +192,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/joining-kit-1/900/900",
+        image: "/joining-1.webp",
         alt: "Premium joining kit presentation",
       },
       {
-        image: "https://picsum.photos/seed/joining-kit-2/900/900",
+        image: "/joining-2.webp",
         alt: "Detailed joining kit presentation",
       },
       {
-        image: "https://picsum.photos/seed/joining-kit-3/900/900",
+        image: "/joining-3.webp",
         alt: "Custom joining kit presentation",
       },
     ],
@@ -250,15 +250,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/tech-product-1/900/900",
+        image: "/tech-1.webp",
         alt: "Premium tech product presentation",
       },
       {
-        image: "https://picsum.photos/seed/tech-product-2/900/900",
+        image: "/tech-2.webp",
         alt: "Detailed tech product presentation",
       },
       {
-        image: "https://picsum.photos/seed/tech-product-3/900/900",
+        image: "/tech-3.webp",
         alt: "Custom tech product presentation",
       },
     ],
@@ -308,15 +308,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/bags-1/900/900",
+        image: "/bag-1.webp",
         alt: "Premium bag presentation",
       },
       {
-        image: "https://picsum.photos/seed/bags-2/900/900",
+        image: "/bag-2.webp",
         alt: "Detailed bag presentation",
       },
       {
-        image: "https://picsum.photos/seed/bags-3/900/900",
+        image: "/bag-3.webp",
         alt: "Custom bag presentation",
       },
     ],
@@ -366,15 +366,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/drinkware-1/900/900",
+        image: "/drink-1.webp",
         alt: "Premium drinkware presentation",
       },
       {
-        image: "https://picsum.photos/seed/drinkware-2/900/900",
+        image: "/drink-2.webp",
         alt: "Detailed drinkware presentation",
       },
       {
-        image: "https://picsum.photos/seed/drinkware-3/900/900",
+        image: "/drink-3.webp",
         alt: "Custom drinkware presentation",
       },
     ],
@@ -424,15 +424,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/tshirts-1/900/900",
+        image: "/tshirt-1.webp",
         alt: "Premium T-shirt presentation",
       },
       {
-        image: "https://picsum.photos/seed/tshirts-2/900/900",
+        image: "/tshirt-2.webp",
         alt: "Detailed T-shirt presentation",
       },
       {
-        image: "https://picsum.photos/seed/tshirts-3/900/900",
+        image: "/tshirt-3.webp",
         alt: "Custom T-shirt presentation",
       },
     ],
