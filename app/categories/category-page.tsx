@@ -165,13 +165,12 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             <span className="closingGlow" aria-hidden="true" />
             <div className="closingGrid">
               <article className="closingGlass">
-                <p className="closingKicker"><span /> Your next print project</p>
-                <h2 id="diary-closing-title">Make the next thing<br />worth holding.</h2>
+                <p className="closingKicker"><span /> READY WHEN YOU ARE</p>
+                <h2 id="closing-title">Let&apos;s make something worth<br />putting your name on.</h2>
                 <p className="closingCopy">
-                  Bring us the idea, the deadline or even the unfinished thought.
-                  We&apos;ll shape the paper, colour and finish around what it needs to become.
+                  Share the idea, quantity or reference. We&apos;ll help take it from the first conversation to the finished product.
                 </p>
-                <ArrowFillLink className="closingButton" href="/#contact" label="Start a project" />
+                <ArrowFillLink className="closingButton" href="#contact" label="Start a project" />
               </article>
 
               <figure className="closingImage">

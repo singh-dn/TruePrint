@@ -160,7 +160,7 @@ export default function Home() {
 
         <section className="marqueeSection" aria-label="TruePrint client showcase and creative process">
           <div className="clientShowcase" aria-labelledby="client-showcase-title">
-            <h2 id="client-showcase-title"><span>Your brand, at the centre.</span><br />Made tangible by TruePrint.</h2>
+            <h2 id="client-showcase-title"><span>Trusted by professionals, across industries.</span><br /> Professionals at leading organisations engage with TruePrint.</h2>
             <div className="clientShowcaseRail">
               <div className="clientShowcaseTrack">
                 {[0, 1].map((copy) => (
@@ -181,27 +181,27 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <p className="clientShowcaseNote">Sample logos for design preview · Client logos to follow</p>
+            <p className="clientShowcaseNote">Organizations are referenced solely as employers/affiliations of individual professionals who have engaged with TruePrint. No partnership, endorsement or corporate affiliation is implied</p>
           </div>
           <div className="marqueeTrack">
             <p className="marqueeSet">
-              <span>Create.</span>
-              <span>Print.</span>
-              <span>Finish.</span>
-              <span>Deliver.</span>
+              <span>IDEATE.</span>
+              <span>SOURCE.</span>
+              <span>CUSTOMIZE.</span>
+              <span>DELIVER.</span>
             </p>
             <p className="marqueeSet" aria-hidden="true">
-              <span>Create.</span>
-              <span>Print.</span>
-              <span>Finish.</span>
-              <span>Deliver.</span>
+              <span>IDEATE.</span>
+              <span>SOURCE.</span>
+              <span>CUSTOMIZE.</span>
+              <span>DELIVER.</span>
             </p>
           </div>
         </section>
 
         <section className="projectsSection" id="projects" aria-labelledby="projects-title">
           <header className="projectsHeader">
-            <span className="projectsGhost" aria-hidden="true">PROJECTS</span>
+            <span className="projectsGhost" aria-hidden="true">CATEGORIES</span>
             <p className="projectsKicker"><span>03</span> Selected print work</p>
             <h2 id="projects-title">Curated well.<br /><em>Branded better.</em></h2>
             <p>
@@ -565,12 +565,12 @@ export default function Home() {
           </div>
 
           <div className="sourceRequestCloud" aria-label="Examples of unusual requests">
-            <p>Things we can help make</p>
+            <p>Things we can help source</p>
             <div>
-              <span className="sourceRequestBright">Oddly-shaped award</span>
-              <span>Custom board game</span>
-              <span>Miniature mascot</span>
-              <span>The thing you saw on Instagram</span>
+              <span className="sourceRequestBright">Custom recognition award </span>
+              <span>Premium gifting box </span>
+              <span>Branded event merchandise </span>
+              <span>That product you saw online</span>
             </div>
           </div>
         </section>
@@ -585,7 +585,7 @@ export default function Home() {
 
         <section className="possibilitySection" aria-labelledby="possibility-title">
           <header className="possibilityHeader">
-            <p className="possibilityKicker">One studio. Every possibility.</p>
+            <p className="possibilityKicker">ONE SOURCE. ENDLESS POSSIBILITIES.</p>
             <h2 id="possibility-title">Bring the idea.<br /><span>We&apos;ll make it tangible.</span></h2>
             <p>
               From a first business card to a complete launch system, TruePrint
@@ -626,11 +626,10 @@ export default function Home() {
             <span className="closingGlow" aria-hidden="true" />
             <div className="closingGrid">
               <article className="closingGlass">
-                <p className="closingKicker"><span /> Your next print project</p>
-                <h2 id="closing-title">Make the next thing<br />worth holding.</h2>
+                <p className="closingKicker"><span /> READY WHEN YOU ARE</p>
+                <h2 id="closing-title">Let&apos;s make something worth<br />putting your name on.</h2>
                 <p className="closingCopy">
-                  Bring us the idea, the deadline or even the unfinished thought.
-                  We&apos;ll shape the paper, colour and finish around what it needs to become.
+                  Share the idea, quantity or reference. We&apos;ll help take it from the first conversation to the finished product.
                 </p>
                 <ArrowFillLink className="closingButton" href="#contact" label="Start a project" />
               </article>

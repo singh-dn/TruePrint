@@ -2,28 +2,28 @@ import { ArrowFillLink } from "./arrow-fill-button";
 
 const questions = [
   {
-    question: "What can I customise with TruePrint?",
-    answer: "Explore branded stationery, apparel, bags, drinkware, tech products, joining kits and corporate gifts. Share your requirements so we can discuss suitable products and branding options.",
+    question: "What kind of products can TruePrint supply?",
+    answer: "TruePrint can source and customise tens of thousands of products across printing, gifting, merchandise, apparel, tech, drinkware, awards, kits, packaging and more. If you cannot find what you need in our catalogue, share a reference, image or description and we will try to source it for you.",
   },
   {
-    question: "Can you source something outside the catalogue?",
-    answer: "Yes. Send us a reference image, a product link or a description of your idea. We can explore sourcing options and help you find a suitable match for your brief.",
+    question: "What if the product I need is not listed on your website?",
+    answer: "That is exactly what our sourcing team is for. Send us a photo, product link, sketch or even a rough idea, and we can explore suitable suppliers and customisation options to find the closest match for your requirement.",
   },
   {
-    question: "What details do you need to prepare a quote?",
-    answer: "Tell us the product, quantity, branding requirements, delivery location and preferred timeline. A reference image and an approximate budget help us shortlist relevant options.",
+    question: "Can you customise products with our company branding?",
+    answer: "Yes. Depending on the product, we can support logo printing, engraving, embroidery, embossing, debossing, foil printing, custom packaging, colour customisation and other branding options.",
   },
   {
-    question: "Is there a minimum order quantity?",
-    answer: "Minimum quantities depend on the product and the customisation involved. Share the quantity you have in mind, and we can discuss the options available for your project.",
+    question: "Can you help us choose the right product?",
+    answer: "Yes. Share your requirement, audience, quantity, budget and occasion, and our team can help shortlist suitable products and branding options for your project.",
   },
   {
-    question: "Will I see the design before production?",
-    answer: "The product and branding mockup are reviewed with you before production begins. This is the stage to confirm the artwork, placement and finishing details.",
+    question: "How long does it take to complete an order?",
+    answer: "Timelines depend on the product and customisation involved. Ready products available with our suppliers may be dispatched within a day or two, while highly customised, specially manufactured or imported products may take a few weeks.",
   },
   {
-    question: "How long will my order take?",
-    answer: "Timelines depend on the selected products, quantity, branding and delivery location. Share your deadline at the start so the team can confirm a suitable production and delivery schedule.",
+    question: "Can you handle bulk corporate requirements?",
+    answer: "Yes. TruePrint is built for B2B and corporate requirements, including employee onboarding, events, conferences, gifting, promotional campaigns, merchandise and large-scale branded orders.",
   },
 ];
 
@@ -34,8 +34,8 @@ export default function ProjectFaq() {
       <div className="projectFaqGrid">
         <header className="projectFaqHeader">
           <p className="projectFaqKicker">A little clarity</p>
-          <h2 id="project-faq-title">Good questions.<br /><em>Clear answers.</em></h2>
-          <p>From the first idea to the final delivery, here are a few things worth knowing.</p>
+          <h2 id="project-faq-title">Before you begin.<br /><em>A few clear answers.</em></h2>
+          <p>From sourcing and pricing to customization and delivery, here is what you may want to know first.</p>
           <ArrowFillLink href="/contact-trueprint" label="Talk to expert" />
         </header>
         <div className="projectFaqList">

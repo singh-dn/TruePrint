@@ -12,14 +12,14 @@ import {
 } from "react";
 
 const words = [
-  "Production",
-  "Creative",
-  "Digital",
-  "Media",
-  "Technology",
-  "Design",
-  "Strategy",
-  "Content",
+  "Custom",
+  "Branded",
+  "Merch",
+  "Gifting",
+  "Corporate",
+  "Supply",
+  "Solutions",
+  "Create",
 ] as const;
 
 const effects = ["slide", "flip", "scramble", "wipe", "glitch", "blur", "stagger"] as const;
