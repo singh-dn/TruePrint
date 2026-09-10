@@ -19,6 +19,7 @@ export type Catalogue = {
   image: string;
   alt: string;
   badge: string;
+  tags?: string[];
   url: string;
   fileName: string;
   sizeLabel?: string;

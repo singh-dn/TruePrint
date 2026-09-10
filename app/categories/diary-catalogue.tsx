@@ -6,8 +6,9 @@ import { downloadCataloguePdf } from "./download-catalogue";
 import TurnstileWidget from "../turnstile-widget";
 import { ArrowFillButton } from "../arrow-fill-button";
 import { TURNSTILE_ACTIONS } from "@/lib/turnstile-actions";
+import "./catalogue-cards.css";
 
-const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Hello TruePrint, I would like to know more about your custom diary and catalogue options.")}`;
+const whatsappUrl = `https://wa.me/918588829931?text=${encodeURIComponent("Hello TruePrint, I would like to know more about your custom diary and catalogue options.")}`;
 
 type DownloadStatus = "idle" | "preparing" | "downloading" | "completed";
 type IconName = "check" | "share" | "download" | "file" | "sparkles" | "user" | "mail" | "phone" | "close" | "shield";
@@ -19,7 +20,7 @@ function toCatalogueId(title: string) {
 function CatalogueIcon({ name }: { name: IconName }) {
   const paths = {
     check: <path d="m5 12 4 4L19 6" />,
-    share: <><circle cx="18" cy="5" r="2.4" /><circle cx="6" cy="12" r="2.4" /><circle cx="18" cy="19" r="2.4" /><path d="m8.2 10.9 7.6-4.7M8.2 13.1l7.6 4.7" /></>,
+    share: <><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M12 2v13M7 7l5-5 5 5" /></>,
     download: <><path d="M12 3v12m0 0 4-4m-4 4-4-4" /><path d="M5 20h14" /></>,
     file: <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h5M9 14l2 2 4-4" /></>,
     sparkles: <><path d="m12 2 1.3 4.2L17.5 8l-4.2 1.8L12 14l-1.3-4.2L6.5 8l4.2-1.8z" /><path d="m18.5 14 .7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z" /></>,
@@ -48,6 +49,7 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
   const downloadAbort = useRef<AbortController | null>(null);
   const isBusy = downloadStatus === "preparing" || downloadStatus === "downloading";
   const hasPdf = /^https:\/\//.test(catalogue.url);
+  const catalogueTags = catalogue.tags ?? [catalogue.badge, "Corporate Gifting", "Custom Branding"];
   const pdfMeta = catalogue.sizeLabel ? `PDF · ${catalogue.sizeLabel}` : "PDF";
   const statusMessage = downloadStatus === "completed"
     ? "Your PDF download has started. Check your device’s downloads."
@@ -184,7 +186,14 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
 
   return (
     <article
-      className="diaryDownloadCard trueprintCatalogueCard"
+      className="diaryDownloadCard trueprintCatalogueCard liquidCatalogue"
+      onPointerMove={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const mouseX = ((event.clientX - bounds.left) / bounds.width) * 100;
+        const mouseY = ((event.clientY - bounds.top) / bounds.height) * 100;
+        event.currentTarget.style.setProperty("--mouse-x", `${mouseX}%`);
+        event.currentTarget.style.setProperty("--mouse-y", `${mouseY}%`);
+      }}
       id={catalogueId}
       aria-labelledby={`${catalogueId}-title`}
       aria-describedby={`${catalogueId}-description`}
@@ -194,29 +203,37 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
       <meta itemProp="name" content={catalogue.title} />
       <meta itemProp="description" content={catalogue.description} />
       <link itemProp="image" href={catalogue.image} />
-      <div className="trueprintCatalogueImageLayer">
-        <img src={catalogue.image} alt={catalogue.alt} loading="lazy" decoding="async" itemProp="thumbnailUrl" />
-        <span aria-hidden="true" />
-      </div>
+      <div className="catalogueGlows" aria-hidden="true"><i /><i /><i /></div>
+      <div className="catalogueGloss" aria-hidden="true" />
+      <div className="catalogueSheen" aria-hidden="true" />
+      <div className="catalogueAura" aria-hidden="true" />
+      <div className="catalogueCornerGlow" aria-hidden="true" />
       <div className="trueprintCatalogueTopbar">
-        <span className="trueprintCatalogueBadge"><i aria-hidden="true" />{catalogue.badge}</span>
+        <span className="trueprintCatalogueBadge"><b>PDF</b>Digital Catalogue</span>
         <button type="button" onClick={handleShare} aria-label={`Copy link to ${catalogue.title}`} title={`Copy link to ${catalogue.title}`}><CatalogueIcon name={isCopied ? "check" : "share"} /></button>
       </div>
 
       <div className="trueprintCatalogueSheet">
         <h3 id={`${catalogueId}-title`}>{catalogue.title}</h3>
         <p id={`${catalogueId}-description`}>{catalogue.description}</p>
-        <div className="trueprintCatalogueCtaShell">
-          <ArrowFillButton type="button" disabled={isBusy || !hasPdf} onClick={() => detailsSaved ? retryDownload() : setIsFormOpen(true)} label={isBusy ? "Downloading…" : detailsSaved ? "Download Again" : "Download Catalogue"} />
-          <small className="categoryCatalogueMeta" role="status">{statusMessage}</small>
+        <div className="catalogueChips">{catalogueTags.map((tag) => <span key={tag}><i />{tag}</span>)}</div>
+        <div className="catalogueActionArea">
+          <div className="catalogueDocumentMeta"><span><CatalogueIcon name="file" />Catalogue</span><span><CatalogueIcon name="file" />PDF document{catalogue.sizeLabel ? ` • ${catalogue.sizeLabel}` : ""}</span></div>
+          <button className="catalogueDownloadBar" type="button" disabled={isBusy || !hasPdf} onClick={() => detailsSaved ? retryDownload() : setIsFormOpen(true)}>
+            <span className={`catalogueProgressFill${isBusy ? " is-active" : downloadStatus === "completed" ? " is-complete" : ""}`} aria-hidden="true" />
+            <b className="cataloguePdfTile">PDF</b>
+            <span className="catalogueButtonCopy"><strong>{isBusy ? "Downloading…" : detailsSaved ? "Download Again" : "Download Catalogue"}</strong><small>Open / save the PDF catalogue</small></span>
+            <span className="catalogueDownloadCircle">{isBusy ? <i className="catalogueBusy" /> : downloadStatus === "completed" ? <CatalogueIcon name="check" /> : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><g className="catalogueArrow"><path d="M12 4v12M7 11l5 5 5-5" /></g><path className="catalogueTray" d="M5 20h14" /></svg>}</span>
+          </button>
+          <small className="categoryCatalogueMeta" role="status">{downloadStatus === "completed" || downloadError || !hasPdf ? statusMessage : ""}</small>
         </div>
       </div>
 
       <div className={`trueprintCatalogueDrawer${isFormOpen ? " is-open" : ""}`} aria-hidden={!isFormOpen} inert={!isFormOpen ? true : undefined}>
         <button className="trueprintCatalogueDrawerBackdrop" type="button" onClick={closeForm} disabled={isBusy} aria-label="Close catalogue form" />
-        <div className="trueprintCatalogueFormSheet">
+        <div className="trueprintCatalogueFormSheet catalogueClassicForm">
           <button className="trueprintCatalogueFormClose" type="button" onClick={closeForm} disabled={isBusy} aria-label="Close catalogue form"><CatalogueIcon name="close" /></button>
-          <i className="trueprintCatalogueDrag" aria-hidden="true" />
+          <i className="catalogueClassicHandle" aria-hidden="true" />
           <header><h4>Download the TruePrint Catalogue</h4><p>Fill in your details to access the PDF. Like a product? Share its screenshot with us on WhatsApp for customization, availability and the best pricing.</p></header>
           <form onSubmit={handleFormSubmit} noValidate>
             {([ ["name", "text", "Full Name", "user"], ["email", "email", "Work or Personal Email", "mail"], ["phone", "tel", "Mobile Number", "phone"] ] as const).map(([name, type, placeholder, icon]) => (
@@ -235,16 +252,12 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
                 compact
               />
             )}
-            <div className="trueprintCatalogueSubmitShell">
-              <ArrowFillButton
-                type="submit"
-                disabled={isBusy || !hasPdf || (!detailsSaved && !turnstileToken)}
-                label={downloadStatus === "preparing" ? "Preparing PDF…" : downloadStatus === "downloading" ? "Downloading…" : detailsSaved ? "Retry Download" : "Submit & Download"}
-              />
+            <div className="catalogueSubmitArea">
+              <ArrowFillButton type="submit" disabled={isBusy || !hasPdf || (!detailsSaved && !turnstileToken)} label={downloadStatus === "preparing" ? "Preparing PDF…" : downloadStatus === "downloading" ? "Downloading…" : detailsSaved ? "Retry Download" : "Submit & Download"} />
             </div>
             <small className="categoryCatalogueMeta" role="status">{statusMessage}</small>
           </form>
-          <p className="trueprintCataloguePrivacy"><CatalogueIcon name="shield" />Confidential &amp; secure direct PDF delivery</p>
+          <p className="catalogueClassicPrivacy"><CatalogueIcon name="shield" />Confidential &amp; secure direct PDF delivery</p>
         </div>
       </div>
       <div className={`trueprintCatalogueToast${toastMessage ? " is-visible" : ""}`} role="status">{toastMessage}</div>

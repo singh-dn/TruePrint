@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+const whatsappUrl = `https://wa.me/918588829931?text=${encodeURIComponent(
   "Hello TruePrint, I would like to speak with a print expert about a custom requirement.",
 )}`;
 

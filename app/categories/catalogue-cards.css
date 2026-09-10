@@ -1,0 +1,591 @@
+/* The supplied liquid card design, scoped to catalogue cards only. */
+@font-face { font-family: "Catalogue Jakarta"; font-style:normal; font-weight:400 500; font-display:swap; src:url("https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_m07NSg.ttf") format("truetype"); }
+@font-face { font-family: "Catalogue Jakarta"; font-style:normal; font-weight:600 700; font-display:swap; src:url("https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNSg.ttf") format("truetype"); }
+@font-face { font-family: "Catalogue Jakarta"; font-style:normal; font-weight:800 900; font-display:swap; src:url("https://fonts.gstatic.com/s/plusjakartasans/v12/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNSg.ttf") format("truetype"); }
+.diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue {
+  position: relative; isolation: isolate; display: flex; flex-direction: column;
+  height: auto; min-height: 510px; padding: 28px; border-radius: 36px;
+  color: #0f172a; background: linear-gradient(140deg,#ffffffad 0%,#ffffff52 42%,#ffffff85 100%), #d7dce3;
+  border: 1.5px solid #ffffffd9; border-top: 1.8px solid #fffffffa; border-left: 1.8px solid #ffffffe6;
+  backdrop-filter: blur(48px) saturate(220%) brightness(106%);
+  box-shadow: 0 35px 70px -15px #00000073,0 15px 35px -10px #00000038,inset 0 2px 4px #fffffffa,inset 0 0 24px #ffffff59,inset 0 -2px 4px #0000000a;
+}
+.liquidCatalogue[data-theme="sunset"] { --glow-1:#ff5e62; --glow-2:#ff9966; --glow-3:#d93829; }
+.liquidCatalogue[data-theme="aurora"] { --glow-1:#10b981; --glow-2:#14b8a6; --glow-3:#06b6d4; }
+.liquidCatalogue[data-theme="indigo"] { --glow-1:#6366f1; --glow-2:#8b5cf6; --glow-3:#ec4899; }
+.liquidCatalogue[data-theme="cyber"] { --glow-1:#3b82f6; --glow-2:#0ea5e9; --glow-3:#38bdf8; }
+.liquidCatalogue[data-theme="berry"] { --glow-1:#f43f5e; --glow-2:#ec4899; --glow-3:#be185d; }
+.liquidCatalogue[data-theme="gold"] { --glow-1:#f59e0b; --glow-2:#fbbf24; --glow-3:#d97706; }
+.liquidCatalogue[data-theme="mint"] { --glow-1:#84cc16; --glow-2:#10b981; --glow-3:#059669; }
+.liquidCatalogue[data-theme="silver"] { --glow-1:#94a3b8; --glow-2:#64748b; --glow-3:#334155; }
+.catalogueGlows { position:absolute; inset:0; z-index:-2; overflow:hidden; border-radius:inherit; pointer-events:none; }
+.catalogueGlows i { position:absolute; border-radius:50%; filter:blur(90px); opacity:.65; width:440px; height:440px; top:15%; left:20%; background:radial-gradient(circle,var(--glow-1),transparent 70%); animation:catalogueOrb1 14s ease-in-out infinite alternate; }
+.catalogueGlows i:nth-child(2) { width:480px;height:480px;top:30%;left:auto;right:18%;background:radial-gradient(circle,var(--glow-2),transparent 70%);animation:catalogueOrb2 16s ease-in-out infinite alternate; }
+.catalogueGlows i:nth-child(3) { width:360px;height:360px;top:auto;bottom:12%;left:35%;background:radial-gradient(circle,var(--glow-3),transparent 70%);animation:catalogueOrb3 12s ease-in-out infinite alternate; }
+@keyframes catalogueOrb1 { to { transform:translate(60px,-40px) scale(1.15); } }
+@keyframes catalogueOrb2 { to { transform:translate(-70px,50px) scale(1.1); } }
+@keyframes catalogueOrb3 { to { transform:translate(40px,-60px) scale(1.2); } }
+.catalogueGloss { position:absolute;top:-35%;left:-25%;width:150%;height:90%;background:linear-gradient(135deg,#ffffff6b,#ffffff1f 35%,transparent 60%);transform:rotate(-16deg);border-radius:50%;filter:blur(2px);pointer-events:none; }
+.catalogueSheen { position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(800px circle at var(--mouse-x,50%) var(--mouse-y,50%),#ffffff80,transparent 60%);mix-blend-mode:overlay;opacity:.85;transition:opacity .3s ease; }
+.liquidCatalogue .trueprintCatalogueTopbar { position:relative;inset:auto;padding:0;margin-bottom:24px;gap:8px; }
+.liquidCatalogue .trueprintCatalogueBadge { padding:6px 10px;gap:8px;background:#ffffff99;color:#1e293b;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border:1px solid #ffffffcc; }
+.trueprintCatalogueBadge b,.cataloguePdfTile { color:white;background:#c7392c;border-radius:5px;padding:3px 5px;font-size:10px;letter-spacing:.04em; }
+.liquidCatalogue .trueprintCatalogueTopbar > button { width:34px;height:34px;flex-shrink:0;background:#ffffff99;transition:all .2s; }
+.liquidCatalogue .trueprintCatalogueTopbar > button:hover { transform:scale(1.05);background:#fffffff2; }
+.liquidCatalogue .trueprintCatalogueSheet { position:relative;inset:auto;flex:1;display:flex;flex-direction:column;padding:0;min-height:0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none; }
+.liquidCatalogue .trueprintCatalogueSheet::before { display:none; }
+.liquidCatalogue .trueprintCatalogueSheet h3 { font-size:clamp(30px,2.5vw,38px);line-height:1.08;letter-spacing:-.035em;font-weight:900;color:#020617; }
+.liquidCatalogue .trueprintCatalogueSheet > p { font-size:13.5px;line-height:1.55;font-weight:500;color:#334155;margin:14px 0 20px;min-height:0; }
+.catalogueChips { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px; }
+.catalogueChips span { display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:99px;background:#ffffff8c;border:1px solid #ffffffcc;font-size:11px;font-weight:700; }
+.catalogueChips i { width:6px;height:6px;border-radius:50%;background:#f59e0b;animation:cataloguePulse 2s infinite ease-in-out; }
+.catalogueChips span:nth-child(2) i { background:#10b981; }
+@keyframes cataloguePulse { 50% { opacity:.4;transform:scale(.85); } }
+.liquidCatalogue .catalogueActionArea { margin-top:auto; }
+.catalogueDocumentMeta { display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:700;color:#475569;margin-bottom:12px; }
+.catalogueDocumentMeta span { display:flex;align-items:center;gap:5px; }
+.catalogueDocumentMeta svg { width:15px;height:15px; }
+.catalogueDownloadBar { width:100%;display:flex;align-items:center;gap:10px;text-align:left;background:#10141d;color:white;padding:12px;border:1px solid #33415580;border-radius:24px;cursor:pointer;box-shadow:0 10px 25px -4px #0f172a59,0 4px 10px -2px #0f172a33,inset 0 1px 1px #ffffff26;transition:all .25s cubic-bezier(.34,1.56,.64,1); }
+.catalogueDownloadBar:not(:disabled):hover { transform:translateY(-2px);box-shadow:0 16px 32px -6px #0f172a73,0 6px 14px -3px #0f172a40,inset 0 1px 1.5px #ffffff40; }
+.catalogueDownloadBar:not(:disabled):active { transform:translateY(1px) scale(.985); }
+.catalogueDownloadBar:disabled { opacity:.6;cursor:default; }
+.catalogueDownloadBar:focus-visible { outline:3px solid #2563eb;outline-offset:4px; }
+.cataloguePdfTile { width:40px;height:40px;display:grid;place-items:center;flex-shrink:0;border-radius:14px;font-size:12px;box-shadow:inset 0 1px 1.5px #ffffff66; }
+.catalogueButtonCopy { display:flex;flex:1;flex-direction:column;min-width:0; }
+.catalogueButtonCopy strong { font-size:13px;line-height:1.3; }
+.catalogueButtonCopy small { font-size:11px;color:#94a3b8;margin-top:3px; }
+.catalogueDownloadCircle { display:grid;place-items:center;width:36px;height:36px;flex-shrink:0;border-radius:50%;background:white;color:#0f172a; }
+.catalogueDownloadCircle svg { width:18px;height:18px;overflow:visible; }
+.catalogueDownloadBar:hover .catalogueArrow { animation:catalogueArrow 1.15s cubic-bezier(.4,0,.2,1) infinite; }
+.catalogueDownloadBar:hover .catalogueTray { animation:catalogueTray 1.15s ease-in-out infinite;transform-origin:12px 20px; }
+@keyframes catalogueArrow { 0%,100% { transform:translateY(0);opacity:1; }40% { transform:translateY(4.5px);opacity:1; }42% { transform:translateY(6px);opacity:0; }43% { transform:translateY(-6px);opacity:0; }65% { transform:translateY(-1.5px);opacity:1; }82% { transform:translateY(1px);opacity:1; } }
+@keyframes catalogueTray { 40% { transform:scaleX(1.18) translateY(.8px); } }
+.catalogueBusy { width:20px;height:20px;border:3px solid #e2e8f0;border-top-color:#10b981;border-radius:50%;animation:catalogueSpin 1s linear infinite; }
+@keyframes catalogueSpin { to { transform:rotate(360deg); } }
+.liquidCatalogue .categoryCatalogueMeta { font-size:12px;color:#475569; }
+.liquidCatalogue .trueprintCatalogueDrawer { transition:opacity .3s ease; }
+.liquidCatalogue .trueprintCatalogueDrawerBackdrop { display:none; }
+.liquidCatalogue .trueprintCatalogueFormSheet { height:100%;padding:24px;border-radius:inherit;background:#fff;border:1px solid #e2e8f0;overflow-y:auto;box-shadow:0 25px 65px -10px #00000061,0 10px 25px -5px #0000002e;transform:translateY(102%);transition:transform .45s cubic-bezier(.16,1,.3,1); }
+.liquidCatalogue .trueprintCatalogueDrawer.is-open .trueprintCatalogueFormSheet { transform:translateY(0); }
+.liquidCatalogue .trueprintCatalogueFormSheet header { margin-top:18px;text-align:left; }
+.liquidCatalogue .trueprintCatalogueFormSheet header h4 { font-size:22px; }
+.liquidCatalogue .trueprintCatalogueFormSheet header p { font-size:12px;line-height:1.45;margin:8px 0; }
+.liquidCatalogue .trueprintCatalogueFormSheet label { background:#f8fafc;border:1.2px solid #e2e8f0;border-radius:18px; }
+.liquidCatalogue .trueprintCatalogueFormSheet input { font-size:16px; }
+.liquidCatalogue .trueprintCatalogueFormSheet label em { position:static;font-size:11px; }
+.liquidCatalogue .trueprintCatalogueFormSheet label:focus-within { background:#fff;border-color:#0f172a;box-shadow:0 0 0 3px #0f172a14; }
+@media(max-width:600px) { .diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue { padding:28px;min-height:540px;height:auto;border-radius:36px; } }
+@media(prefers-reduced-motion:reduce) { .liquidCatalogue *, .liquidCatalogue *::before { animation:none!important;transition:none!important; } }
+
+/* Isolate the supplied design from the former catalogue and homepage buttons. */
+.liquidCatalogue, .liquidCatalogue button, .liquidCatalogue input, .liquidCatalogue h3, .liquidCatalogue h4 { font-family:"Catalogue Jakarta",sans-serif; }
+.diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue {
+  flex-basis:380px; padding:32px; min-height:0; height:auto; border-radius:40px;
+  background:linear-gradient(140deg,#ffffffa6 0%,#ffffff52 42%,#ffffff85 100%),#71636b;
+  box-shadow:0 8px 20px -14px #00000033,inset 0 2px 4px #fffffffa,inset 0 0 24px #ffffff59;
+}
+.diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue:hover { box-shadow:0 8px 20px -14px #00000033,inset 0 2px 4px #fffffffa,inset 0 0 24px #ffffff59; }
+.liquidCatalogue .trueprintCatalogueTopbar { margin-bottom:20px; }
+.liquidCatalogue .trueprintCatalogueSheet h3 { font-size:38px;font-weight:800;line-height:1.08;letter-spacing:-.035em; }
+.liquidCatalogue .trueprintCatalogueSheet > p { margin:14px 0 20px;font-size:13.5px;font-weight:500;line-height:1.55; }
+.liquidCatalogue .catalogueChips { margin-bottom:20px; }
+.catalogueChips span:nth-child(2) i { background:#0ea5e9; }
+.catalogueChips span:nth-child(3) i { background:#10b981; }
+.liquidCatalogue .catalogueActionArea { margin-top:auto;padding:0;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none; }
+.liquidCatalogue .catalogueDocumentMeta { gap:4px;font-size:11px;white-space:nowrap;margin-bottom:16px; }
+.liquidCatalogue .catalogueDownloadBar { border-radius:24px;background:#10141d;padding:12px;min-height:70px; }
+.liquidCatalogue .cataloguePdfTile { display:grid;background:#c7392c;border:1px solid #f8717166;border-radius:14px;width:44px;height:44px;padding:0;font-size:12px;color:#fff; }
+.liquidCatalogue .catalogueButtonCopy { align-items:flex-start;text-align:left;gap:0;white-space:normal; }
+.liquidCatalogue .catalogueButtonCopy strong { font-size:13px;font-weight:800;letter-spacing:-.03em; }
+.liquidCatalogue .catalogueDownloadCircle { display:grid;width:40px;height:40px; }
+.liquidCatalogue .categoryCatalogueMeta:empty { display:none; }
+.liquidCatalogue .trueprintCatalogueFormSheet { padding:24px;gap:10px; }
+.liquidCatalogue .trueprintCatalogueFormSheet header { margin:0; }
+.liquidCatalogue .trueprintCatalogueFormSheet header h4 { font-weight:800;line-height:1.2; }
+.liquidCatalogue .trueprintCatalogueFormSheet form { flex:initial;margin:0;gap:10px;justify-content:flex-start; }
+.liquidCatalogue .trueprintCatalogueFormSheet label { min-height:40px;padding:10px 14px;box-shadow:inset 0 1px 2px #00000005;flex-wrap:wrap;gap:6px; }
+.liquidCatalogue .trueprintCatalogueFormSheet input { flex:1;font-size:12.5px;font-weight:600; }
+.liquidCatalogue .trueprintCatalogueFormSheet label em { flex-basis:100%; }
+.catalogueFormTop { display:flex;align-items:center;gap:12px;min-height:28px;padding-right:40px; }
+.catalogueFormTop > span { display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border:1px solid #e2e8f0;border-radius:99px;background:#f1f5f9; }
+.catalogueFormTop b { background:#c7392c;color:#fff;border-radius:4px;font-size:9px;padding:2px 4px; }
+.catalogueFormTop > i { width:32px;height:4px;background:#cbd5e1;border-radius:99px; }
+.liquidCatalogue .trueprintCatalogueFormClose { top:24px;right:24px;width:28px;height:28px;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0;box-shadow:none; }
+.catalogueSecurityTag { display:flex;align-items:center;gap:6px;margin:0;padding:6px 10px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;font-size:10px;color:#475569; }
+.catalogueSecurityTag svg { width:14px;height:14px;color:#059669; }
+.liquidCatalogue .catalogueFormSubmit { padding:10px 14px;border-radius:22px;min-height:56px; }
+.liquidCatalogue .catalogueFormSubmit .cataloguePdfTile { width:28px;height:28px;border-radius:9px;font-size:9px; }
+.liquidCatalogue .catalogueFormSubmit .catalogueDownloadCircle { width:32px;height:32px; }
+.liquidCatalogue .catalogueFormSubmit strong { font-size:12.5px; }
+.liquidCatalogue .catalogueFormSubmit small { font-size:10px; }
+.catalogueFormFooter { display:flex;justify-content:space-between;gap:8px;color:#64748b;font-size:10px;padding-top:8px; }
+.catalogueFormFooter > span { display:flex;align-items:center;gap:4px; }
+.catalogueFormFooter i { width:6px;height:6px;border-radius:50%;background:#10b981; }
+.liquidCatalogue .trueprintCatalogueFormSheet {
+  padding:16px 18px; gap:8px; justify-content:flex-start;
+}
+.liquidCatalogue .catalogueFormTop { min-height:26px; }
+.liquidCatalogue .trueprintCatalogueFormClose { top:16px;right:18px; }
+.liquidCatalogue .trueprintCatalogueFormSheet header h4 { font-size:20px; }
+.liquidCatalogue .trueprintCatalogueFormSheet header p { margin:4px 0 0;line-height:1.35; }
+.liquidCatalogue .trueprintCatalogueFormSheet form { gap:8px; }
+.liquidCatalogue .trueprintCatalogueFormSheet label { min-height:38px;padding:8px 12px; }
+.liquidCatalogue .trueprintCatalogueFormSheet .turnstileShell { margin:0;padding:0; }
+/* Let the challenge supply its own height; do not reserve an empty 58px slot. */
+.liquidCatalogue .trueprintCatalogueFormSheet .turnstileWidget { min-height:0; }
+.liquidCatalogue .trueprintCatalogueFormSheet .turnstileMessage { margin:0;font-size:12px;line-height:1.35; }
+.liquidCatalogue .catalogueSecurityTag { padding:5px 8px; }
+.liquidCatalogue .catalogueFormSubmit { min-height:50px;padding:8px 12px; }
+.liquidCatalogue .catalogueFormFooter { padding-top:0; }
+.liquidCatalogue .trueprintCatalogueFormSheet .categoryCatalogueMeta { margin-top:0;line-height:1.3; }
+.liquidCatalogue .trueprintCatalogueFormSheet.catalogueClassicForm {
+  padding:22px 24px 14px; gap:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.82) 50%,rgba(245,248,252,.86));
+  backdrop-filter:blur(38px) saturate(70%); -webkit-backdrop-filter:blur(38px) saturate(70%);
+  box-shadow:inset 0 2px 4px #fff; border:1px solid rgba(255,255,255,.95);
+  font-family:"Avenir Next",Avenir,"Segoe UI",sans-serif;
+}
+.catalogueClassicHandle { display:block;flex-shrink:0;width:42px;height:4px;border-radius:99px;background:#aaa;align-self:center; }
+.liquidCatalogue .catalogueClassicForm header { text-align:center; }
+.liquidCatalogue .catalogueClassicForm header h4 { font-family:Archivo,"Segoe UI",sans-serif;font-size:20px;font-weight:850;line-height:1.12;letter-spacing:-.035em; }
+.liquidCatalogue .catalogueClassicForm header p { font-family:inherit;font-size:10px;line-height:1.45;color:#676862;margin-top:6px; }
+.liquidCatalogue .catalogueClassicForm .trueprintCatalogueFormClose { top:16px;right:16px;width:32px;height:32px;background:rgba(255,255,255,.8);border:0; }
+.liquidCatalogue .catalogueClassicForm form { flex:1;gap:10px;margin-top:12px; }
+.liquidCatalogue .catalogueClassicForm label { min-height:44px;padding:11px 14px;border:1px solid #fff;border-radius:18px;background:rgba(255,255,255,.85);box-shadow:inset 0 1px 2px #fff;flex-shrink:0; }
+.liquidCatalogue .catalogueClassicForm input { font-family:inherit;font-size:13px; }
+.liquidCatalogue .catalogueClassicForm .catalogueSubmitArea { margin-top:auto;padding-top:8px; }
+.liquidCatalogue .catalogueClassicForm .afb { width:100%;min-height:52px;font-family:inherit;font-size:16px;background:#0b0b0a;color:white;box-shadow:0 14px 28px #0002; }
+.catalogueClassicPrivacy { display:flex;align-items:center;justify-content:center;gap:6px;margin:0;color:#676862;font-size:9px;text-align:center; }
+.catalogueClassicPrivacy svg { width:13px;height:13px;flex-shrink:0; }
+@media(max-width:600px) { .liquidCatalogue .catalogueClassicForm input { font-size:16px; } }
+.diaryPage .diaryDownloadSection { background:#fff;border-bottom:0; }
+.diaryPage .diaryDownloadRail { padding-block:12px 28px;background:transparent;border:0;box-shadow:none; }
+.diaryPage .diaryDownloadRailFrame { background:transparent;border:0;box-shadow:none; }
+@media(max-width:600px) {
+  .diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue { padding:28px;min-height:0;flex-basis:auto;border-radius:36px; }
+  .liquidCatalogue .trueprintCatalogueSheet h3 { font-size:34px; }
+  .liquidCatalogue .catalogueDocumentMeta { flex-wrap:wrap;white-space:normal; }
+  .liquidCatalogue .trueprintCatalogueFormSheet input { font-size:16px; }
+}
+
+/* Final card surface: supplied Cyber Edition design, identical for every category. */
+.diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue {
+  --glow-1: #3b82f6;
+  --glow-2: #0ea5e9;
+  --glow-3: #38bdf8;
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 380px;
+  width: 380px;
+  min-height: 0;
+  height: auto;
+  padding: 32px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-top-width: 1.8px;
+  border-top-color: #fff;
+  border-left-width: 1.8px;
+  border-left-color: rgba(255, 255, 255, 0.95);
+  border-radius: 40px;
+  background: linear-gradient(138deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.55) 48%, rgba(255, 255, 255, 0.78) 100%);
+  color: #0f172a;
+  box-shadow:
+    0 25px 50px -15px rgba(15, 23, 42, 0.08),
+    0 10px 25px -6px rgba(15, 23, 42, 0.04),
+    0 0 35px -12px #3b82f6,
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+  -webkit-backdrop-filter: blur(48px) saturate(220%) brightness(106%);
+  backdrop-filter: blur(48px) saturate(220%) brightness(106%);
+}
+.diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue:hover {
+  box-shadow:
+    0 25px 50px -15px rgba(15, 23, 42, 0.08),
+    0 10px 25px -6px rgba(15, 23, 42, 0.04),
+    0 0 35px -12px #3b82f6,
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.liquidCatalogue .catalogueGlows {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.liquidCatalogue .catalogueGlows i {
+  position: absolute;
+  top: 14%;
+  left: 20%;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  filter: blur(105px);
+  opacity: 0.35;
+  animation: cyberCatalogueOrb1 16s ease-in-out infinite alternate;
+}
+.liquidCatalogue .catalogueGlows i:nth-child(2) {
+  top: 28%;
+  right: 18%;
+  bottom: auto;
+  left: auto;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #0ea5e9, transparent 70%);
+  animation: cyberCatalogueOrb2 18s ease-in-out infinite alternate;
+}
+.liquidCatalogue .catalogueGlows i:nth-child(3) {
+  top: auto;
+  right: auto;
+  bottom: 10%;
+  left: 32%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #38bdf8, transparent 70%);
+  animation: cyberCatalogueOrb3 14s ease-in-out infinite alternate;
+}
+@keyframes cyberCatalogueOrb1 {
+  to { transform: translate(50px, -35px) scale(1.12); }
+}
+@keyframes cyberCatalogueOrb2 {
+  to { transform: translate(-60px, 45px) scale(1.08); }
+}
+@keyframes cyberCatalogueOrb3 {
+  to { transform: translate(35px, -50px) scale(1.15); }
+}
+
+.liquidCatalogue .catalogueGloss {
+  position: absolute;
+  z-index: 1;
+  top: -35%;
+  left: -25%;
+  width: 150%;
+  height: 90%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 35%, rgba(255, 255, 255, 0) 60%);
+  filter: blur(2px);
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+.liquidCatalogue .catalogueSheen {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.5), transparent 60%);
+  mix-blend-mode: overlay;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.liquidCatalogue .catalogueAura {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 92% 12%, #3b82f6 0%, transparent 62%),
+    radial-gradient(circle at 12% 82%, #0ea5e9 0%, transparent 58%);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.liquidCatalogue .catalogueCornerGlow {
+  position: absolute;
+  z-index: 1;
+  top: -80px;
+  right: -80px;
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.25);
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.liquidCatalogue .trueprintCatalogueTopbar,
+.liquidCatalogue .trueprintCatalogueSheet {
+  position: relative;
+  z-index: 2;
+}
+.liquidCatalogue .trueprintCatalogueTopbar {
+  inset: auto;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.liquidCatalogue .trueprintCatalogueBadge {
+  min-height: 0;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #1e293b;
+  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.06);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.liquidCatalogue .trueprintCatalogueBadge b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #d93829;
+  color: #fff;
+  box-shadow: none;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+.liquidCatalogue .trueprintCatalogueBadge:hover { transform: none; }
+.liquidCatalogue .trueprintCatalogueTopbar > button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+  color: #334155;
+  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.liquidCatalogue .trueprintCatalogueTopbar > button:hover,
+.liquidCatalogue .trueprintCatalogueTopbar > button:focus-visible {
+  background: #fff;
+  color: #020617;
+  filter: none;
+  transform: scale(1.05);
+}
+.liquidCatalogue .trueprintCatalogueTopbar svg {
+  width: 16px;
+  height: 16px;
+}
+
+.liquidCatalogue .trueprintCatalogueSheet {
+  inset: auto;
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.liquidCatalogue .trueprintCatalogueSheet::before {
+  display: none;
+}
+.liquidCatalogue .trueprintCatalogueSheet h3 {
+  margin: 0;
+  color: #020617;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+.liquidCatalogue .trueprintCatalogueSheet > p {
+  min-height: 0;
+  margin: 14px 0 20px;
+  color: #334155;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+.liquidCatalogue .catalogueChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.liquidCatalogue .catalogueChips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #1e293b;
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 700;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.liquidCatalogue .catalogueChips i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0ea5e9;
+  animation: none;
+}
+.liquidCatalogue .catalogueChips span:nth-child(2) i { background: #3b82f6; }
+.liquidCatalogue .catalogueChips span:nth-child(3) i { background: #14b8a6; }
+
+.liquidCatalogue .catalogueActionArea {
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.liquidCatalogue .catalogueDocumentMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-inline: 2px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.liquidCatalogue .catalogueDocumentMeta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.liquidCatalogue .catalogueDocumentMeta svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #64748b;
+}
+.liquidCatalogue .catalogueDownloadBar {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  overflow: hidden;
+  padding: 12px;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 24px;
+  background: #10141d;
+  color: #fff;
+  box-shadow:
+    0 10px 25px -4px rgba(15, 23, 42, 0.35),
+    0 4px 10px -2px rgba(15, 23, 42, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.liquidCatalogue .catalogueDownloadBar:not(:disabled):hover {
+  box-shadow:
+    0 16px 32px -6px rgba(15, 23, 42, 0.45),
+    0 6px 14px -3px rgba(15, 23, 42, 0.25),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+.liquidCatalogue .catalogueDownloadBar:not(:disabled):active {
+  transform: translateY(1px) scale(0.985);
+}
+.liquidCatalogue .catalogueDownloadBar > :not(.catalogueProgressFill) {
+  position: relative;
+  z-index: 1;
+}
+.liquidCatalogue .catalogueProgressFill {
+  position: absolute;
+  z-index: 0;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.9), rgba(59, 130, 246, 0.9));
+  pointer-events: none;
+  transition: width 0.8s ease;
+}
+.liquidCatalogue .catalogueProgressFill.is-active { width: 72%; }
+.liquidCatalogue .catalogueProgressFill.is-complete { width: 100%; }
+.liquidCatalogue .cataloguePdfTile {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  border-radius: 14px;
+  background: #c7392c;
+  color: #fff;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+.liquidCatalogue .catalogueButtonCopy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  text-align: left;
+  white-space: normal;
+}
+.liquidCatalogue .catalogueButtonCopy strong {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+.liquidCatalogue .catalogueDownloadBar:hover .catalogueButtonCopy strong { color: #bae6fd; }
+.liquidCatalogue .catalogueButtonCopy small {
+  margin-top: 2px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.liquidCatalogue .catalogueDownloadCircle {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+.liquidCatalogue .catalogueDownloadBar:not(:disabled):hover .catalogueDownloadCircle {
+  background: #f1f5f9;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .diaryDownloadCard.trueprintCatalogueCard.liquidCatalogue {
+    flex: 0 0 min(350px, calc(100vw - 32px));
+    width: min(350px, calc(100vw - 32px));
+    padding: 28px;
+    border-radius: 36px;
+  }
+  .liquidCatalogue .trueprintCatalogueSheet h3 { font-size: 34px; }
+  .liquidCatalogue .trueprintCatalogueSheet > p { font-size: 13px; margin-bottom: 16px; }
+  .liquidCatalogue .catalogueChips { gap: 6px; }
+  .liquidCatalogue .catalogueDocumentMeta { flex-wrap: wrap; font-size: 11px; white-space: normal; }
+  .liquidCatalogue .catalogueDownloadBar { padding: 10px; border-radius: 22px; }
+  .liquidCatalogue .cataloguePdfTile { width: 40px; height: 40px; }
+  .liquidCatalogue .catalogueDownloadCircle { width: 36px; height: 36px; }
+  .liquidCatalogue .catalogueButtonCopy strong { font-size: 12px; }
+  .liquidCatalogue .catalogueButtonCopy small { font-size: 10.5px; }
+}

@@ -7,6 +7,7 @@ import ScrollHeader from "../scroll-header";
 import { ArrowFillLink } from "../arrow-fill-button";
 import { buildPageMetadata, SITE_URL } from "../seo";
 import ContactEnquiryForm from "../contact/contact-enquiry-form";
+import HomeWhatsApp from "../home-whatsapp";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact TruePrint | Corporate Printing, Gifting & Merchandise",
@@ -76,6 +77,7 @@ export default function ContactPage() {
           </header>
         </div>
         <ScrollHeader />
+        <HomeWhatsApp />
         <div className="headerRule" />
 
         <section className="contactHero" id="contact-form" aria-labelledby="contact-page-title">

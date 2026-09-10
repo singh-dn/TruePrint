@@ -129,7 +129,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
           </div>
         </section>
 
-        <section className="diaryJourney" aria-labelledby="diary-journey-title">
+        <section className="diaryJourney homeJourney" aria-labelledby="diary-journey-title">
           <span className="diaryJourneyGhost" aria-hidden="true">ROUTE</span>
           <header className="diaryJourneyHeader">
             <p><span /> From idea to object</p>
