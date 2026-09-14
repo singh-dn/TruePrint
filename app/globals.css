@@ -9422,11 +9422,6 @@ summary {
   overflow: hidden;
   padding: clamp(104px, 10vw, 164px) 0 clamp(82px, 8vw, 128px);
   background-color: #fff;
-  background-image:
-    radial-gradient(ellipse 52% 48% at 50% 0, rgba(8, 3, 42, 0.7), transparent 100%),
-    linear-gradient(180deg, #20229c 0%, #2136b2 10%, #274fc6 20%, #4b86e7 35%, #84bcf9 55%, #b0dcff 78%, #d5edff 90%, #fff 100%);
-  background-repeat: no-repeat;
-  background-size: 100% clamp(470px, 43vw, 620px);
   color: var(--gallery-ink);
 }
 
@@ -9480,7 +9475,7 @@ summary {
   text-align: center;
 }
 
-.categoryGalleryHead > p:first-child {
+.categoryGalleryTitleSurface > p {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9493,7 +9488,7 @@ summary {
   text-transform: uppercase;
 }
 
-.categoryGalleryHead > p:first-child span {
+.categoryGalleryTitleSurface > p span {
   width: 26px;
   height: 1px;
   background: rgba(16, 18, 22, 0.42);

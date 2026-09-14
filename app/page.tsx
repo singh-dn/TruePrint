@@ -78,7 +78,7 @@ export default function Home() {
             <nav className="desktopNav" aria-label="Primary navigation">
               <a className="active" href="#top">Home</a>
               <CategoryMegaMenu />
-              <a href="#about">About</a>
+              <a href="/about-us">About</a>
               <a href="/contact-trueprint">Contact</a>
             </nav>
 
@@ -96,7 +96,7 @@ export default function Home() {
                   <MobileCategoryMenu />
                   <a href="#services">Services</a>
                   <a href="#materials">Materials</a>
-                  <a href="#about">About</a>
+                  <a href="/about-us">About</a>
                   <a href="/contact-trueprint">Contact</a>
                 </div>
                 <ArrowFillLink className="mobileTalkButton" href="/contact-trueprint" label="Talk to expert" />
@@ -118,7 +118,7 @@ export default function Home() {
               <p className="eyebrow"><span /> FROM IDEA TO DELIVERY</p>
               <h1>Everything branded,<br />made simpler.</h1>
               <p className="heroIntro">
-                One sourcing partner for corporate merchandise, gifting, printing and custom products — tailored around your exact requirement.
+                TruePrint is your sourcing partner for custom branded merchandise, corporate gifting and business printing — tailored around your requirement.
               </p>
               <ArrowFillLink className="primaryButton" href="#services" label="Explore TruePrint" />
 
@@ -588,8 +588,8 @@ export default function Home() {
             <p className="possibilityKicker">ONE SOURCE. ENDLESS POSSIBILITIES.</p>
             <h2 id="possibility-title">Bring the idea.<br /><span>We&apos;ll make it tangible.</span></h2>
             <p>
-              From a first business card to a complete launch system, TruePrint
-              brings every printed piece together with precision.
+              Print everything your brand needs—from business cards to corporate stationery.
+              TruePrint brings your printed pieces together with precision.
             </p>
             <div className="possibilityActions">
               <ArrowFillLink className="possibilityPrimary" href="#contact" label="Start a project" />
@@ -653,7 +653,7 @@ export default function Home() {
             <div className="footerTop">
             <div className="footerIntro">
               <AnimatedWordmark className="footerBrand" />
-              <p>Premium print, precise colour and thoughtful finishing, made to be remembered.</p>
+              <p>TruePrint at thetrueprint.com — custom branded products, corporate gifting and printing, made to be remembered.</p>
             </div>
 
             <nav className="footerColumn" aria-label="Print services">
@@ -675,6 +675,7 @@ export default function Home() {
 
             <nav className="footerColumn" aria-label="TruePrint website links">
               <p>Studio</p>
+              <a href="/about-us">About TruePrint</a>
               <a href="#projects">Selected work</a>
               <a href="#materials">Materials</a>
               <a href="#services">Services</a>

@@ -1,8 +1,8 @@
 export const categoryProductCopy = {
   diaries: {
-    headline: "Not just a diary.",
+    headline: "Custom branded diaries.",
     emphasis: "A branded everyday essential.",
-    lead: "A TruePrint diary can be built around the people who will use it, the purpose it serves and the impression your brand wants to create.",
+    lead: "TruePrint sources custom branded diaries, corporate notebooks and planners with your company logo, built around the people who use them and the impression you want to create.",
     supporting: "Choose from our existing range or share a completely different reference. We can help source, customize and produce diaries around your preferred format, material, branding and budget.",
     benefits: [
       {
@@ -32,9 +32,9 @@ export const categoryProductCopy = {
     imageAlt: "Open premium diary showing a considered lay-flat page design",
   },
   "visiting-cards": {
-    headline: "Not just a card.",
+    headline: "Custom visiting cards.",
     emphasis: "A piece of your brand.",
-    lead: "A TruePrint visiting card can be built around the impression you want to leave - understated, premium, bold or highly distinctive.",
+    lead: "TruePrint creates custom visiting cards and business cards around your company branding and the impression you want to leave - understated, premium, bold or distinctive.",
     supporting: "Choose from different papers, thicknesses, sizes, edge treatments and finishing techniques, or share a reference and we will help source a close-fit solution.",
     benefits: [
       {
@@ -64,9 +64,9 @@ export const categoryProductCopy = {
     imageAlt: "Premium printed details representing custom business cards",
   },
   pens: {
-    headline: "More than a writing tool.",
+    headline: "Custom branded pens.",
     emphasis: "A brand in hand.",
-    lead: "Pens are one of the simplest branded products - and one of the most frequently used. The right choice can feel practical, premium or gift-worthy.",
+    lead: "Custom branded pens keep your company logo in everyday use. TruePrint helps you choose corporate pens with logo printing or engraving for teams, events and client gifts.",
     supporting: "TruePrint can source across everyday, executive and specialty pen styles, then customize the product around your logo, finish, audience and budget.",
     benefits: [
       {
@@ -96,9 +96,9 @@ export const categoryProductCopy = {
     imageAlt: "Branded corporate pens arranged for everyday business use",
   },
   "joining-kits": {
-    headline: "Not just merchandise.",
+    headline: "Employee welcome kits.",
     emphasis: "Your employee's first brand experience.",
-    lead: "A joining kit brings several products together into one moment. We help make that moment feel coordinated, useful and unmistakably yours.",
+    lead: "TruePrint brings custom employee joining kits and branded welcome kits together for new hires, combining useful products into a coordinated first experience of your brand.",
     supporting: "Choose from ready ideas or build from scratch. TruePrint can source the individual products, customize them, coordinate the artwork and bring the complete kit together.",
     benefits: [
       {
@@ -128,9 +128,9 @@ export const categoryProductCopy = {
     imageAlt: "Coordinated branded products arranged as an employee joining kit",
   },
   "tech-products": {
-    headline: "Not just gadgets.",
+    headline: "Custom branded tech.",
     emphasis: "Branded utility people keep.",
-    lead: "The strongest tech merchandise solves a small everyday problem. It earns regular use - and keeps your brand present without feeling forced.",
+    lead: "Custom branded tech products and corporate gadgets solve everyday problems. TruePrint helps select practical tech gifts that earn regular use and keep your brand present.",
     supporting: "TruePrint can source across power banks, chargers, speakers, earbuds, cables, stands, desk accessories and other tech products, with branding and packaging matched to your requirement.",
     benefits: [
       {
@@ -160,9 +160,9 @@ export const categoryProductCopy = {
     imageAlt: "Custom corporate technology products and branded accessories",
   },
   bags: {
-    headline: "Built to carry more",
-    emphasis: "than essentials.",
-    lead: "A good bag becomes part of someone's routine. That makes material, construction, comfort and branding just as important as the logo itself.",
+    headline: "Custom branded bags.",
+    emphasis: "Built for everyday use.",
+    lead: "Custom branded bags become part of someone's routine. TruePrint helps source corporate backpacks, laptop bags and totes with your logo, balancing comfort, construction and branding.",
     supporting: "TruePrint can source across backpacks, laptop bags, totes, duffels, sling bags, travel bags and other formats, then customize the right option around your use case.",
     benefits: [
       {
@@ -192,9 +192,9 @@ export const categoryProductCopy = {
     imageAlt: "Custom corporate bag designed for everyday work and travel",
   },
   drinkware: {
-    headline: "Made to be used.",
+    headline: "Custom branded bottles.",
     emphasis: "Branded to be remembered.",
-    lead: "Drinkware works best when it becomes part of someone's routine. That means choosing the right capacity, material, lid, finish and feel before adding the logo.",
+    lead: "TruePrint sources custom branded bottles, mugs and corporate drinkware with your company logo. Choose the right capacity, material, lid and finish for everyday use or gifting.",
     supporting: "TruePrint can source bottles, flasks, mugs, tumblers and other drinkware across different price points and styles, then customize the selection around your brand.",
     benefits: [
       {
@@ -224,9 +224,9 @@ export const categoryProductCopy = {
     imageAlt: "Custom branded bottles and corporate drinkware",
   },
   "t-shirts": {
-    headline: "More than",
-    emphasis: "a print on fabric.",
-    lead: "A branded T-shirt should still be something people want to wear. Fabric, fit, construction, colour and print quality all shape the final result.",
+    headline: "Custom branded T-shirts.",
+    emphasis: "More than a print on fabric.",
+    lead: "Custom branded T-shirts and corporate polo shirts should be comfortable to wear. TruePrint helps match fabric, fit, colour and logo printing or embroidery to your team.",
     supporting: "TruePrint can source and customize T-shirts across corporate, event, promotional and premium requirements, with different fabrics, fits and branding methods.",
     benefits: [
       {
@@ -257,4 +257,3 @@ export const categoryProductCopy = {
   },
 
 } as const;
-

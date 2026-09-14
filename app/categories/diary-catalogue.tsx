@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import { categoryCatalogues, type Catalogue } from "./catalogue-config";
 import { downloadCataloguePdf } from "./download-catalogue";
 import TurnstileWidget from "../turnstile-widget";
@@ -39,6 +40,7 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
   const [downloadError, setDownloadError] = useState("");
   const [detailsSaved, setDetailsSaved] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showDownloadReady, setShowDownloadReady] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
@@ -48,6 +50,11 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
   const requestInFlight = useRef(false);
   const downloadAbort = useRef<AbortController | null>(null);
   const isBusy = downloadStatus === "preparing" || downloadStatus === "downloading";
+  useEffect(() => {
+    if (!showDownloadReady) return;
+    const timer = window.setTimeout(() => setShowDownloadReady(false), 6000);
+    return () => window.clearTimeout(timer);
+  }, [showDownloadReady]);
   const hasPdf = /^https:\/\//.test(catalogue.url);
   const catalogueTags = catalogue.tags ?? [catalogue.badge, "Corporate Gifting", "Custom Branding"];
   const pdfMeta = catalogue.sizeLabel ? `PDF · ${catalogue.sizeLabel}` : "PDF";
@@ -67,6 +74,7 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
   }, []);
 
   const startDownload = async () => {
+    setShowDownloadReady(false);
     setDownloadError("");
     setDownloadStatus("downloading");
     const controller = new AbortController();
@@ -74,6 +82,7 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
     try {
       await downloadCataloguePdf(catalogue.url, catalogue.fileName, controller.signal);
       setDownloadStatus("completed");
+      setShowDownloadReady(true);
       setIsFormOpen(false);
       setFormData({ name: "", email: "", phone: "" });
     } catch (error) {
@@ -261,6 +270,9 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
         </div>
       </div>
       <div className={`trueprintCatalogueToast${toastMessage ? " is-visible" : ""}`} role="status">{toastMessage}</div>
+      {(isBusy || showDownloadReady) && createPortal(<div className="catalogueDownloadNotice" role="status" aria-live="polite" aria-atomic="true">
+        {isBusy ? <><i className="catalogueBusy" aria-hidden="true" /><span><strong>{downloadStatus === "preparing" ? "Preparing your catalogue…" : "Your PDF is downloading…"}</strong><span>Please keep this page open. Your browser will offer the file once it’s ready.</span></span></> : showDownloadReady ? <><CatalogueIcon name="check" /><span><strong>PDF ready—check your downloads.</strong><span>If your browser asks, choose Save to keep the catalogue.</span></span></> : null}
+      </div>, document.body)}
     </article>
   );
 }

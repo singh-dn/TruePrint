@@ -152,14 +152,16 @@ export default function CategoryGallery({ category }: { category: GalleryCategor
 
   return (
     <section ref={sectionRef} className={`categoryGallery categoryGallery--${category}${visible ? " is-visible" : ""}`} aria-labelledby={`${category}-gallery-title`}>
-      <span className="categoryGalleryGhost" aria-hidden="true">GALLERY</span>
       <div className="categoryGalleryInner">
         <header className="categoryGalleryHead">
+          <div className="categoryGalleryTitleSurface">
+          <span className="categoryGalleryGhost" aria-hidden="true">GALLERY</span>
           <p><span /> {profile.eyebrow}</p>
           <h2 id={`${category}-gallery-title`}>
             <span>{profile.titleLines[0]}</span><br />
             <span>{profile.titleLines[1]}</span>
           </h2>
+          </div>
           <p>{profile.lede}</p>
         </header>
 

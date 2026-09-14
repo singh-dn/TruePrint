@@ -57,6 +57,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             <nav className="categoryDesktopNav" aria-label={`${categoryName} page navigation`}>
               <a href="/">Home page</a>
               <CategoryMegaMenu />
+              <a href="/about-us">About</a>
               <a href="/contact-trueprint">Contact us</a>
               <ArrowFillLink className="categoryHeaderCta" href="#diary-catalogue" label="Download catalogue" />
             </nav>
@@ -68,6 +69,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
                 <div className="mobileMenuLinks">
                   <a href="/">Home page</a>
                   <MobileCategoryMenu />
+                  <a href="/about-us">About</a>
                   <a href="/contact-trueprint">Contact us</a>
                 </div>
                 <ArrowFillLink className="mobileTalkButton" href="#diary-catalogue" label="Download catalogue" />

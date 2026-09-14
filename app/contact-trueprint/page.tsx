@@ -50,7 +50,7 @@ export default function ContactPage() {
               <CategoryMegaMenu />
               <a href="/#services">Services</a>
               <a href="/#materials">Materials</a>
-              <a href="/#about">About</a>
+              <a href="/about-us">About</a>
               <a className="active" href="#contact-form">Contact</a>
             </nav>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <MobileCategoryMenu />
                   <a href="/#services">Services</a>
                   <a href="/#materials">Materials</a>
-                  <a href="/#about">About</a>
+                  <a href="/about-us">About</a>
                   <a href="#contact-form">Contact</a>
                 </div>
                 <ArrowFillLink className="mobileTalkButton" href="#contact-form" label="Talk to expert" />

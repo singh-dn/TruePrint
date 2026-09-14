@@ -77,3 +77,64 @@
 @keyframes trueprintBrandSheen { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @media (max-width: 380px) { .siteHeader .navWordmark { font-size: 1rem; min-width: 0; } }
 @media (prefers-reduced-motion: reduce) { .navWordmarkBrand { animation: none; } }
+
+/* Keep the mobile category header independent of the animated glass cards.
+   Nested backdrop sampling can leave rectangular repaint artifacts on mobile. */
+@media (max-width: 1080px) {
+  .categorySiteHeader,
+  .categorySiteHeader.isScrolled {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    will-change: auto;
+    isolation: isolate;
+  }
+
+  .categorySiteHeader.isScrolled {
+    background: #fff;
+  }
+}
+/* Gallery colour ends with its title, independent of text wrapping. */
+.categoryGalleryTitleSurface { position: relative; isolation: isolate; display: flow-root; }
+.categoryGalleryTitleSurface::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: calc(-1 * clamp(104px, 10vw, 164px));
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 52% 70% at 50% 0, rgba(8, 3, 42, 0.7), transparent 100%),
+    linear-gradient(180deg, #20229c 0%, #2136b2 10%, #274fc6 20%, #4b86e7 35%, #84bcf9 55%, #b0dcff 78%, #d5edff 90%, #fff 100%);
+}
+.categoryGalleryTitleSurface .categoryGalleryGhost { top: calc(-1 * clamp(104px, 10vw, 164px) + 0.07em); z-index: -1; }
+.categoryGalleryTitleSurface > p { color: #172b4b; }
+.categoryGalleryTitleSurface > p span { background: rgba(23, 43, 75, 0.42); }
+@media (max-width: 640px) {
+  .categoryGalleryTitleSurface::before { top: -88px; }
+  .categoryGalleryTitleSurface .categoryGalleryGhost { top: calc(-88px + 0.18em); }
+}
+
+.catalogueDownloadNotice {
+  position: fixed;
+  z-index: 150;
+  bottom: max(104px, calc(env(safe-area-inset-bottom) + 88px));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(440px, calc(100% - 32px));
+  padding: 16px 20px;
+  border: 1px solid #404957;
+  border-radius: 20px;
+  background: #111827;
+  color: #fff;
+  box-shadow: 0 12px 40px #0003;
+  pointer-events: none;
+}
+.catalogueDownloadNotice > svg, .catalogueDownloadNotice > i { width: 24px; height: 24px; flex-shrink: 0; }
+.catalogueDownloadNotice strong { display: block; font-size: 16px; line-height: 1.4; }
+.catalogueDownloadNotice span span { display: block; margin-top: 4px; color: #e2e8f0; font-size: 14px; line-height: 1.45; }
