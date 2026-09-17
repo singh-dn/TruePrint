@@ -30,7 +30,7 @@ export async function POST(request: Request): Promise<Response> {
     if (name.length < 2) errors.name = "Please enter your full name.";
     if (!isEmail(email)) errors.email = "Please enter a valid email address.";
     if (!isPhone(phone)) errors.phone = "Please enter a valid phone number.";
-    if (requirement.length < 10) errors.requirement = "Please add a little more detail about your requirement.";
+    if (!requirement) errors.requirement = "Please tell us what you need.";
     assertValid(errors);
     await verifyTurnstileToken(request, body.turnstile_token, TURNSTILE_ACTIONS.contactEnquiry);
 

@@ -112,14 +112,16 @@ test("validates form fields before any database request", async () => {
       new Request("http://localhost/api/forms/contact-enquiry", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name: "", email: "bad", phone: "1", requirement: "short" }),
+        body: JSON.stringify({ name: "", email: "bad", phone: "1", requirement: " " }),
       }),
       runtimeEnv(),
       executionContext,
     );
     assert.equal(response.status, 422);
     assert.equal(externalRequests, 0);
-    assert.equal((await response.json()).code, "validation_error");
+    const body = await response.json();
+    assert.equal(body.code, "validation_error");
+    assert.equal(body.fields.requirement, "Please tell us what you need.");
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -136,7 +138,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
         name: "Test Person",
         email: "test@example.com",
         phone: "+91 9876543210",
-        requirement: "Five hundred custom welcome kits",
+        requirement: "x",
         source_page: "/",
       }),
     }),
@@ -147,7 +149,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
         name: "Test Person",
         email: "test@example.com",
         phone: "+91 9876543210",
-        requirement: "Five hundred custom welcome kits",
+        requirement: "x",
         source_page: "/contact-trueprint",
       }),
     }),
@@ -172,7 +174,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
   sourceForm.set("email", "test@example.com");
   sourceForm.set("phone", "+91 9876543210");
   sourceForm.set("organization", "Example Company");
-  sourceForm.set("requirement", "A custom object based on our reference photograph");
+  sourceForm.set("requirement", "x");
   sourceForm.set("source_page", "/");
   cases.push(new Request("http://localhost/api/forms/source-request", { method: "POST", body: sourceForm }));
 
