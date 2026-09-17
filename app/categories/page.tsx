@@ -156,13 +156,13 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
 
         <DiaryCatalogue categoryKey={categoryKey} />
 
-        <DiaryFaq />
-
         {(categoryKey === "diaries" || categoryKey === "joining-kits") && (
           <CategoryGallery category={categoryKey} />
         )}
 
         <ClientStories showFaq={false} />
+
+        <DiaryFaq />
 
         <footer className="siteFooter diaryFooter" id="about">
           <section className="closingCta" aria-labelledby="diary-closing-title">
