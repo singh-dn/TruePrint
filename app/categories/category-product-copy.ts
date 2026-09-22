@@ -60,7 +60,7 @@ export const categoryProductCopy = {
     ],
     captionLabel: "MADE TO INTRODUCE",
     caption: "From first handshake to follow-up.",
-    image: "/trueprint-detail.png",
+    image: "/trueprint-detail.lossless.webp",
     imageAlt: "Premium printed details representing custom business cards",
   },
   pens: {

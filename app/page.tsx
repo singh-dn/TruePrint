@@ -1,3 +1,4 @@
+import SiteImage from "./site-image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import QuoteForm from "./quote-form";
@@ -28,34 +29,34 @@ const serviceRows = [
   {
     direction: "left",
     items: [
-      { mark: "card", name: "Visiting Cards", tone: "midnight" },
-      { mark: "diary", name: "Diaries", tone: "copper" },
-      { mark: "pen", name: "Pens", tone: "ink" },
-      { mark: "gift", name: "Joining Kits", tone: "paper" },
-      { mark: "tech", name: "Tech Products", tone: "midnight" },
-      { mark: "bag", name: "Bags", tone: "copper" },
+      { mark: "card", name: "Visiting Cards", tone: "periwinkle" },
+      { mark: "diary", name: "Diaries", tone: "lilac" },
+      { mark: "pen", name: "Pens", tone: "mint" },
+      { mark: "gift", name: "Joining Kits", tone: "honey" },
+      { mark: "tech", name: "Tech Products", tone: "rose" },
+      { mark: "bag", name: "Bags", tone: "sky" },
     ],
   },
   {
     direction: "right",
     items: [
-      { mark: "bottle", name: "Drinkware", tone: "copper" },
-      { mark: "shirt", name: "T-Shirts", tone: "midnight" },
-      { mark: "hoodie", name: "Hoodies", tone: "paper" },
-      { mark: "cap", name: "Caps", tone: "ink" },
-      { mark: "keychain", name: "Keychains", tone: "copper" },
-      { mark: "lanyard", name: "Lanyards", tone: "midnight" },
+      { mark: "bottle", name: "Drinkware", tone: "lavender" },
+      { mark: "shirt", name: "T-Shirts", tone: "powder" },
+      { mark: "hoodie", name: "Hoodies", tone: "pistachio" },
+      { mark: "cap", name: "Caps", tone: "aqua" },
+      { mark: "keychain", name: "Keychains", tone: "blush" },
+      { mark: "lanyard", name: "Lanyards", tone: "apricot" },
     ],
   },
   {
     direction: "leftFast",
     items: [
-      { mark: "trophy", name: "Awards & Trophies", tone: "paper" },
-      { mark: "phone", name: "Phone Stands", tone: "ink" },
-      { mark: "notebook", name: "Notebooks", tone: "midnight" },
-      { mark: "box", name: "Gift Boxes", tone: "copper" },
-      { mark: "sticker", name: "Labels & Stickers", tone: "paper" },
-      { mark: "umbrella", name: "Umbrellas", tone: "ink" },
+      { mark: "trophy", name: "Awards & Trophies", tone: "butter" },
+      { mark: "phone", name: "Phone Stands", tone: "seafoam" },
+      { mark: "notebook", name: "Notebooks", tone: "orchid" },
+      { mark: "box", name: "Gift Boxes", tone: "peach" },
+      { mark: "sticker", name: "Labels & Stickers", tone: "coral" },
+      { mark: "umbrella", name: "Umbrellas", tone: "ice" },
     ],
   },
 ] as const;
@@ -123,8 +124,11 @@ export default function Home() {
               <ArrowFillLink className="primaryButton" href="#services" label="Explore TruePrint" />
 
               <article className="featuredProduct">
-                <img
-                  src="/trueprint-detail.png"
+                <SiteImage
+                  src="/trueprint-detail.lossless.webp"
+                  sizes="(max-width: 680px) 138px, 205px"
+                  loading="eager"
+                  fetchPriority="high"
                   alt="Close-up of premium printed business cards and paper stocks"
                 />
                 <div>
@@ -168,13 +172,13 @@ export default function Home() {
                     {[
                       { name: "Delhi Police", image: "/Delhi-Police-Logo-optimized.webp" },
                       { name: "Haryana Police", image: "/haryana-police-logo-optimized.webp" },
-                      { name: "FCRF Summit", image: "/FCRF 2026 logo.png" },
+                      { name: "FCRF Summit", image: "/FCRF 2026 logo.lossless.webp" },
                       { name: "Binary Global", image: "/binary.svg" },
                       { name: "4n6 Care", image: "/4n6-logo (1)-optimized.webp" },
                       { name: "IBM", image: "/Netapp_logo-optimized.webp" },
                     ].map((brand) => (
                       <span className="clientShowcaseLogo" key={brand.name}>
-                        <img src={brand.image} alt={`${brand.name} placeholder logo`} loading="lazy" decoding="async" />
+                        <SiteImage src={brand.image} sizes="240px" alt={`${brand.name} placeholder logo`} loading="lazy" decoding="async" />
                       </span>
                     ))}
                   </div>
@@ -212,7 +216,7 @@ export default function Home() {
           <div className="projectsGrid">
             <a className="projectCard projectApparel" href="/custom-corporate-t-shirts">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/t-shirt.webp"
                   alt="Custom T-shirts and polo shirts from the TruePrint apparel collection"
                   loading="lazy"
@@ -239,7 +243,7 @@ export default function Home() {
 
             <a className="projectCard projectDrinkware" href="/custom-corporate-drinkware">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/trueprint-drinkware.jpeg"
                   alt="Custom bottles, mugs and tumblers from the TruePrint drinkware range"
                   loading="lazy"
@@ -266,7 +270,7 @@ export default function Home() {
 
             <a className="projectCard projectJoiningKits" href="/custom-employee-joining-kits">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/joining-kit.webp"
                   alt="Premium TruePrint employee joining kit with coordinated branded products"
                   loading="lazy"
@@ -293,7 +297,7 @@ export default function Home() {
 
             <a className="projectCard projectDiaries" href="/custom-corporate-diaries">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/diary.webp"
                   alt="Premium TruePrint custom diary with pen and detailed cover finishes"
                   loading="lazy"
@@ -320,7 +324,7 @@ export default function Home() {
 
             <a className="projectCard projectBags" href="/custom-corporate-bags">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/bags.webp"
                   alt="Custom backpacks, office bags and travel luggage from TruePrint"
                   loading="lazy"
@@ -347,7 +351,7 @@ export default function Home() {
 
             <a className="projectCard projectTech" href="/custom-corporate-tech-products">
               <span className="projectImage">
-                <img
+                <SiteImage
                   src="/tech.webp"
                   alt="Useful branded technology products and desk accessories from TruePrint"
                   loading="lazy"
@@ -389,8 +393,8 @@ export default function Home() {
 
           <div className="materialsShowcase">
             <figure className="stockGallery">
-              <img
-                src="/trueprint-hero.png"
+              <SiteImage
+                src="/trueprint-hero.lossless.webp"
                 alt="Premium paper stocks, folded card and presentation box in warm neutral tones"
               />
               <span className="imageIndex" aria-hidden="true">01 / 04</span>
@@ -635,7 +639,7 @@ export default function Home() {
               </article>
 
               <figure className="closingImage">
-                <img
+                <SiteImage
                   src="/all.webp"
                   alt="Premium printed packaging arranged in a tactile brand collection"
                   loading="lazy"

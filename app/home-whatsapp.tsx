@@ -10,9 +10,9 @@ export default function HomeWhatsApp() {
   const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setShowHint(false), 2000);
+    const timer = window.setTimeout(() => setShowHint(!showHint), showHint ? 5000 : 10000);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [showHint]);
 
   return (
     <aside className="homeWhatsappFloat" aria-label="WhatsApp support">

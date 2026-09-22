@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./brand.css";
 import { SITE_URL, homeSeo } from "./seo";
+import SmoothScroll from "./SmoothScroll";
+import ImageReadiness from "./image-readiness";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -58,6 +60,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <SmoothScroll />
+        <ImageReadiness />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "./site-image";
+
+
 import { useCallback, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowFillLink } from "./arrow-fill-button";
 
@@ -30,7 +33,7 @@ const stages = [
       "Collect references, samples and practical requirements.",
       "Define quantity, timing and the intended experience.",
     ],
-    image: "/trueprint-detail.png",
+    image: "/trueprint-detail.lossless.webp",
     alt: "Close-up review of premium printed cards and tactile paper samples",
   },
   {
@@ -46,7 +49,7 @@ const stages = [
       "Balance impact, quantity, timing and production value.",
       "Create one clear route from artwork to delivery.",
     ],
-    image: "/trueprint-hero.png",
+    image: "/trueprint-hero.lossless.webp",
     alt: "Premium paper stocks arranged for planning a print project",
   },
   {
@@ -78,7 +81,7 @@ const stages = [
       "Review stock and finish samples where they matter.",
       "Approve one controlled version for production.",
     ],
-    image: "/trueprint-detail.png",
+    image: "/trueprint-detail.lossless.webp",
     alt: "Detailed print proof showing premium colour and finishing quality",
   },
   {
@@ -94,7 +97,7 @@ const stages = [
       "Control colour, registration and consistency on press.",
       "Keep the approved character across the complete run.",
     ],
-    image: "/trueprint-hero.png",
+    image: "/trueprint-hero.lossless.webp",
     alt: "Tactile stationery and premium printed pieces after production",
   },
   {
@@ -210,7 +213,7 @@ export default function PrintProcess() {
       >
         <div className="processPanelContent" key={stage.id}>
           <figure className="processVisual">
-            <img src={stage.image} alt={stage.alt} loading="lazy" decoding="async" />
+            <SiteImage src={stage.image} alt={stage.alt} loading="lazy" decoding="async" />
             <span className="processVisualShade" aria-hidden="true" />
             <figcaption>
               <span>{stage.step} / 07</span>

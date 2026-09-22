@@ -1,3 +1,4 @@
+import SiteImage from "../site-image";
 import AnimatedWordmark from "../animated-wordmark";
 import FooterProductIndex from "../footer-product-index";
 import { ArrowFillLink } from "../arrow-fill-button";
@@ -18,7 +19,7 @@ export default function AboutFooter() {
               </article>
 
               <figure className="closingImage">
-                <img
+                <SiteImage
                   src="/all.webp"
                   alt="Premium printed packaging arranged in a tactile brand collection"
                   loading="lazy"

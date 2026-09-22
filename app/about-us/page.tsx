@@ -1,3 +1,4 @@
+import SiteImage from "../site-image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimatedWordmark from "../animated-wordmark";
@@ -25,7 +26,7 @@ const principles = [
 const showcaseLogos = [
   { name: "Delhi Police", image: "/Delhi-Police-Logo-optimized.webp" },
   { name: "Haryana Police", image: "/haryana-police-logo-optimized.webp" },
-  { name: "FCRF Summit", image: "/FCRF 2026 logo.png" },
+  { name: "FCRF Summit", image: "/FCRF 2026 logo.lossless.webp" },
   { name: "Binary Global", image: "/binary.svg" },
   { name: "4n6 Care", image: "/4n6-logo (1)-optimized.webp" },
   { name: "NetApp", image: "/Netapp_logo-optimized.webp" },
@@ -88,7 +89,7 @@ export default function AboutPage() {
         <section className="aboutLogoShowcase" aria-label="Professional affiliations showcase">
           <p className="aboutEyebrow">PROFESSIONALS ACROSS ORGANISATIONS</p>
           <div className="aboutLogoRails">
-            {[showcaseLogos, [...showcaseLogos.slice(3), ...showcaseLogos.slice(0, 3)]].map((row, index) => <div className={`aboutLogoRail aboutLogoRail${index}`} key={index}><div className="aboutLogoTrack">{[0, 1].map(copy => <div className="aboutLogoGroup" key={copy} aria-hidden={copy === 1 || index === 1 ? true : undefined}>{row.map(brand => <span className="aboutLogoItem" key={brand.name}><img src={brand.image} alt={brand.name} loading="lazy" decoding="async" /></span>)}</div>)}</div></div>)}
+            {[showcaseLogos, [...showcaseLogos.slice(3), ...showcaseLogos.slice(0, 3)]].map((row, index) => <div className={`aboutLogoRail aboutLogoRail${index}`} key={index}><div className="aboutLogoTrack">{[0, 1].map(copy => <div className="aboutLogoGroup" key={copy} aria-hidden={copy === 1 || index === 1 ? true : undefined}>{row.map(brand => <span className="aboutLogoItem" key={brand.name}><SiteImage src={brand.image} sizes="240px" alt={brand.name} loading="lazy" decoding="async" /></span>)}</div>)}</div></div>)}
           </div>
           <p className="aboutLogoNote">Organisations are shown as employers or affiliations of individual professionals who have engaged with TruePrint. No partnership or endorsement is implied.</p>
         </section>

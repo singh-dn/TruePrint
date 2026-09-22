@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "./site-image";
+
+
 import {
   useCallback,
   useRef,
@@ -19,7 +22,7 @@ const possibilities = [
     eyebrow: "Category 01",
     title: "Visiting Cards",
     copy: "Premium stocks, precise printing and considered finishes for a confident first introduction.",
-    image: "/trueprint-detail.png",
+    image: "/trueprint-detail.lossless.webp",
     action: "Explore visiting cards",
     href: "/custom-visiting-cards",
   },
@@ -200,7 +203,7 @@ export default function PrintExperiments() {
                 type="button"
               >
                 <span className="labImage">
-                  <img src={possibility.image} alt="" loading="lazy" decoding="async" draggable="false" />
+                  <SiteImage src={possibility.image} alt="" loading="lazy" decoding="async" draggable="false" />
                   <span aria-hidden="true" />
                 </span>
                 <span className="labCardBody">

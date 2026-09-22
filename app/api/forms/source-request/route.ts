@@ -33,10 +33,10 @@ export async function POST(request: Request): Promise<Response> {
     const referenceFile = fileValue instanceof File && fileValue.size > 0 ? fileValue : null;
     const errors: FieldErrors = {};
 
-    if (name.length < 2) errors.name = "Please enter your full name.";
+    if (!name) errors.name = "Please enter your full name.";
     if (!isEmail(email)) errors.email = "Please enter a valid email address.";
     if (!isPhone(phone)) errors.phone = "Please enter a valid phone number.";
-    if (organization.length < 2) errors.organization = "Please enter your organization.";
+    if (!organization) errors.organization = "Please enter your organization.";
     if (!requirement) errors.requirement = "Please tell us what you are searching for.";
     assertValid(errors);
     await verifyTurnstileToken(

@@ -1,3 +1,4 @@
+import SiteImage from "../site-image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import AnimatedWordmark from "../animated-wordmark";
@@ -137,7 +138,7 @@ export default function ContactPage() {
               </article>
 
               <figure className="closingImage">
-                <img src="/all-2.webp" alt="Premium printed packaging arranged in a tactile brand collection" loading="lazy" decoding="async" />
+                <SiteImage src="/all-2.webp" alt="Premium printed packaging arranged in a tactile brand collection" loading="lazy" decoding="async" />
                 <figcaption><span>Made tangible</span><small>Packaging · stationery · editorial</small></figcaption>
               </figure>
             </div>

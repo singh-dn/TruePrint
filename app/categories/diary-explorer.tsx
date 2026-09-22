@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "../site-image";
+
+
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 
 const diaryCards = [
@@ -301,7 +304,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(0)}
             >
-              <img src={diaryCards[0].image} alt={diaryCards[0].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[0].image} alt={diaryCards[0].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[0].category}</small><strong>{diaryCards[0].title}</strong></span>
             </button>
             <button
@@ -309,7 +312,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(1)}
             >
-              <img src={diaryCards[1].image} alt={diaryCards[1].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[1].image} alt={diaryCards[1].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[1].category}</small><strong>{diaryCards[1].title}</strong></span>
             </button>
           </div>
@@ -321,7 +324,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(2)}
             >
-              <img src={diaryCards[2].image} alt={diaryCards[2].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[2].image} alt={diaryCards[2].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[2].category}</small><strong>{diaryCards[2].title}</strong></span>
             </button>
           </div>
@@ -346,7 +349,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(3)}
             >
-              <img src={diaryCards[3].image} alt={diaryCards[3].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[3].image} alt={diaryCards[3].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[3].category}</small><strong>{diaryCards[3].title}</strong></span>
             </button>
             <a className="diaryCapsuleCta" href="/#contact">
@@ -360,7 +363,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(4)}
             >
-              <img src={diaryCards[4].image} alt={diaryCards[4].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[4].image} alt={diaryCards[4].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[4].category}</small><strong>{diaryCards[4].title}</strong></span>
             </button>
           </div>
@@ -371,7 +374,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(5)}
             >
-              <img src={diaryCards[5].image} alt={diaryCards[5].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[5].image} alt={diaryCards[5].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[5].category}</small><strong>{diaryCards[5].title}</strong></span>
             </button>
             <button
@@ -379,7 +382,7 @@ export default function DiaryExplorer() {
               type="button"
               onClick={() => setSelectedCard(6)}
             >
-              <img src={diaryCards[6].image} alt={diaryCards[6].alt} loading="lazy" decoding="async" />
+              <SiteImage src={diaryCards[6].image} alt={diaryCards[6].alt} loading="lazy" decoding="async" />
               <span><small>{diaryCards[6].category}</small><strong>{diaryCards[6].title}</strong></span>
             </button>
           </div>
@@ -400,7 +403,7 @@ export default function DiaryExplorer() {
               <CloseIcon />
             </button>
             <figure className={`diaryCapsuleModalVisual ${diaryToneClasses[card.tone]}`}>
-              <img src={card.image} alt={card.alt} />
+              <SiteImage src={card.image} alt={card.alt} />
               <figcaption>Palette: {card.palette}</figcaption>
             </figure>
             <div className="diaryCapsuleModalCopy">
@@ -432,7 +435,7 @@ export default function DiaryExplorer() {
               <CloseIcon />
             </button>
             <figure>
-              <img src="/diary-hero.webp" alt="Premium TruePrint diary in production-ready detail" />
+              <SiteImage src="/diary-hero.webp" alt="Premium TruePrint diary in production-ready detail" />
               <span aria-hidden="true"><i /></span>
             </figure>
             <div>

@@ -16,6 +16,8 @@ export default function ScrollHeader() {
 
     let frame = 0;
     let materialsThreshold = Number.POSITIVE_INFINITY;
+    let previousScrolled: boolean | undefined;
+    let previousMaterialsActive: boolean | undefined;
 
     const measureSections = () => {
       materialsThreshold = materials
@@ -28,7 +30,13 @@ export default function ScrollHeader() {
       const scrollPosition = window.scrollY;
       const materialsActive = scrollPosition >= materialsThreshold;
 
-      header.classList.toggle("isScrolled", scrollPosition > SCROLL_THRESHOLD);
+      const scrolled = scrollPosition > SCROLL_THRESHOLD;
+      if (scrolled !== previousScrolled) {
+        header.classList.toggle("isScrolled", scrolled);
+        previousScrolled = scrolled;
+      }
+      if (materialsActive === previousMaterialsActive) return;
+      previousMaterialsActive = materialsActive;
       homeLinks.forEach((link) => {
         link.classList.toggle("active", !materialsActive);
       });

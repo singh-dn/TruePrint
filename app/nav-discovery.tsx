@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "./site-image";
+
+
 import { useMemo, useRef, useState, type FocusEvent, type FormEvent } from "react";
 import BrandMark from "./brand-mark";
 
@@ -159,11 +162,11 @@ export function CategoryMegaMenu() {
           {productCategories.slice(4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
         <a className="categoryMegaFeature" href="/custom-corporate-diaries">
-          <img src="/diary-hero.webp" alt="TruePrint diary collection" />
+          <SiteImage src="/diary-hero.webp" alt="TruePrint diary collection" />
           <span>Explore diaries <b>↗</b></span>
         </a>
         <a className="categoryMegaFeature" href="/contact-trueprint">
-          <img src="/trueprint-packaging.webp" alt="TruePrint custom gifting and packaging" />
+          <SiteImage src="/trueprint-packaging.webp" alt="TruePrint custom gifting and packaging" />
           <span>Custom projects <b>↗</b></span>
         </a>
       </div>

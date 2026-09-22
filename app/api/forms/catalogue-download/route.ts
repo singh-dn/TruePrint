@@ -31,7 +31,7 @@ export async function POST(request: Request): Promise<Response> {
     const table = resolveCatalogueDownloadTable(categoryKey);
     const errors: FieldErrors = {};
 
-    if (name.length < 2) errors.name = "Please enter your full name.";
+    if (!name) errors.name = "Please enter your full name.";
     if (!isEmail(email)) errors.email = "Please enter a valid email address.";
     if (!isPhone(phone)) errors.phone = "Please enter a valid phone number.";
     if (!table) errors.category_key = "A valid catalogue category is required.";

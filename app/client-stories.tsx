@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "./site-image";
+
+
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import ProjectFaq from "./project-faq";
 
@@ -76,7 +79,7 @@ const stories = [
 const brands = [
   { name: "Delhi Police", image: "/Delhi-Police-Logo-optimized.webp", colour: "#e5edff" },
   { name: "Haryana Police", image: "/haryana-police-logo-optimized.webp", colour: "#e9e5fa" },
-  { name: "FCRF Summit", image: "/FCRF 2026 logo.png", colour: "#f5ddd8" },
+  { name: "FCRF Summit", image: "/FCRF 2026 logo.lossless.webp", colour: "#f5ddd8" },
   { name: "Binary Global", image: "/binary.svg", colour: "#dceee2" },
   { name: "4n6", image: "/4n6-logo (1)-optimized.webp", colour: "#faedcb" },
   { name: "IBM", image: "/Netapp_logo-optimized.webp", colour: "#dcedf2" },
@@ -146,7 +149,7 @@ export default function ClientStories({ showFaq = true }: { showFaq?: boolean })
                 }}
                 key={brand.name}
               >
-                <img src={brand.image} alt="" draggable={false} />
+                <SiteImage src={brand.image} alt="" draggable={false} />
               </button>
             ))}
           </div>
@@ -165,7 +168,7 @@ export default function ClientStories({ showFaq = true }: { showFaq?: boolean })
           </div>
 
           <figure>
-            <img src={active.image} alt={active.alt} loading="lazy" decoding="async" />
+            <SiteImage src={active.image} alt={active.alt} loading="lazy" decoding="async" />
             <span className="clientStoryImageShade" aria-hidden="true" />
             <figcaption>
               <div className="clientStoryMetric">

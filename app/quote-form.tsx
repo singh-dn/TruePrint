@@ -205,7 +205,7 @@ export default function QuoteForm() {
 
           <div className="formActions">
             <label className="consentCheck">
-              <input type="checkbox" name="consent" value="true" required />
+              <input type="checkbox" name="consent" value="true" defaultChecked required />
               <span>I agree to be contacted by TruePrint regarding this requirement.</span>
             </label>
             <ArrowFillButton className="formSubmit" label={isSubmitting ? "Submitting…" : "Submit Requirement"} type="submit" disabled={isSubmitting} />

@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "../site-image";
+
+
 import { useState, type CSSProperties } from "react";
 import { ArrowFillLink } from "../arrow-fill-button";
 
@@ -76,15 +79,15 @@ const heroThemes = {
 
     frames: [
       {
-        image: "https://picsum.photos/seed/visiting-card-1/900/900",
+        image: "/images/visiting-card-1-5016ef086949.jpg",
         alt: "Premium visiting card presentation",
       },
       {
-        image: "https://picsum.photos/seed/visiting-card-2/900/900",
+        image: "/images/visiting-card-2-7e3be720910b.jpg",
         alt: "Detailed visiting card presentation",
       },
       {
-        image: "https://picsum.photos/seed/visiting-card-3/900/900",
+        image: "/images/visiting-card-3-7c564dc3ba6d.jpg",
         alt: "Custom visiting card presentation",
       },
     ],
@@ -593,8 +596,11 @@ export default function DiaryHeroShowcase({
                 index === active ? "true" : undefined
               }
             >
-              <img
+              <SiteImage
                 src={frame.image}
+                sizes="(max-width: 680px) 78vw, (max-width: 1180px) 55vw, 520px"
+                loading="eager"
+                fetchPriority={index === active ? "high" : "low"}
                 alt={`${option.name}: ${frame.alt}`}
                 draggable="false"
               />

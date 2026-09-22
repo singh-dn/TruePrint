@@ -23,6 +23,10 @@
   box-sizing: border-box;
 }
 
+html.wheelSmoothing {
+  scroll-behavior: auto !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
@@ -736,6 +740,7 @@ summary {
 
 .formStage {
   position: relative;
+  display: grid;
   width: min(90%, 680px);
   height: auto;
   min-width: 0;
@@ -786,8 +791,9 @@ summary {
 .quotePanel {
   position: relative;
   z-index: 2;
-  height: 100%;
-  min-height: 100%;
+  height: auto;
+  min-height: 0;
+  align-self: stretch;
   padding: 28px 32px 20px 80px;
   overflow: hidden;
   border-radius: 36px;
@@ -1025,6 +1031,13 @@ summary {
 .formVerificationRow .formActions {
   flex: 0 0 auto;
   margin-top: 0;
+}
+
+/* Keep both steps' controls at the same bottom edge of the intake panel. */
+.quoteForm > .formVerificationRow,
+.quoteForm > .formActions {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .formContinueActions {
@@ -1920,7 +1933,7 @@ summary {
   bottom: -2px;
   width: 84px;
   height: 84px;
-  border-radius: 50%;
+  border-radius: 50% 50% 0 50%;
   background: #fff;
   pointer-events: none;
 }
@@ -4814,6 +4827,7 @@ summary {
 
 .serviceMark {
   --glass-rgb: 55, 115, 235;
+  --glass-ink: #174897;
   width: clamp(56px, 5vw, 76px);
   height: clamp(56px, 5vw, 76px);
   display: grid;
@@ -4828,14 +4842,48 @@ summary {
   box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.95), inset 0 -2px 5px rgba(var(--glass-rgb), 0.16), 0 6px 14px rgba(var(--glass-rgb), 0.13);
   -webkit-backdrop-filter: blur(14px) saturate(1.6);
   backdrop-filter: blur(14px) saturate(1.6);
+  color: var(--glass-ink);
 }
 
-.serviceMarkmidnight { --glass-rgb: 55, 115, 235; color: #174897; }
-.serviceMarkcopper { --glass-rgb: 154, 80, 220; color: #642793; }
-.serviceMarkink { --glass-rgb: 20, 177, 149; color: #065f55; }
-.serviceMarkpaper { --glass-rgb: 240, 176, 35; color: #7b4909; }
-.serviceToken:nth-child(5) .serviceMark { --glass-rgb: 235, 92, 139; color: #9b244f; }
-.serviceToken:nth-child(6) .serviceMark { --glass-rgb: 239, 119, 53; color: #923909; }
+.serviceMark::before {
+  content: "";
+  position: absolute;
+  inset: 1px 1px 46% 1px;
+  border-radius: 18px 18px 50% 50%;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.16));
+  opacity: 0.76;
+  pointer-events: none;
+}
+.serviceMark::after {
+  content: "";
+  position: absolute;
+  width: 38%;
+  height: 38%;
+  right: -8%;
+  bottom: -7%;
+  border-radius: 50%;
+  background: rgba(var(--glass-rgb), 0.24);
+  filter: blur(7px);
+  pointer-events: none;
+}
+.serviceMarkperiwinkle { --glass-rgb: 104, 151, 244; --glass-ink: #2454a3; }
+.serviceMarklilac { --glass-rgb: 181, 120, 235; --glass-ink: #7233a5; }
+.serviceMarkmint { --glass-rgb: 77, 202, 177; --glass-ink: #087469; }
+.serviceMarkhoney { --glass-rgb: 247, 194, 79; --glass-ink: #8a570b; }
+.serviceMarkrose { --glass-rgb: 242, 126, 164; --glass-ink: #a32956; }
+.serviceMarksky { --glass-rgb: 91, 187, 235; --glass-ink: #176a91; }
+.serviceMarklavender { --glass-rgb: 164, 116, 232; --glass-ink: #66369b; }
+.serviceMarkpowder { --glass-rgb: 101, 156, 245; --glass-ink: #2556a4; }
+.serviceMarkpistachio { --glass-rgb: 151, 205, 119; --glass-ink: #477326; }
+.serviceMarkaqua { --glass-rgb: 66, 198, 189; --glass-ink: #08736d; }
+.serviceMarkblush { --glass-rgb: 244, 132, 170; --glass-ink: #a42b58; }
+.serviceMarkapricot { --glass-rgb: 245, 151, 98; --glass-ink: #9a450f; }
+.serviceMarkbutter { --glass-rgb: 246, 197, 83; --glass-ink: #87570a; }
+.serviceMarkseafoam { --glass-rgb: 75, 199, 176; --glass-ink: #087269; }
+.serviceMarkorchid { --glass-rgb: 199, 114, 216; --glass-ink: #813593; }
+.serviceMarkpeach { --glass-rgb: 246, 160, 121; --glass-ink: #994319; }
+.serviceMarkcoral { --glass-rgb: 244, 123, 143; --glass-ink: #9f2d48; }
+.serviceMarkice { --glass-rgb: 91, 192, 222; --glass-ink: #176d87; }
 .serviceMark svg { position: relative; display: block; width: 48%; height: 48%; }
 
 .closingCta {
@@ -5374,8 +5422,8 @@ summary {
   .roundCta { left: -64px; top: calc(78% - 64px); width: 128px; height: 128px; }
   .roundCta > span { width: 74px; height: 74px; }
   .quotePanel {
-    height: 100%;
-    min-height: 100%;
+    height: auto;
+    min-height: 0;
     padding: 28px 28px 22px 68px;
     -webkit-mask: radial-gradient(circle 64px at 0 78%, transparent 0 62px, #000 64px);
     mask: radial-gradient(circle 64px at 0 78%, transparent 0 62px, #000 64px);
@@ -8999,15 +9047,14 @@ summary {
   box-shadow: 0 16px 42px rgba(0, 0, 0, 0.25);
   font-size: 0.78rem;
   line-height: 1.42;
-  animation: homeWhatsappHint 2s ease both;
+  animation: homeWhatsappHint 0.2s ease both;
 }
 .homeWhatsappHint strong { color: #fff; font-weight: 740; }
 .homeWhatsappHint::after { content: ""; position: absolute; top: 100%; right: 25px; border: 7px solid transparent; border-top-color: #0b0b0a; }
 
 @keyframes homeWhatsappHint {
-  0% { opacity: 0; transform: translateY(8px) scale(0.97); }
-  12%, 76% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(5px) scale(0.98); }
+  from { transform: translateY(8px) scale(0.97); }
+  to { transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 680px) {

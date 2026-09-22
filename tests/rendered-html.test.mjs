@@ -19,6 +19,26 @@ const executionContext = {
   passThroughOnException() {},
 };
 
+test("first-screen images are responsive and prioritized without eagerly fetching offscreen video", async () => {
+  const worker = await loadWorker();
+  for (const path of ["/", "/custom-corporate-diaries", "/custom-visiting-cards"]) {
+    const response = await worker.fetch(new Request(`http://localhost${path}`), runtimeEnv(), executionContext);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const images = html.match(/<img\b[^>]*>/g) ?? [];
+    const priority = images.filter(tag => /fetchPriority="high"/i.test(tag));
+    assert.ok(priority.length > 0, path);
+    assert.ok(priority.every(tag => /loading="eager"/.test(tag)), path);
+    assert.ok(images.some(tag => /srcSet="[^\"]+\s\d+w/i.test(tag)), path);
+    if (path !== "/custom-visiting-cards") {
+      assert.ok(priority.some(tag => /srcSet="[^\"]+\s\d+w/i.test(tag)), path);
+    }
+    assert.ok(images.some(tag => /loading="lazy"/.test(tag)), path);
+    assert.ok(!(html.match(/<video\b[^>]*>/g) ?? []).some(tag => /src="\/videos\/print-craft-hd.mp4"/.test(tag)), path);
+    if (path === "/custom-visiting-cards") assert.ok(!images.some(tag => tag.includes("picsum.photos")));
+  }
+});
+
 test("rejects malformed and oversized bodies without external requests", async () => {
   const worker = await loadWorker();
   const originalFetch = globalThis.fetch;
@@ -127,7 +147,7 @@ test("validates form fields before any database request", async () => {
   }
 });
 
-test("every lead endpoint rejects a missing Turnstile token", async () => {
+test("every lead endpoint accepts single-letter text while still requiring Turnstile", async () => {
   const worker = await loadWorker();
   const env = runtimeEnv({ TURNSTILE_SECRET_KEY: "test-secret" });
   const cases = [
@@ -135,7 +155,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        name: "Test Person",
+        name: "A",
         email: "test@example.com",
         phone: "+91 9876543210",
         requirement: "x",
@@ -146,7 +166,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        name: "Test Person",
+        name: "A",
         email: "test@example.com",
         phone: "+91 9876543210",
         requirement: "x",
@@ -157,7 +177,7 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        name: "Test Person",
+        name: "A",
         email: "test@example.com",
         phone: "+91 9876543210",
         category_key: "diaries",
@@ -170,10 +190,10 @@ test("every lead endpoint rejects a missing Turnstile token", async () => {
   ];
 
   const sourceForm = new FormData();
-  sourceForm.set("name", "Test Person");
+  sourceForm.set("name", "A");
   sourceForm.set("email", "test@example.com");
   sourceForm.set("phone", "+91 9876543210");
-  sourceForm.set("organization", "Example Company");
+  sourceForm.set("organization", "B");
   sourceForm.set("requirement", "x");
   sourceForm.set("source_page", "/");
   cases.push(new Request("http://localhost/api/forms/source-request", { method: "POST", body: sourceForm }));
@@ -227,11 +247,11 @@ test("verified sourcing request uploads its photo and inserts a dedicated record
 
   try {
     const form = new FormData();
-    form.set("name", "Test Person");
+    form.set("name", "A");
     form.set("email", "test@example.com");
     form.set("phone", "+91 9876543210");
-    form.set("organization", "Example Company");
-    form.set("requirement", "Please source a custom object based on this photograph.");
+    form.set("organization", "B");
+    form.set("requirement", "x");
     form.set("source_page", "/");
     form.set("turnstile_token", "verified-token");
     form.set("reference", new File([new Uint8Array([1, 2, 3])], "reference.png", { type: "image/png" }));
@@ -247,7 +267,9 @@ test("verified sourcing request uploads its photo and inserts a dedicated record
     assert.equal(calls.length, 3);
 
     const inserted = JSON.parse(calls[2].init.body);
-    assert.equal(inserted.requirement, "Please source a custom object based on this photograph.");
+    assert.equal(inserted.name, "A");
+    assert.equal(inserted.organization, "B");
+    assert.equal(inserted.requirement, "x");
     assert.equal(inserted.reference_file_name, "reference.png");
     assert.equal(inserted.reference_file_type, "image/png");
     assert.equal(inserted.reference_file_size, 3);

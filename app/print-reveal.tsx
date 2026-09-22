@@ -10,7 +10,7 @@ const smoothstep = (start: number, end: number, value: number) => {
 };
 
 const REVEAL_VIDEO_SRC =
-  "https://fcrf.in/assets/video/V-932.mp4";
+  "/videos/trueprint-film-hd.mp4";
 
 const PlayIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -107,9 +107,18 @@ export default function PrintReveal() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let frame = 0;
+    let previousProgress = -1;
+    let previousWidth = -1;
+    let previousViewBox = "";
 
     const applyProgress = (progress: number) => {
       const width = stage.clientWidth;
+      const viewBoxKey = mask.getAttribute("viewBox") || "";
+      // Avoid repainting the SVG mask on every swipe when its reveal is unchanged.
+      if (progress === previousProgress && width === previousWidth && viewBoxKey === previousViewBox) return;
+      previousProgress = progress;
+      previousWidth = width;
+      previousViewBox = viewBoxKey;
       const zoomTarget = width < 640 ? 22 : 18;
       const easedZoom = progress * progress * (2.2 - 1.2 * progress);
       const maskScale = 1 + easedZoom * zoomTarget;

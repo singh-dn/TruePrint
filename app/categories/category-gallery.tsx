@@ -1,5 +1,8 @@
 "use client";
 
+import SiteImage from "../site-image";
+
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties, KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
 
@@ -33,7 +36,7 @@ const galleryProfiles: Record<GalleryCategory, GalleryProfile> = {
       { title: "Open to planning", context: "Planner layout", src: "/diary-planner.webp", alt: "Open TruePrint diary showing a practical planner layout" },
       { title: "A lighter format", context: "Softcover diary", src: "/diary-softcover.webp", alt: "Flexible softcover TruePrint diary" },
       { title: "Executive detail", context: "Editorial finish", src: "/trueprint-editorial.webp", alt: "Premium editorial print details suitable for executive diaries" },
-      { title: "Brand in the details", context: "Foil and print", src: "/trueprint-detail.png", alt: "Close-up of refined TruePrint branding and finishing" },
+      { title: "Brand in the details", context: "Foil and print", src: "/trueprint-detail.lossless.webp", alt: "Close-up of refined TruePrint branding and finishing" },
       { title: "Made for presentation", context: "Gift packaging", src: "/trueprint-packaging.webp", alt: "TruePrint presentation packaging for a premium diary gift" },
       { title: "A complete collection", context: "Branded diaries", src: "/trueprint-diaries.jpeg", alt: "Collection of branded TruePrint diaries" },
       { title: "Plans that stay clear", context: "Inside pages", src: "/diary-planner.webp", alt: "Detailed planner pages inside a TruePrint diary" },
@@ -52,7 +55,7 @@ const galleryProfiles: Record<GalleryCategory, GalleryProfile> = {
       { title: "Made for the team", context: "Branded apparel", src: "/trueprint-apparel.jpeg", alt: "Branded apparel included in a TruePrint joining kit" },
       { title: "Useful from day one", context: "Tech products", src: "/trueprint-tech-products.jpeg", alt: "Branded technology products for an employee joining kit" },
       { title: "Carry the brand forward", context: "Custom bags", src: "/trueprint-bags.jpeg", alt: "Custom branded bag for a TruePrint joining kit" },
-      { title: "Details that connect", context: "Printed essentials", src: "/trueprint-detail.png", alt: "Close-up of coordinated TruePrint branded details" },
+      { title: "Details that connect", context: "Printed essentials", src: "/trueprint-detail.lossless.webp", alt: "Close-up of coordinated TruePrint branded details" },
       { title: "Everyday essentials", context: "Drinkware", src: "/trueprint-drinkware.jpeg", alt: "Branded drinkware for a TruePrint employee joining kit" },
       { title: "One coordinated system", context: "Kit collection", src: "/trueprint-joining-kits.jpeg", alt: "Coordinated collection of TruePrint joining kit products" },
       { title: "Packed and ready", context: "Final presentation", src: "/trueprint-packaging.webp", alt: "Finished TruePrint joining kit packed for delivery" },
@@ -217,7 +220,7 @@ export default function CategoryGallery({ category }: { category: GalleryCategor
                   }}
                   key={`${category}-${item.title}`}
                 >
-                  <img src={item.src} alt={item.alt} loading="lazy" draggable="false" />
+                  <SiteImage src={item.src} alt={item.alt} loading="lazy" draggable="false" />
                 </button>
               );
             })}

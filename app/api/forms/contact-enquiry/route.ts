@@ -27,7 +27,7 @@ export async function POST(request: Request): Promise<Response> {
     const requirement = readText(body.requirement, 3000);
     const errors: FieldErrors = {};
 
-    if (name.length < 2) errors.name = "Please enter your full name.";
+    if (!name) errors.name = "Please enter your full name.";
     if (!isEmail(email)) errors.email = "Please enter a valid email address.";
     if (!isPhone(phone)) errors.phone = "Please enter a valid phone number.";
     if (!requirement) errors.requirement = "Please tell us what you need.";

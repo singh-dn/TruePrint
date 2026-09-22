@@ -1,3 +1,4 @@
+import SiteImage from "../site-image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import ClientStories from "../client-stories";
@@ -112,7 +113,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             </div>
 
             <figure className="diaryFoundationVisual">
-  <img src={productCopy.image} alt={productCopy.imageAlt} loading="lazy" decoding="async"/>
+  <SiteImage src={productCopy.image} alt={productCopy.imageAlt} loading="lazy" decoding="async"/>
               <figcaption>
                 <span>{productCopy.captionLabel}</span>
                 <strong>{productCopy.caption}</strong>
@@ -178,7 +179,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
               </article>
 
               <figure className="closingImage">
-                <img
+                <SiteImage
                   src="/all-2.webp"
                   alt="Premium printed packaging arranged in a tactile brand collection"
                   loading="lazy"

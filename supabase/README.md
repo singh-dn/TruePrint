@@ -24,11 +24,13 @@ Optional homepage reference files are stored in the private `trueprint-requireme
 
 1. Create or open your Supabase project.
 2. Open the Supabase SQL Editor.
-3. Run the SQL files in numerical order from `001` through `012`.
+3. Run the SQL files in numerical order from `001` through `013`.
 4. Add the values listed in `.env.example` to the hosting provider's server environment.
 5. Build and start the website using the commands in the root `README.md`.
 
 ## Required server settings
+
+For existing databases that already ran `001`–`012`, run `sql/013_allow_short_form_text.sql` once in the SQL Editor. Deploying website code does not apply database migrations. This migration removes the old two-character name/organisation and ten-character requirement limits across every form table; required fields must still be nonblank. It preserves existing records, upper limits, email/phone checks and security policies.
 
 - `SUPABASE_URL`: the project URL shown in Supabase project settings.
 - `SUPABASE_SERVICE_ROLE_KEY`: the server-only service role key. Never expose it through a `NEXT_PUBLIC_` variable.
