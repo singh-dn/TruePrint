@@ -625,7 +625,7 @@ export default function Home() {
 
         <ClientStories />
 
-        <footer className="siteFooter" id="about">
+        <footer className="siteFooter homeSiteFooter" id="about">
           <section className="closingCta" aria-labelledby="closing-title">
             <span className="closingGlow" aria-hidden="true" />
             <div className="closingGrid">

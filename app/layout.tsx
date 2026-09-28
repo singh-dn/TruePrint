@@ -4,6 +4,7 @@ import "./brand.css";
 import { SITE_URL, homeSeo } from "./seo";
 import SmoothScroll from "./SmoothScroll";
 import ImageReadiness from "./image-readiness";
+import BackToTop from "./back-to-top";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body>
         <SmoothScroll />
         <ImageReadiness />
+        <BackToTop />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

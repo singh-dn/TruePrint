@@ -49,8 +49,6 @@ export default function ContactPage() {
             <nav className="desktopNav" aria-label="Primary navigation">
               <a href="/">Home</a>
               <CategoryMegaMenu />
-              <a href="/#services">Services</a>
-              <a href="/#materials">Materials</a>
               <a href="/about-us">About</a>
               <a className="active" href="#contact-form">Contact</a>
             </nav>

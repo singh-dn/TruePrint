@@ -81,7 +81,7 @@ function AnimatedWord({ effect, text }: Pick<WordState, "effect" | "text">) {
   );
 }
 
-export default function AnimatedWordmark({ className = "", href = "#top" }: { className?: string; href?: string }) {
+export default function AnimatedWordmark({ className = "", href = "/" }: { className?: string; href?: string }) {
   const [current, setCurrent] = useState<WordState>({ effect: "slide", key: 0, text: words[0] });
   const [leaving, setLeaving] = useState<WordState | null>(null);
   const [rotatorWidth, setRotatorWidth] = useState(0);

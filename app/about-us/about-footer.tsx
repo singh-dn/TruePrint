@@ -3,9 +3,9 @@ import AnimatedWordmark from "../animated-wordmark";
 import FooterProductIndex from "../footer-product-index";
 import { ArrowFillLink } from "../arrow-fill-button";
 
-export default function AboutFooter() {
+export default function AboutFooter({ isAboutPage = true }: { isAboutPage?: boolean }) {
   return (
-        <footer className="siteFooter" id="about-footer">
+        <footer className={isAboutPage ? "siteFooter aboutSiteFooter" : "siteFooter"} id="about-footer">
           <section className="closingCta" aria-labelledby="closing-title">
             <span className="closingGlow" aria-hidden="true" />
             <div className="closingGrid">
@@ -59,7 +59,7 @@ export default function AboutFooter() {
 
             <nav className="footerColumn" aria-label="TruePrint website links">
               <p>Studio</p>
-              <a href="/about-us" aria-current="page">About TruePrint</a>
+              <a href="/about-us" aria-current={isAboutPage ? "page" : undefined}>About TruePrint</a>
               <a href="/#projects">Selected work</a>
               <a href="/#materials">Materials</a>
               <a href="/#services">Services</a>
@@ -90,4 +90,3 @@ export default function AboutFooter() {
         </footer>
   );
 }
-

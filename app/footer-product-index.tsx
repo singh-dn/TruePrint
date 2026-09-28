@@ -67,6 +67,9 @@ export default function FooterProductIndex() {
           </section>
         ))}
       </div>
+      <div className="footerProductLinks footerLegalLinks">
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
     </nav>
   );
 }
