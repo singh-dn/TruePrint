@@ -8,8 +8,7 @@ import TurnstileWidget from "../turnstile-widget";
 import { ArrowFillButton } from "../arrow-fill-button";
 import { TURNSTILE_ACTIONS } from "@/lib/turnstile-actions";
 import "./catalogue-cards.css";
-
-const whatsappUrl = `https://wa.me/918588829931?text=${encodeURIComponent("Hello TruePrint, I would like to know more about your custom diary and catalogue options.")}`;
+import { categoryWhatsAppUrl, getCategoryDetails } from "./category-details";
 
 type DownloadStatus = "idle" | "preparing" | "downloading" | "completed";
 type IconName = "check" | "share" | "download" | "file" | "sparkles" | "user" | "mail" | "phone" | "close" | "shield";
@@ -279,6 +278,8 @@ function CataloguePresentationCard({ catalogue, categoryKey }: { catalogue: Cata
 
 export default function DiaryCatalogue({ categoryKey = "diaries" }: { categoryKey?: string }) {
   const catalogues = categoryCatalogues[categoryKey] ?? [];
+  const whatsappUrl = categoryWhatsAppUrl(categoryKey);
+  const categoryName = getCategoryDetails(categoryKey).name;
   const [activeSlide, setActiveSlide] = useState(0);
   const [showExpertHint, setShowExpertHint] = useState(true);
   const railRef = useRef<HTMLDivElement>(null);
@@ -342,7 +343,7 @@ export default function DiaryCatalogue({ categoryKey = "diaries" }: { categoryKe
           </div>
         </div>
       </section>
-      <nav className="diaryBottomDock" aria-label="Diary quick actions">
+      <nav className="diaryBottomDock" aria-label={`${categoryName} quick actions`}>
         {showExpertHint && <p className="diaryBottomDockHint" role="status">Looking for something different? Connect directly with our print expert.</p>}
         <a href="#diary-catalogue">Download catalogue</a>
         <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Contact TruePrint on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.2 7.3L4 20.2l1.2-4.1a8.3 8.3 0 1 1 15.3-4.3Zm-8.3-6.6a6.6 6.6 0 0 0-5.6 10.2l.2.3-.7 2.3 2.4-.6.3.2a6.6 6.6 0 1 0 3.4-12.4Zm-2.8 3.2c.2 0 .3 0 .4.3l.6 1.5c.1.2.1.3 0 .5l-.5.7c-.1.1-.2.3 0 .5.4.8 1.1 1.5 2 2 .2.1.4.1.5-.1l.8-1c.1-.2.3-.2.5-.1l1.6.7c.2.1.4.2.4.4 0 .2-.1 1.1-.7 1.6-.5.5-1.2.7-1.9.5-1.1-.3-2.5-.9-3.7-2-1-1-1.8-2.2-2-3.1-.3-1 0-1.8.4-2.3.4-.4.8-.5 1.1-.5Z" /></svg><span>WhatsApp</span></a>

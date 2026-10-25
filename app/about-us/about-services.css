@@ -1,0 +1,75 @@
+@font-face { font-family: "TruePrint Section Hand"; src: url("/fonts/about-services/hand.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "TruePrint Section Serif"; src: url("/fonts/about-services/serif-heavy.woff") format("woff"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "TruePrint Section Serif"; src: url("/fonts/about-services/serif-italic.woff") format("woff"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "TruePrint Section Brand"; src: url("/fonts/about-services/brand.woff") format("woff"); font-weight: 800; font-style: normal; font-display: swap; }
+.aboutEverything { position: relative; isolation: isolate; overflow: hidden; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 28px clamp(24px, 6vw, 112px) 30px; border: 0; border-radius: 0; color: #0f172a; background-color: #fff; background-image: linear-gradient(180deg, #fff, #ffffff00 72px), radial-gradient(ellipse at 50% 15%, #fff 0%, #f8fafcd9 75%), radial-gradient(circle at 20% 70%, #0284c70a, transparent 50%), radial-gradient(circle at 80% 30%, #0284c70d, transparent 45%); }
+.aboutEverything::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(circle at 100% 0%, #38bdf84d 0%, #0ea5e933 35%, transparent 60%), radial-gradient(circle at 0% 100%, #0ea5e938 0%, transparent 45%); mask-image: linear-gradient(180deg, transparent, #000 72px); }
+.aboutEverythingTear { position: absolute; z-index: -1; pointer-events: none; }
+.aboutEverythingTear i { position: absolute; inset: 0; background: radial-gradient(circle at 20% 20%, #38bdf8 0%, #1d4ed8 45%, #0c4a6e 90%); filter: contrast(115%) brightness(105%); }
+.aboutEverythingTear svg { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 3px 3px #022c7338); }
+.aboutEverythingTearTop { top: 0; left: 0; width: clamp(190px, 22vw, 300px); height: 200px; mask-image: linear-gradient(180deg, transparent, #000 40px); }
+.aboutEverythingTearTop i { clip-path: polygon(0 0,100% 0,84% 14%,72% 20%,54% 38%,42% 34%,30% 60%,16% 56%,0 96%); }
+.aboutEverythingTearBottom { right: 0; bottom: 0; width: clamp(240px, 28vw, 360px); height: 220px; }
+.aboutEverythingTearBottom i { clip-path: polygon(100% 100%,0 100%,14% 84%,28% 82%,44% 66%,58% 62%,72% 44%,84% 34%,92% 16%,100% 4%); }
+.aboutEverythingHeading { position: relative; width: fit-content; max-width: 100%; margin: 0 auto 16px; text-align: center; }
+.aboutEverythingHeading h2 { margin: 0; line-height: 1; }
+.aboutEverythingBecause { display: block; font-family: "TruePrint Section Serif", Georgia, serif; font-size: clamp(3rem, 5.2vw, 4.5rem); font-weight: 900; letter-spacing: -.04em; color: #032b77; line-height: 1.05; }
+.aboutEverythingHeadingBurst { position: absolute; width: 56px; height: 56px; top: -24px; left: -48px; color: #0891b2; }
+.aboutEverythingLead { display: block; margin-top: -5px; font-family: "TruePrint Section Serif", Georgia, serif; font-style: italic; font-size: clamp(1.35rem, 2vw, 1.625rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.1; }
+.aboutEverythingHeading strong { display: block; margin-top: 4px; font-family: "TruePrint Section Brand", Arial, sans-serif; font-size: clamp(2rem, 3.2vw, 2.5rem); letter-spacing: -.05em; font-weight: 800; line-height: 1.1; }
+.aboutEverythingUnderline { display: block; width: 62%; height: 14px; margin: 2px auto 0; color: #38bdf8; }
+
+.aboutEverythingTrail { position: absolute; width: 155px; height: 106px; top: 24%; pointer-events: none; overflow: visible; }
+.aboutEverythingTrailLeft { left: -145px; }
+.aboutEverythingTrailRight { right: -145px; transform: scaleX(-1); }
+.aboutEverythingTrail path { stroke: #0c1f39; stroke-width: 2.2; stroke-dasharray: 5 5; stroke-linecap: round; }
+.aboutEverythingTrail .aboutEverythingTrailTip { stroke: #0f172a; stroke-width: 2.6; stroke-dasharray: none; stroke-linejoin: round; fill: none; }
+.aboutEverythingOptions { max-width: 1360px; margin: 0 auto; position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 28px; }
+.aboutEverythingOption { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; padding: 4px; border-radius: 20px; }
+.aboutEverythingLabel { display: block; color: #07172f; text-align: center; font-family: "TruePrint Section Hand", "Segoe Print", cursive; font-size: clamp(1.15rem, 1.6vw, 1.625rem); line-height: 1.2; transform: rotate(-7deg); }
+.aboutEverythingOption:nth-child(even) .aboutEverythingLabel { transform: rotate(-5deg); }
+.aboutEverythingSticker { --sticker-rotate: -8deg; position: relative; display: grid; place-items: center; width: clamp(84px, 7.5vw, 104px); aspect-ratio: 1; border: 6px solid #fff; border-radius: 26% 30% 25% 28%; background: linear-gradient(145deg, #f2fbff, #bde7ff); box-shadow: 0 6px 2px #142a4930, 0 12px 18px #102d4620; transform: rotate(var(--sticker-rotate)); transition: transform 240ms ease, box-shadow 240ms ease; }
+.aboutEverythingSticker > svg { width: 73%; height: 73%; color: #0b3473; fill: #319fe941; filter: drop-shadow(2px 3px 0 #ffffff); }
+.aboutEverythingOption:nth-child(even) .aboutEverythingSticker { --sticker-rotate: 7deg; }
+.aboutEverythingOption3 .aboutEverythingSticker, .aboutEverythingOption5 .aboutEverythingSticker { background: linear-gradient(145deg, #d5f6ff, #6dc4ff); }
+.aboutEverythingOption2 .aboutEverythingSticker, .aboutEverythingOption6 .aboutEverythingSticker { background: linear-gradient(145deg, #fff6c7, #ffdf78); }
+.aboutEverythingOption:hover .aboutEverythingSticker { transform: translateY(-7px) rotate(0deg); box-shadow: 0 6px 2px #142a4920, 0 18px 24px #102d4628; }
+.aboutEverythingOption:focus-visible { outline: 3px solid #16499e; outline-offset: 4px; }
+.aboutEverythingSpark { position: absolute; width: 29px; height: 31px; top: -12px; right: -35px; border-top: 4px solid #069fff; transform: rotate(-42deg); }
+.aboutEverythingSpark::before, .aboutEverythingSpark::after { content: ""; position: absolute; width: 26px; height: 4px; background: #069fff; transform-origin: left; }
+.aboutEverythingSpark::before { top: 8px; left: 4px; transform: rotate(29deg); }
+.aboutEverythingSpark::after { top: -14px; left: 4px; transform: rotate(-29deg); }
+.aboutEverythingDots { position: absolute; width: 66px; height: 66px; background: radial-gradient(circle, #0891b2 3px, transparent 3.5px) 0 0/18px 18px; pointer-events: none; }
+.aboutEverythingDotsLeft { left: 2%; bottom: 24%; }
+.aboutEverythingDotsRight { right: 2%; top: 28%; }
+.aboutEverythingScribble { position: absolute; width: 15%; pointer-events: none; stroke: #07172f; stroke-width: 3; stroke-linecap: round; }
+.aboutEverythingScribbleTop { top: -26px; right: -15px; }
+.aboutEverythingScribbleBottom { bottom: 8px; left: 20px; width: 125px; }
+@media (max-width: 800px) {
+  .aboutEverythingOptions { gap: 22px 12px; }
+  .aboutEverythingTrail { top: 36%; width: 112px; height: 90px; }
+  .aboutEverythingTrailLeft { left: -90px; }.aboutEverythingTrailRight { right: -90px; }
+  .aboutEverythingSpark { width: 18px; right: -23px; }
+  .aboutEverythingSpark::before, .aboutEverythingSpark::after { width: 18px; }
+}
+@media (max-width: 600px) {
+  .aboutEverything { min-height: 0; padding: 32px 24px 36px; border-radius: 0; }
+  .aboutEverythingHeading { margin-bottom: 24px; }
+  .aboutEverythingBecause { font-size: clamp(2.6rem, 11vw, 4rem); }
+  .aboutEverythingLead { font-size: clamp(1.3rem, 5.4vw, 1.8rem); margin-top: 3px; }
+  .aboutEverythingHeading strong { font-size: clamp(2.3rem, 9vw, 3.5rem); }
+  .aboutEverythingUnderline { height: 14px; margin-top: 3px; }
+  .aboutEverythingOptions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+  .aboutEverythingLabel { font-size: 1.2rem; }
+  .aboutEverythingSticker { width: clamp(78px, 22vw, 92px); border-width: 5px; }
+  .aboutEverythingTrail { display: none; }
+  .aboutEverythingDots { width: 36px; opacity: .4; }
+  .aboutEverythingTearTop { width: 170px; height: 140px; }
+  .aboutEverythingTearBottom { width: 200px; height: 170px; }
+  .aboutEverythingHeadingBurst { width: 32px; height: 32px; top: -20px; left: -20px; }
+  .aboutEverythingScribble { width: 25%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aboutEverythingSticker { transition: none; }
+  .aboutEverythingOption:hover .aboutEverythingSticker { transform: rotate(var(--sticker-rotate)); }
+}

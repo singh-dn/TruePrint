@@ -5,6 +5,7 @@ import { SITE_URL, homeSeo } from "./seo";
 import SmoothScroll from "./SmoothScroll";
 import ImageReadiness from "./image-readiness";
 import BackToTop from "./back-to-top";
+import ChatbotLauncher from "../chatbot-widget/Launcher";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -93,6 +94,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <ChatbotLauncher />
       </body>
     </html>
   );

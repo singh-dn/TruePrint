@@ -1,3 +1,4 @@
+import { isCategoryVisible } from "./category-visibility";
 import SiteImage from "./site-image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
@@ -609,7 +610,7 @@ export default function Home() {
                 <div className="serviceTrack">
                   {[0, 1].map((copy) => (
                     <div className="serviceGroup" aria-hidden={copy === 1 ? true : undefined} key={copy}>
-                      {row.items.map((item) => (
+                      {row.items.filter((item) => item.mark !== "card" || isCategoryVisible("/custom-visiting-cards")).map((item) => (
                         <span className="serviceToken" key={`${rowIndex}-${copy}-${item.mark}`}>
                           <i className={`serviceMark serviceMark${item.tone}`} aria-hidden="true"><ProductCategoryIcon name={item.mark} /></i>
                           <strong>{item.name}</strong>
@@ -663,7 +664,7 @@ export default function Home() {
             <nav className="footerColumn" aria-label="Print services">
               <p>Print</p>
               <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
-              <a href="/custom-visiting-cards">Business cards</a>
+              {isCategoryVisible("/custom-visiting-cards") && <a href="/custom-visiting-cards">Business cards</a>}
               <a href="#contact">Premium packaging</a>
               <a href="#contact">Books &amp; brochures</a>
               <a href="#contact">Invitations &amp; stationery</a>

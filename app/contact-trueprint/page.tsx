@@ -1,3 +1,4 @@
+import { isCategoryVisible } from "../category-visibility";
 import SiteImage from "../site-image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
@@ -152,7 +153,7 @@ export default function ContactPage() {
               <nav className="footerColumn" aria-label="Print services">
                 <p>Print</p>
                 <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
-                <a href="/custom-visiting-cards">Business cards</a>
+                {isCategoryVisible("/custom-visiting-cards") && <a href="/custom-visiting-cards">Business cards</a>}
                 <a href="#contact-form">Premium packaging</a>
                 <a href="#contact-form">Books &amp; brochures</a>
                 <a href="#contact-form">Invitations &amp; stationery</a>

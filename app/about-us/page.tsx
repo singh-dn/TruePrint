@@ -10,6 +10,7 @@ import { buildPageMetadata, SITE_URL } from "../seo";
 import AboutFooter from "./about-footer";
 import AboutMotion from "./about-motion";
 import IndiaNetwork from "./india-network";
+import AboutServices from "./about-services";
 import "./about.css";
 
 const description = "Meet TruePrint, your partner for custom branded merchandise, corporate gifting and printing in India. We coordinate sourcing, customization and fulfilment.";
@@ -31,6 +32,7 @@ const showcaseLogos = [
   { name: "4n6 Care", image: "/4n6-logo (1)-optimized.webp" },
   { name: "NetApp", image: "/Netapp_logo-optimized.webp" },
 ];
+const showcaseLogoRows = [showcaseLogos.slice(0, 3), showcaseLogos.slice(3)];
 
 export default function AboutPage() {
   return (
@@ -86,13 +88,21 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="aboutLogoShowcase" aria-label="Professional affiliations showcase">
-          <p className="aboutEyebrow">PROFESSIONALS ACROSS ORGANISATIONS</p>
-          <div className="aboutLogoRails">
-            {[showcaseLogos, [...showcaseLogos.slice(3), ...showcaseLogos.slice(0, 3)]].map((row, index) => <div className={`aboutLogoRail aboutLogoRail${index}`} key={index}><div className="aboutLogoTrack">{[0, 1].map(copy => <div className="aboutLogoGroup" key={copy} aria-hidden={copy === 1 || index === 1 ? true : undefined}>{row.map(brand => <span className="aboutLogoItem" key={brand.name}><SiteImage src={brand.image} sizes="240px" alt={brand.name} loading="lazy" decoding="async" /></span>)}</div>)}</div></div>)}
+        <section className="aboutClientsSection" aria-label="TruePrint clients and professional affiliations">
+          <div className="aboutLogoShowcase">
+            <p className="aboutEyebrow">PROFESSIONALS ACROSS ORGANISATIONS</p>
+            <div className="aboutLogoRails">
+              {showcaseLogoRows.map((row, index) => <div className={`aboutLogoRail aboutLogoRail${index}`} key={index}><div className="aboutLogoTrack">{[0, 1, 2, 3].map(copy => <div className="aboutLogoGroup" key={copy} aria-hidden={copy > 0 ? true : undefined}>{row.map(brand => <span className="aboutLogoItem" key={brand.name}><SiteImage src={brand.image} sizes="240px" alt={brand.name} loading="lazy" decoding="async" /></span>)}</div>)}</div></div>)}
+            </div>
+            <p className="aboutLogoNote">Organisations are shown as employers or affiliations of individual professionals who have engaged with TruePrint. No partnership or endorsement is implied.</p>
           </div>
-          <p className="aboutLogoNote">Organisations are shown as employers or affiliations of individual professionals who have engaged with TruePrint. No partnership or endorsement is implied.</p>
+          <figure className="aboutClientsArtwork">
+            <div className="aboutClientsBrand" aria-hidden="true"><img src="/logo-blue-gradient.svg" alt="" width={317} height={335} /><span>TRUEPRINT</span></div>
+            <SiteImage src="/about-clients-editorial-blue.webp" width={960} height={1200} alt="TruePrint: Our clients are chilling. A person holds a blue and black magazine, with a playful airplane trail above." loading="lazy" decoding="async" />
+          </figure>
         </section>
+
+        <AboutServices />
 
         <section className="aboutApproach aboutSection" aria-labelledby="about-approach-title">
           <span className="aboutGhost" aria-hidden="true">INTENT</span>

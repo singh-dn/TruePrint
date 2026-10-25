@@ -1,3 +1,4 @@
+import { isCategoryVisible } from "../category-visibility";
 import SiteImage from "../site-image";
 import AnimatedWordmark from "../animated-wordmark";
 import FooterProductIndex from "../footer-product-index";
@@ -43,7 +44,7 @@ export default function AboutFooter({ isAboutPage = true }: { isAboutPage?: bool
             <nav className="footerColumn" aria-label="Print services">
               <p>Print</p>
               <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
-              <a href="/custom-visiting-cards">Business cards</a>
+              {isCategoryVisible("/custom-visiting-cards") && <a href="/custom-visiting-cards">Business cards</a>}
               <a href="/contact-trueprint">Premium packaging</a>
               <a href="/contact-trueprint">Books &amp; brochures</a>
               <a href="/contact-trueprint">Invitations &amp; stationery</a>

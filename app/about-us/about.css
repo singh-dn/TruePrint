@@ -28,12 +28,22 @@
 .aboutStoryColumns { grid-template-columns: 1fr 2fr; gap: clamp(36px, 5vw, 90px); margin-top: clamp(38px, 4.5vw, 70px); }
 .aboutStoryColumns .aboutLead { font-size: clamp(1.4rem, 1.8vw, 2rem); line-height: 1.5; font-weight: 720; letter-spacing: -.03em; }
 .aboutStoryColumns .aboutBodyCopy p { color: #202824; font-size: clamp(1rem, 1.1vw, 1.125rem); line-height: 1.65; margin-bottom: 26px; }
-.aboutLogoShowcase { background: #fff; padding: 24px 0 80px; text-align: center; }
+.aboutClientsSection { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: clamp(32px, 4vw, 72px); padding: 24px clamp(24px, 6vw, 112px) 80px; background: #fff; }
+.aboutLogoShowcase { min-width: 0; background: #fff; padding: 24px 0; text-align: center; }
+.aboutClientsArtwork { position: relative; container-type: inline-size; min-width: 0; width: 100%; max-width: 440px; justify-self: end; margin: 0; overflow: hidden; border-radius: 20px; }
+.aboutClientsArtwork > img { display: block; width: 100%; height: auto; }
+.aboutClientsBrand { position: absolute; z-index: 1; top: 3%; left: 12%; right: 12%; display: flex; justify-content: center; align-items: center; gap: 3%; }
+.aboutClientsBrand img { display: block; width: 13%; height: auto; }
+.aboutClientsBrand span { font-size: clamp(18px, 8cqw, 34px); font-weight: 850; letter-spacing: -.045em; line-height: 1; color: #111216; }
+@media (max-width: 850px) {
+  .aboutClientsSection { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-bottom: 64px; }
+  .aboutClientsArtwork { justify-self: center; }
+}
 .aboutLogoShowcase > .aboutEyebrow { color: #7a8380; padding: 0 24px; }
 .aboutLogoRails { margin: 30px 0; mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); overflow: hidden; }
 .aboutLogoRail { overflow: hidden; padding: 18px 0; }
 .aboutLogoTrack { display: flex; width: max-content; animation: aboutMarquee 42s linear infinite; }
-.aboutLogoRail1 .aboutLogoTrack { animation-direction: reverse; animation-duration: 48s; }
+.aboutLogoRail1 .aboutLogoTrack { animation-direction: reverse; animation-duration: 48s; animation-delay: -17s; }
 .aboutLogoGroup { display: flex; align-items: center; flex-shrink: 0; }
 .aboutLogoItem { display: grid; place-items: center; width: clamp(150px, 17vw, 270px); height: 100px; padding: 12px 28px; }
 .aboutLogoItem img { width: 100%; height: 100%; object-fit: contain; }
@@ -103,7 +113,7 @@
 @media (prefers-reduced-motion: reduce) {
   .aboutConcentricRings span { animation: none; }
   .aboutPage .aboutHeroMarquee > div, .aboutPage .aboutLogoTrack { animation: none; }
-  .aboutLogoRails { mask-image: none; }.aboutLogoTrack { width: 100%; }.aboutLogoGroup { flex-wrap: wrap; justify-content: center; width: 100%; }.aboutLogoGroup[aria-hidden="true"], .aboutLogoRail1 { display: none; }
+  .aboutLogoRails { mask-image: none; }.aboutLogoTrack { width: 100%; }.aboutLogoGroup { flex-wrap: wrap; justify-content: center; width: 100%; }.aboutLogoGroup[aria-hidden="true"] { display: none; }
   .aboutPage .aboutHeroLight, .aboutPage .aboutHero h1, .aboutPage .aboutReveal.is-revealed, .aboutPage .aboutMapRoute, .aboutPage .aboutMapPulse { animation: none; }
   .aboutPage .aboutMapRoute { stroke-dasharray: none; opacity: .35; }
   .aboutPage .aboutCategoryLinks a, .aboutPage .aboutCategoryLinks a > span, .aboutPage .aboutScroll > span { transition: none; }

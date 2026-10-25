@@ -1,3 +1,4 @@
+import { isCategoryVisible } from "./category-visibility";
 const footerProductGroups = [
   {
     title: "Product categories",
@@ -60,7 +61,7 @@ export default function FooterProductIndex() {
           <section className="footerProductGroup" key={group.title} aria-labelledby={`footer-${group.title.toLowerCase().replaceAll(" ", "-").replace("&", "and")}`}>
             <h2 id={`footer-${group.title.toLowerCase().replaceAll(" ", "-").replace("&", "and")}`}>{group.title}</h2>
             <div className="footerProductLinks">
-              {group.links.map((link) => (
+              {group.links.filter((link) => isCategoryVisible(link.href)).map((link) => (
                 <a href={link.href} key={link.label}>{link.label}</a>
               ))}
             </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { isCategoryVisible } from "./category-visibility";
+
 import SiteImage from "./site-image";
 
 
@@ -17,7 +19,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const possibilities = [
+const allPossibilities = [
   {
     eyebrow: "Category 01",
     title: "Visiting Cards",
@@ -84,6 +86,8 @@ const possibilities = [
   },
 ] as const;
 
+const possibilities = allPossibilities.filter((item) => isCategoryVisible(item.href));
+
 const wrapDifference = (index: number, activeIndex: number) => {
   let difference = index - activeIndex;
   const half = Math.floor(possibilities.length / 2);
@@ -93,7 +97,7 @@ const wrapDifference = (index: number, activeIndex: number) => {
 };
 
 export default function PrintExperiments() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(() => possibilities.findIndex((item) => item.href === "/custom-branded-pens"));
   const [dragOffset, setDragOffset] = useState(0);
   const dragRef = useRef({ pointerId: -1, startX: 0, currentX: 0, frame: 0 });
   const suppressClickRef = useRef(false);

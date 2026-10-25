@@ -1,0 +1,71 @@
+@font-face { font-family: "TruePrint Reference"; src: url("/fonts/about-services/brand.woff") format("woff"); font-style: normal; font-weight: 800; font-display: swap; }
+
+.diarySourceHero { position: relative; isolation: isolate; container-type: inline-size; aspect-ratio: 1949 / 880; overflow: hidden; background: #f9fcff; color: #08234f; }
+.diarySourceHeroPattern { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; }
+.diarySourceHeroBlueWords, .diarySourceHeroPaperWords { font-family: Arial, Helvetica, sans-serif; font-weight: 800; letter-spacing: -2px; }
+.diarySourceHeroCopy { position: relative; z-index: 2; padding-top: 4.45cqw; padding-left: 5.85cqw; width: 43%; }
+.diarySourceHeroPill { display: flex; align-items: center; gap: 0.6cqw; width: fit-content; margin: 0 0 1.35cqw; padding: 0.5cqw 0.85cqw; border-radius: 999px; background: #e1edff; box-shadow: 0 4px 11px #24496b24, inset 0 1px 1px #ffffffa3; font-size: max(14px, 0.72cqw); font-weight: 550; line-height: 1.4; }
+.diarySourceHeroPill svg { width: 1.05cqw; height: 1.05cqw; min-width: 18px; min-height: 18px; fill: #0d3a76; stroke-width: 1.3; }
+.diarySourceHeroCopy h1 { margin: 0; font-family: "TruePrint Reference", Arial, sans-serif; font-weight: 800; font-size: 4.15cqw; letter-spacing: -0.055em; line-height: 1.02; }
+.diarySourceHeroCopy h1 > span, .diarySourceHeroCopy h1 em { display: block; }
+.diarySourceHeroCopy h1 em { margin-top: 0.35cqw; color: #2d6abe; font-family: Georgia, "Times New Roman", serif; font-size: 5.32cqw; font-weight: 400; letter-spacing: -0.055em; line-height: 0.91; }
+.diarySourceHeroUnderline { display: block; width: 10.6cqw; height: 1.3cqw; margin: 0.5cqw 0 1.65cqw 2.35cqw; color: #82adef; }
+.diarySourceHeroDetail { display: grid; grid-template-columns: 3.6cqw 8.4cqw 1fr; align-items: center; gap: 1.25cqw; width: 33cqw; }
+.diarySourceHeroNumber { color: transparent; -webkit-text-stroke: 1px #889dbd; font: 500 2.9cqw/1 Arial, sans-serif; }
+.diarySourceHeroRule { height: 1px; background: #8ca5c8; }
+.diarySourceHeroDetail h2 { margin: 0 0 0.4cqw; font-size: max(16px, 0.97cqw); font-weight: 750; line-height: 1.3; letter-spacing: -0.025em; }
+.diarySourceHeroDetail p { margin: 0; color: #7b91b2; font-size: max(14px, 0.74cqw); line-height: 1.5; }
+.diarySourceHeroCta { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.2cqw; margin-top: 1.35cqw; padding: 0.5cqw 0.5cqw 0.5cqw 1.75cqw; border-radius: 999px; background: #08234f; color: #fff; text-decoration: none; font-size: max(15px, 0.83cqw); font-weight: 600; box-shadow: 0 8px 16px #173b6130; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.diarySourceHeroCta > span { display: grid; place-items: center; width: 1.95cqw; height: 1.95cqw; min-width: 36px; min-height: 36px; border-radius: 50%; background: #fff; color: #08234f; box-shadow: inset 0 0 0 3px #edf2fa; }
+.diarySourceHeroCta svg { width: 1.2cqw; height: 1.2cqw; min-width: 20px; min-height: 20px; stroke-width: 2.4; }
+.diarySourceHeroCta:hover { transform: translateY(-2px); background: #104080; box-shadow: 0 11px 22px #173b6140; }
+.diarySourceHeroCta:focus-visible { outline: 3px solid #3f87df; outline-offset: 5px; }
+.diarySourceHeroProduct { position: absolute; z-index: 1; top: 24.4%; left: 46.3%; width: 44.8%; margin: 0; }
+.diarySourceHeroProduct::before { content: ""; position: absolute; z-index: -1; width: 72%; height: 14%; left: 14%; bottom: 0; border-radius: 50%; background: #071c3d; opacity: 0.2; filter: blur(22px); transform: rotate(-7deg); }
+.diarySourceHeroProduct img { display: block; width: 100%; height: auto; filter: drop-shadow(12px 22px 12px #0b1e3c40) drop-shadow(1px 4px 2px #14264322); }
+
+@media (max-width: 1450px) and (min-width: 901px) {
+  .diarySourceHero { min-height: 640px; aspect-ratio: auto; }
+  .diarySourceHeroPattern { object-fit: cover; }
+  .diarySourceHeroCopy { padding-top: 40px; padding-bottom: 40px; width: 49%; }
+  .diarySourceHeroCopy h1 { font-size: 52px; }
+  .diarySourceHeroCopy h1 em { font-size: 65px; }
+  .diarySourceHeroUnderline { margin-bottom: 22px; }
+  .diarySourceHeroDetail { grid-template-columns: 36px 40px 1fr; width: 40cqw; gap: 12px; }
+  .diarySourceHeroNumber { font-size: 36px; }
+  .diarySourceHeroDetail h2 { max-width: 270px; }
+  .diarySourceHeroDesktopBreak { display: none; }
+  .diarySourceHeroCta { margin-top: 22px; padding: 8px 8px 8px 24px; }
+  .diarySourceHeroProduct { top: auto; bottom: 4%; left: 48%; width: 49%; }
+}
+
+@media (max-width: 900px) {
+  .diarySourceHero { aspect-ratio: auto; padding: 38px 6% 28px; }
+  .diarySourceHeroPattern { height: 100%; opacity: 0.5; }
+  .diarySourceHeroCopy { width: 100%; padding: 0; }
+  .diarySourceHeroPill { padding: 9px 14px; gap: 9px; margin-bottom: 24px; }
+  .diarySourceHeroCopy h1 { font-size: clamp(48px, 7.5cqw, 68px); }
+  .diarySourceHeroCopy h1 em { font-size: clamp(58px, 9.2cqw, 82px); margin-top: 10px; }
+  .diarySourceHeroUnderline { width: 160px; height: 20px; margin: 10px 0 24px 28px; }
+  .diarySourceHeroDetail { width: 100%; max-width: 580px; grid-template-columns: 40px 50px 1fr; gap: 15px; }
+  .diarySourceHeroNumber { font-size: 38px; }
+  .diarySourceHeroDetail h2 { margin-bottom: 6px; font-size: 18px; }
+  .diarySourceHeroDetail p { font-size: 16px; }
+  .diarySourceHeroCta { margin-top: 24px; gap: 24px; padding: 8px 8px 8px 24px; font-size: 16px; }
+  .diarySourceHeroCta > span { width: 38px; height: 38px; }
+  .diarySourceHeroProduct { position: relative; top: auto; left: auto; width: min(100%, 620px); margin: 32px auto 0; }
+  .diarySourceHeroProduct img { filter: drop-shadow(8px 16px 10px #0b1e3c38); }
+}
+
+@media (max-width: 480px) {
+  .diarySourceHero { padding: 30px 24px 24px; }
+  .diarySourceHeroPattern { opacity: 0.25; }
+  .diarySourceHeroCopy h1 { font-size: clamp(40px, 11.2cqw, 52px); }
+  .diarySourceHeroCopy h1 em { font-size: clamp(46px, 13cqw, 61px); }
+  .diarySourceHeroDetail { grid-template-columns: 36px 1fr; gap: 14px; }
+  .diarySourceHeroRule { display: none; }
+  .diarySourceHeroDesktopBreak { display: none; }
+  .diarySourceHeroDetail h2 { font-size: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .diarySourceHeroCta { transition: none; } }

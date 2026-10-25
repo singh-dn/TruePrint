@@ -1,5 +1,6 @@
+import { isCategoryVisible } from "../category-visibility";
 import SiteImage from "../site-image";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import ClientStories from "../client-stories";
 import FooterProductIndex from "../footer-product-index";
 import AnimatedWordmark from "../animated-wordmark";
@@ -10,18 +11,10 @@ import DiaryHeroShowcase from "./diary-hero-showcase";
 import CategoryGallery from "./category-gallery";
 import { ArrowFillLink } from "../arrow-fill-button";
 import { categoryProductCopy } from "./category-product-copy";
+import { getCategoryDetails } from "./category-details";
 import { CategoryMegaMenu, MobileCategoryMenu, ProductSearch } from "../nav-discovery";
 import { buildCategoryJsonLd, type CategorySeoKey } from "../seo";
 
-
-const diaryMaterials = [
-  { number: "01", name: "Buckram cloth", note: "Woven · tactile · durable" },
-  { number: "02", name: "Recycled cover", note: "Soft touch · considered" },
-  { number: "03", name: "Uncoated paper", note: "Natural shade · clean writing" },
-  { number: "04", name: "Elastic & ribbon", note: "Matched · contrasting" },
-  { number: "05", name: "Foil & deboss", note: "Branded · dimensional" },
-  { number: "06", name: "Thread & binding", note: "Lay-flat · section sewn" },
-] as const;
 
 const diaryJourney = [
   { number: "01", icon: "💬", title: "Share the brief", copy: "Tell us what you need, the quantity, timeline and any idea or reference you already have." },
@@ -30,19 +23,9 @@ const diaryJourney = [
   { number: "04", icon: "📦", title: "Produce and deliver", copy: "We coordinate production, quality checks, packing and delivery to your required location." },
 ] as const;
 
-const categoryNames: Record<string, string> = {
-  diaries: "Diary",
-  "visiting-cards": "Visiting Cards",
-  pens: "Pens",
-  "joining-kits": "Joining Kits",
-  "tech-products": "Tech Products",
-  bags: "Bags",
-  drinkware: "Drinkware",
-  "t-shirts": "T-Shirts",
-};
-
-export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKey?: string } = {}) {
-  const categoryName = categoryNames[categoryKey] ?? categoryNames.diaries;
+export default function CategoriesPage({ categoryKey = "diaries", hero }: { categoryKey?: string; hero?: ReactNode } = {}) {
+  const details = getCategoryDetails(categoryKey);
+  const categoryName = details.name;
   const productCopy = categoryProductCopy[categoryKey as keyof typeof categoryProductCopy] ?? categoryProductCopy.diaries;
   const structuredData = buildCategoryJsonLd((categoryKey in categoryProductCopy ? categoryKey : "diaries") as CategorySeoKey);
   return (
@@ -81,7 +64,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
         <ScrollHeader />
         <div className="headerRule" />
 
-        <DiaryHeroShowcase category={categoryKey} />
+        {hero ?? <DiaryHeroShowcase category={categoryKey} />}
 
         <section className="diaryFoundation" id="diary-collection" aria-labelledby="diary-foundation-title">
           <header className="diaryFoundationHeader">
@@ -119,8 +102,8 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
             </figure>
           </div>
 
-          <div className="diaryMaterials" aria-label="Diary materials and finishing options">
-            {diaryMaterials.map((material) => (
+          <div className="diaryMaterials" aria-label={`${categoryName} materials and finishing options`}>
+            {details.materials.map((material) => (
               <article key={material.number}>
                 <span>{material.number}</span>
                 <h3>{material.name}</h3>
@@ -173,7 +156,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
                 <p className="closingCopy">
                   Share the idea, quantity or reference. We&apos;ll help take it from the first conversation to the finished product.
                 </p>
-                <ArrowFillLink className="closingButton" href="#contact" label="Start a project" />
+                <ArrowFillLink className="closingButton" href="/#contact" label="Start a project" />
               </article>
 
               <figure className="closingImage">
@@ -201,7 +184,7 @@ export default function CategoriesPage({ categoryKey = "diaries" }: { categoryKe
               <nav className="footerColumn" aria-label="Print services">
                 <p>Print</p>
                 <a href="/custom-corporate-diaries">Diaries &amp; planners</a>
-                <a href="/custom-visiting-cards">Business cards</a>
+                {isCategoryVisible("/custom-visiting-cards") && <a href="/custom-visiting-cards">Business cards</a>}
                 <a href="/#contact">Premium packaging</a>
                 <a href="/#contact">Books &amp; brochures</a>
               </nav>

@@ -1,5 +1,7 @@
 "use client";
 
+import { isCategoryVisible } from "./category-visibility";
+
 import SiteImage from "./site-image";
 
 
@@ -84,7 +86,7 @@ export function ProductSearch({ variant = "home" }: { variant?: "home" | "catego
   const formRef = useRef<HTMLFormElement>(null);
   const normalizedQuery = normalize(query);
   const results = useMemo(
-    () => productCategories
+    () => productCategories.filter((product) => isCategoryVisible(product.href))
       .map((product) => ({ product, score: scoreProduct(normalizedQuery, product) }))
       .filter(({ score }) => score > 0)
       .sort((a, b) => b.score - a.score)
@@ -152,14 +154,14 @@ export function CategoryMegaMenu() {
     <div className="navCategoryItem">
       <a className="navCategoryTrigger" href="/custom-corporate-diaries" aria-haspopup="true">Categories <span className="navCategoryChevron" aria-hidden="true" /></a>
       <div className="categoryMega" aria-label="Product categories">
-        <header className="categoryMegaHeading"><div><strong>Find your next branded product</strong><p>Explore the range. Make it yours.</p></div><span>8 product categories</span></header>
+        <header className="categoryMegaHeading"><div><strong>Find your next branded product</strong><p>Explore the range. Make it yours.</p></div><span>{productCategories.filter((product) => isCategoryVisible(product.href)).length} product categories</span></header>
         <div className="categoryMegaList">
           <p>Stationery & welcome kits</p>
-          {productCategories.slice(0, 4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
+          {productCategories.slice(0, 4).filter((product) => isCategoryVisible(product.href)).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
         <div className="categoryMegaList">
           <p>Brand merchandise</p>
-          {productCategories.slice(4).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
+          {productCategories.slice(4).filter((product) => isCategoryVisible(product.href)).map((product) => <a href={product.href} key={product.name}><div><strong>{product.name}</strong><small>{product.description}</small></div><i aria-hidden="true">↗</i></a>)}
         </div>
         <a className="categoryMegaFeature" href="/custom-corporate-diaries">
           <SiteImage src="/diary-hero.webp" alt="TruePrint diary collection" />
@@ -179,7 +181,7 @@ export function MobileCategoryMenu() {
     <details className="mobileCategoryMenu">
       <summary>Categories <span aria-hidden="true">+</span></summary>
       <div>
-        {productCategories.map((product) => (
+        {productCategories.filter((product) => isCategoryVisible(product.href)).map((product) => (
           <a href={product.href} key={product.name}>
             <span><strong>{product.name}</strong><small>{product.description}</small></span>
             <i aria-hidden="true">↗</i>
